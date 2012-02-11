@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F0E5DC4E14E6FA2800F60D43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC4D14E6FA2800F60D43 /* UIKit.framework */; };
+		F0E5DC5014E6FA2800F60D43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC4F14E6FA2800F60D43 /* Foundation.framework */; };
+		F0E5DC5214E6FA2800F60D43 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC5114E6FA2800F60D43 /* CoreGraphics.framework */; };
+		F0E5DC5414E6FA2800F60D43 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC5314E6FA2800F60D43 /* CoreData.framework */; };
+		F0E5DC5A14E6FA2800F60D43 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0E5DC5814E6FA2800F60D43 /* InfoPlist.strings */; };
+		F0E5DC5C14E6FA2800F60D43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DC5B14E6FA2800F60D43 /* main.m */; };
+		F0E5DC6014E6FA2800F60D43 /* HackfulAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DC5F14E6FA2800F60D43 /* HackfulAppDelegate.m */; };
+		F0E5DC6314E6FA2800F60D43 /* hackful.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DC6114E6FA2800F60D43 /* hackful.xcdatamodeld */; };
+		F0E5DC6B14E6FA2800F60D43 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC6A14E6FA2800F60D43 /* SenTestingKit.framework */; };
+		F0E5DC6C14E6FA2800F60D43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC4D14E6FA2800F60D43 /* UIKit.framework */; };
+		F0E5DC6D14E6FA2800F60D43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC4F14E6FA2800F60D43 /* Foundation.framework */; };
+		F0E5DC6E14E6FA2800F60D43 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC5314E6FA2800F60D43 /* CoreData.framework */; };
+		F0E5DC7614E6FA2800F60D43 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0E5DC7414E6FA2800F60D43 /* InfoPlist.strings */; };
+		F0E5DC7914E6FA2800F60D43 /* hackfulTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DC7814E6FA2800F60D43 /* hackfulTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F0E5DC6F14E6FA2800F60D43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0E5DC4014E6FA2800F60D43 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0E5DC4814E6FA2800F60D43;
+			remoteInfo = hackful;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F0E5DC4914E6FA2800F60D43 /* hackful.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackful.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0E5DC4D14E6FA2800F60D43 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F0E5DC4F14E6FA2800F60D43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F0E5DC5114E6FA2800F60D43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F0E5DC5314E6FA2800F60D43 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F0E5DC5714E6FA2800F60D43 /* hackful-Info.plist */ = {isa = PBXFileReference; path = "hackful-Info.plist"; sourceTree = "<group>"; };
+		F0E5DC5914E6FA2800F60D43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F0E5DC5B14E6FA2800F60D43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F0E5DC5D14E6FA2800F60D43 /* hackful-Prefix.pch */ = {isa = PBXFileReference; path = "hackful-Prefix.pch"; sourceTree = "<group>"; };
+		F0E5DC5E14E6FA2800F60D43 /* HackfulAppDelegate.h */ = {isa = PBXFileReference; path = HackfulAppDelegate.h; sourceTree = "<group>"; };
+		F0E5DC5F14E6FA2800F60D43 /* HackfulAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackfulAppDelegate.m; sourceTree = "<group>"; };
+		F0E5DC6214E6FA2800F60D43 /* hackful.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hackful.xcdatamodel; sourceTree = "<group>"; };
+		F0E5DC6914E6FA2800F60D43 /* hackfulTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hackfulTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0E5DC6A14E6FA2800F60D43 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		F0E5DC7314E6FA2800F60D43 /* hackfulTests-Info.plist */ = {isa = PBXFileReference; path = "hackfulTests-Info.plist"; sourceTree = "<group>"; };
+		F0E5DC7514E6FA2800F60D43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F0E5DC7714E6FA2800F60D43 /* hackfulTests.h */ = {isa = PBXFileReference; path = hackfulTests.h; sourceTree = "<group>"; };
+		F0E5DC7814E6FA2800F60D43 /* hackfulTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hackfulTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0E5DC4614E6FA2800F60D43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0E5DC4E14E6FA2800F60D43 /* UIKit.framework in Frameworks */,
+				F0E5DC5014E6FA2800F60D43 /* Foundation.framework in Frameworks */,
+				F0E5DC5214E6FA2800F60D43 /* CoreGraphics.framework in Frameworks */,
+				F0E5DC5414E6FA2800F60D43 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0E5DC6514E6FA2800F60D43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0E5DC6B14E6FA2800F60D43 /* SenTestingKit.framework in Frameworks */,
+				F0E5DC6C14E6FA2800F60D43 /* UIKit.framework in Frameworks */,
+				F0E5DC6D14E6FA2800F60D43 /* Foundation.framework in Frameworks */,
+				F0E5DC6E14E6FA2800F60D43 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F0E5DC3E14E6FA2800F60D43 = {
+			isa = PBXGroup;
+			children = (
+				F0E5DC5514E6FA2800F60D43 /* hackful */,
+				F0E5DC7114E6FA2800F60D43 /* hackfulTests */,
+				F0E5DC4C14E6FA2800F60D43 /* Frameworks */,
+				F0E5DC4A14E6FA2800F60D43 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F0E5DC4A14E6FA2800F60D43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0E5DC4914E6FA2800F60D43 /* hackful.app */,
+				F0E5DC6914E6FA2800F60D43 /* hackfulTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F0E5DC4C14E6FA2800F60D43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F0E5DC4D14E6FA2800F60D43 /* UIKit.framework */,
+				F0E5DC4F14E6FA2800F60D43 /* Foundation.framework */,
+				F0E5DC5114E6FA2800F60D43 /* CoreGraphics.framework */,
+				F0E5DC5314E6FA2800F60D43 /* CoreData.framework */,
+				F0E5DC6A14E6FA2800F60D43 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0E5DC5514E6FA2800F60D43 /* hackful */ = {
+			isa = PBXGroup;
+			children = (
+				F0E5DC5E14E6FA2800F60D43 /* HackfulAppDelegate.h */,
+				F0E5DC5F14E6FA2800F60D43 /* HackfulAppDelegate.m */,
+				F0E5DC6114E6FA2800F60D43 /* hackful.xcdatamodeld */,
+				F0E5DC5614E6FA2800F60D43 /* Supporting Files */,
+			);
+			path = hackful;
+			sourceTree = "<group>";
+		};
+		F0E5DC5614E6FA2800F60D43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F0E5DC5714E6FA2800F60D43 /* hackful-Info.plist */,
+				F0E5DC5814E6FA2800F60D43 /* InfoPlist.strings */,
+				F0E5DC5B14E6FA2800F60D43 /* main.m */,
+				F0E5DC5D14E6FA2800F60D43 /* hackful-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F0E5DC7114E6FA2800F60D43 /* hackfulTests */ = {
+			isa = PBXGroup;
+			children = (
+				F0E5DC7714E6FA2800F60D43 /* hackfulTests.h */,
+				F0E5DC7814E6FA2800F60D43 /* hackfulTests.m */,
+				F0E5DC7214E6FA2800F60D43 /* Supporting Files */,
+			);
+			path = hackfulTests;
+			sourceTree = "<group>";
+		};
+		F0E5DC7214E6FA2800F60D43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F0E5DC7314E6FA2800F60D43 /* hackfulTests-Info.plist */,
+				F0E5DC7414E6FA2800F60D43 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F0E5DC4814E6FA2800F60D43 /* hackful */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0E5DC7C14E6FA2800F60D43 /* Build configuration list for PBXNativeTarget "hackful" */;
+			buildPhases = (
+				F0E5DC4514E6FA2800F60D43 /* Sources */,
+				F0E5DC4614E6FA2800F60D43 /* Frameworks */,
+				F0E5DC4714E6FA2800F60D43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hackful;
+			productName = hackful;
+			productReference = F0E5DC4914E6FA2800F60D43 /* hackful.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F0E5DC6814E6FA2800F60D43 /* hackfulTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0E5DC7F14E6FA2800F60D43 /* Build configuration list for PBXNativeTarget "hackfulTests" */;
+			buildPhases = (
+				F0E5DC6414E6FA2800F60D43 /* Sources */,
+				F0E5DC6514E6FA2800F60D43 /* Frameworks */,
+				F0E5DC6614E6FA2800F60D43 /* Resources */,
+				F0E5DC6714E6FA2800F60D43 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0E5DC7014E6FA2800F60D43 /* PBXTargetDependency */,
+			);
+			name = hackfulTests;
+			productName = hackfulTests;
+			productReference = F0E5DC6914E6FA2800F60D43 /* hackfulTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F0E5DC4014E6FA2800F60D43 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = F0E5DC4314E6FA2800F60D43 /* Build configuration list for PBXProject "hackful" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F0E5DC3E14E6FA2800F60D43;
+			productRefGroup = F0E5DC4A14E6FA2800F60D43 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0E5DC4814E6FA2800F60D43 /* hackful */,
+				F0E5DC6814E6FA2800F60D43 /* hackfulTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F0E5DC4714E6FA2800F60D43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0E5DC5A14E6FA2800F60D43 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0E5DC6614E6FA2800F60D43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0E5DC7614E6FA2800F60D43 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F0E5DC6714E6FA2800F60D43 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0E5DC4514E6FA2800F60D43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0E5DC5C14E6FA2800F60D43 /* main.m in Sources */,
+				F0E5DC6014E6FA2800F60D43 /* HackfulAppDelegate.m in Sources */,
+				F0E5DC6314E6FA2800F60D43 /* hackful.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0E5DC6414E6FA2800F60D43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0E5DC7914E6FA2800F60D43 /* hackfulTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F0E5DC7014E6FA2800F60D43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0E5DC4814E6FA2800F60D43 /* hackful */;
+			targetProxy = F0E5DC6F14E6FA2800F60D43 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F0E5DC5814E6FA2800F60D43 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0E5DC5914E6FA2800F60D43 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F0E5DC7414E6FA2800F60D43 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0E5DC7514E6FA2800F60D43 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F0E5DC7A14E6FA2800F60D43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F0E5DC7B14E6FA2800F60D43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F0E5DC7D14E6FA2800F60D43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "hackful/hackful-Prefix.pch";
+				INFOPLIST_FILE = "hackful/hackful-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F0E5DC7E14E6FA2800F60D43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "hackful/hackful-Prefix.pch";
+				INFOPLIST_FILE = "hackful/hackful-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F0E5DC8014E6FA2800F60D43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/hackful.app/hackful";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "hackful/hackful-Prefix.pch";
+				INFOPLIST_FILE = "hackfulTests/hackfulTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F0E5DC8114E6FA2800F60D43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/hackful.app/hackful";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "hackful/hackful-Prefix.pch";
+				INFOPLIST_FILE = "hackfulTests/hackfulTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F0E5DC4314E6FA2800F60D43 /* Build configuration list for PBXProject "hackful" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0E5DC7A14E6FA2800F60D43 /* Debug */,
+				F0E5DC7B14E6FA2800F60D43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0E5DC7C14E6FA2800F60D43 /* Build configuration list for PBXNativeTarget "hackful" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0E5DC7D14E6FA2800F60D43 /* Debug */,
+				F0E5DC7E14E6FA2800F60D43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F0E5DC7F14E6FA2800F60D43 /* Build configuration list for PBXNativeTarget "hackfulTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0E5DC8014E6FA2800F60D43 /* Debug */,
+				F0E5DC8114E6FA2800F60D43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F0E5DC6114E6FA2800F60D43 /* hackful.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F0E5DC6214E6FA2800F60D43 /* hackful.xcdatamodel */,
+			);
+			currentVersion = F0E5DC6214E6FA2800F60D43 /* hackful.xcdatamodel */;
+			path = hackful.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F0E5DC4014E6FA2800F60D43 /* Project object */;
+}
