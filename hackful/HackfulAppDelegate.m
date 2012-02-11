@@ -7,6 +7,8 @@
 //
 
 #import "HackfulAppDelegate.h"
+#import "NavigationController.h"
+#import "MainTabBarController.h"
 
 @implementation HackfulAppDelegate
 
@@ -18,6 +20,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    navigationController = [[NavigationController alloc] init];
+    [self.window setRootViewController:navigationController];
+    
+    MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
+    [mainTabBarController setTitle:@"Hackful Europe"];
+    [navigationController setViewControllers:[NSArray arrayWithObjects:mainTabBarController, nil]];
+    
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

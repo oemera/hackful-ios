@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HackfulAppDelegate : UIResponder <UIApplicationDelegate>
+@class NavigationController;
+
+@interface HackfulAppDelegate : UIResponder <UIApplicationDelegate> {
+    
+    NavigationController *navigationController;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 
