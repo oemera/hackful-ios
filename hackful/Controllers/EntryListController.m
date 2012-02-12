@@ -12,6 +12,11 @@
 #import "EntryList.h"
 #import "MWFeedItem.h"
 
+@interface EntryListController() {
+    NSDate *lastUpdated;
+}
+@end
+
 @implementation EntryListController
 
 @synthesize entryList = _entryList;
@@ -78,6 +83,7 @@
 #pragma mark - EntryListDelegate
 - (void)entryListFinishedLoading:(EntryList *)entryList {
     entries = [[entryList entries] copy];
+    lastUpdated = [NSDate date];
     [pullToRefreshView finishedLoading];
     [tableView reloadData];
 }
@@ -86,6 +92,10 @@
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view {
     NSLog(@"pullToRefreshViewShouldRefresh");
     if (![self.entryList isLoading]) [self.entryList beginLoading];
+}
+
+- (NSDate *)pullToRefreshViewLastUpdated:(PullToRefreshView *)view {
+    return lastUpdated;
 }
 
 #pragma mark - UITableViewDataSource

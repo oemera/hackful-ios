@@ -19,12 +19,13 @@
         [home setTitle:@"Hackful Europe"];
         [home setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage imageNamed:@"home.png"] tag:0]];
         
-        EntryList *newEntryList = [[EntryList alloc] initWithURL:[NSURL URLWithString:@"http://hackful.com/frontpage.rss"]];
+        EntryList *newEntryList = [[EntryList alloc] initWithURL:[NSURL URLWithString:@"http://hackful.com/new.rss"]];
         EntryListController *latest = [[EntryListController alloc] initWithEntryList:newEntryList];
         [latest setTitle:@"New Submissions"];
         [latest setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"New" image:[UIImage imageNamed:@"new.png"] tag:0]];
         
-        UIViewController *ask = [[UIViewController alloc] init];
+        EntryList *askEntryList = [[EntryList alloc] initWithURL:[NSURL URLWithString:@"http://hackful.com/ask.rss"]];
+        EntryListController *ask = [[EntryListController alloc] initWithEntryList:askEntryList];
         [ask setTitle:@"Ask Hackful"];
         [ask setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Ask" image:[UIImage imageNamed:@"person.png"] tag:0]];
         
