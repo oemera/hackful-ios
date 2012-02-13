@@ -578,6 +578,8 @@
 		
 	}
 	
+    //NSLog(@"currentPath: %@", currentPath);
+        
 	// Store data
 	BOOL processed = NO;
 	if (currentText) {
@@ -591,10 +593,13 @@
 				
 				// Item
 				if (!processed) {
-					if ([currentPath isEqualToString:@"/rss/channel/item/title"]) { if (processedText.length > 0) item.title = processedText; processed = YES; }
+                    if ([currentPath isEqualToString:@"/rss/channel/item/title"]) { if (processedText.length > 0) item.title = processedText; processed = YES; }
 					else if ([currentPath isEqualToString:@"/rss/channel/item/link"]) { if (processedText.length > 0) item.link = processedText; processed = YES; }
 					else if ([currentPath isEqualToString:@"/rss/channel/item/guid"]) { if (processedText.length > 0) item.identifier = processedText; processed = YES; }
 					else if ([currentPath isEqualToString:@"/rss/channel/item/description"]) { if (processedText.length > 0) item.summary = processedText; processed = YES; }
+                    else if ([currentPath isEqualToString:@"/rss/channel/item/he:submitter"]) { if (processedText.length > 0) item.submitter = processedText; processed = YES; }
+                    else if ([currentPath isEqualToString:@"/rss/channel/item/he:points"]) { if (processedText.length > 0) item.points = processedText; processed = YES; }
+                    else if ([currentPath isEqualToString:@"/rss/channel/item/he:commentcount"]) { if (processedText.length > 0) item.commentcount = processedText; processed = YES; }
 					else if ([currentPath isEqualToString:@"/rss/channel/item/content:encoded"]) { if (processedText.length > 0) item.content = processedText; processed = YES; }
 					else if ([currentPath isEqualToString:@"/rss/channel/item/pubDate"]) { if (processedText.length > 0) item.date = [NSDate dateFromInternetDateTimeString:processedText formatHint:DateFormatHintRFC822]; processed = YES; }
 					else if ([currentPath isEqualToString:@"/rss/channel/item/enclosure"]) { [self createEnclosureFromAttributes:currentElementAttributes andAddToItem:item]; processed = YES; }

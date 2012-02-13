@@ -114,8 +114,21 @@
     }
     
     // Configure the cell...
-	cell.textLabel.text = entry.title;
+    cell.textLabel.text = entry.title;
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MWFeedItem *entry = [entries objectAtIndex:indexPath.row];
+    NSURL *articleURL = [NSURL URLWithString:entry.link];
+    
+    UIWebView *webView = [[UIWebView alloc] init];
+    UIViewController *webViewController = [[UIViewController alloc] init];
+    [webViewController setView:webView];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:articleURL];
+    [webView loadRequest:request];
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

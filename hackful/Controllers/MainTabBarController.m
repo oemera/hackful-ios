@@ -10,11 +10,17 @@
 #import "EntryListController.h"
 #import "EntryList.h"
 
+#define HOME_RSS_URL @"http://hackful.com/frontpage.rss"
+#define NEW_RSS_URL @"http://hackful.com/new.rss"
+#define ASK_RSS_URL @"http://hackful.com/ask.rss"
+
+#define HEROKU_SAMPLE_URL @"http://radiant-snow-5561.heroku.com/hackful_new.xml"
+
 @implementation MainTabBarController
 
 - (id)init {
     if ((self = [super init])) {
-        EntryList *homeEntryList = [[EntryList alloc] initWithURL:[NSURL URLWithString:@"http://hackful.com/frontpage.rss"]];
+        EntryList *homeEntryList = [[EntryList alloc] initWithURL:[NSURL URLWithString:HEROKU_SAMPLE_URL]];
         EntryListController *home = [[EntryListController alloc] initWithEntryList:homeEntryList];
         [home setTitle:@"Hackful Europe"];
         [home setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage imageNamed:@"home.png"] tag:0]];
