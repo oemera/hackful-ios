@@ -115,6 +115,7 @@
     
     // Configure the cell...
     //
+    //
     cell.textLabel.text = entry.title;
     return cell;
 }
