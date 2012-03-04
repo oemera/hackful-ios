@@ -7,6 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F044F77C150284D40037B7A9 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F044F76F1502807A0037B7A9 /* libRestKit.a */; };
+		F044F77E150285270037B7A9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F044F77D150285270037B7A9 /* CFNetwork.framework */; };
+		F044F781150288FE0037B7A9 /* HKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F780150288FE0037B7A9 /* HKUser.m */; };
+		F044F78415028A9A0037B7A9 /* HKPost.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F78315028A9A0037B7A9 /* HKPost.m */; };
+		F044F78715028D820037B7A9 /* HKComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F78615028D820037B7A9 /* HKComment.m */; };
+		F044F78A15028DA00037B7A9 /* HKNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F78915028DA00037B7A9 /* HKNotification.m */; };
+		F044F79015028DFD0037B7A9 /* HKLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F78F15028DFD0037B7A9 /* HKLogin.m */; };
+		F044F79115028DFD0037B7A9 /* HKLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F78F15028DFD0037B7A9 /* HKLogin.m */; };
+		F044F79415028E190037B7A9 /* HKMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F79315028E190037B7A9 /* HKMessage.m */; };
+		F044F79515028E190037B7A9 /* HKMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F79315028E190037B7A9 /* HKMessage.m */; };
+		F044F79815028E370037B7A9 /* HKNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F79715028E370037B7A9 /* HKNotifications.m */; };
+		F044F79915028E370037B7A9 /* HKNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F79715028E370037B7A9 /* HKNotifications.m */; };
+		F044F7A0150351470037B7A9 /* HKEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F79F150351460037B7A9 /* HKEntry.m */; };
+		F044F7A1150351470037B7A9 /* HKEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F79F150351460037B7A9 /* HKEntry.m */; };
+		F044F7A6150366660037B7A9 /* CommentTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7A3150366650037B7A9 /* CommentTableCell.m */; };
+		F044F7A7150366660037B7A9 /* CommentTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7A3150366650037B7A9 /* CommentTableCell.m */; };
+		F044F7A8150366660037B7A9 /* SubmissionTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7A5150366650037B7A9 /* SubmissionTableCell.m */; };
+		F044F7A9150366660037B7A9 /* SubmissionTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7A5150366650037B7A9 /* SubmissionTableCell.m */; };
+		F044F7AC15036B6E0037B7A9 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7AB15036B6E0037B7A9 /* ABTableViewCell.m */; };
+		F044F7AD15036B6E0037B7A9 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7AB15036B6E0037B7A9 /* ABTableViewCell.m */; };
+		F044F7C815038F830037B7A9 /* CommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7C715038F830037B7A9 /* CommentsController.m */; };
+		F044F7CB150391EF0037B7A9 /* CommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7CA150391EF0037B7A9 /* CommentList.m */; };
+		F044F7CC150391EF0037B7A9 /* CommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7CA150391EF0037B7A9 /* CommentList.m */; };
+		F044F7D31503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D21503C9EF0037B7A9 /* NSDate+TimeAgo.m */; };
+		F044F7D41503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D21503C9EF0037B7A9 /* NSDate+TimeAgo.m */; };
 		F0E5DC4E14E6FA2800F60D43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC4D14E6FA2800F60D43 /* UIKit.framework */; };
 		F0E5DC5014E6FA2800F60D43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC4F14E6FA2800F60D43 /* Foundation.framework */; };
 		F0E5DC5214E6FA2800F60D43 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC5114E6FA2800F60D43 /* CoreGraphics.framework */; };
@@ -77,9 +102,45 @@
 		F0E8B6E81500958A00488EFF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E8B6E71500958A00488EFF /* MobileCoreServices.framework */; };
 		F0E8B6EA1500959500488EFF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E8B6E91500959500488EFF /* SystemConfiguration.framework */; };
 		F0E8B6EC150095A200488EFF /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E8B6EB150095A200488EFF /* libxml2.dylib */; };
+		F0E8B6EF150099E100488EFF /* EntryListNew.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E8B6EE150099E100488EFF /* EntryListNew.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F044F76E1502807A0037B7A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F044F7641502807A0037B7A9 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D1614564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+		F044F7701502807A0037B7A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F044F7641502807A0037B7A9 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D2614564E820060A5C5;
+			remoteInfo = RestKitTests;
+		};
+		F044F7721502807A0037B7A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F044F7641502807A0037B7A9 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E62145651060060A5C5;
+			remoteInfo = RestKitFramework;
+		};
+		F044F7741502807A0037B7A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F044F7641502807A0037B7A9 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E78145651060060A5C5;
+			remoteInfo = RestKitFrameworkTests;
+		};
+		F044F776150282580037B7A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F044F7641502807A0037B7A9 /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 25160D1514564E810060A5C5;
+			remoteInfo = RestKit;
+		};
 		F0E5DC6F14E6FA2800F60D43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F0E5DC4014E6FA2800F60D43 /* Project object */;
@@ -87,44 +148,39 @@
 			remoteGlobalIDString = F0E5DC4814E6FA2800F60D43;
 			remoteInfo = hackful;
 		};
-		F0E8B6DA1500945100488EFF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F0E8B6D01500945000488EFF /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160D1614564E810060A5C5;
-			remoteInfo = RestKit;
-		};
-		F0E8B6DC1500945100488EFF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F0E8B6D01500945000488EFF /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160D2614564E820060A5C5;
-			remoteInfo = RestKitTests;
-		};
-		F0E8B6DE1500945100488EFF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F0E8B6D01500945000488EFF /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160E62145651060060A5C5;
-			remoteInfo = RestKitFramework;
-		};
-		F0E8B6E01500945100488EFF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F0E8B6D01500945000488EFF /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160E78145651060060A5C5;
-			remoteInfo = RestKitFrameworkTests;
-		};
-		F0E8B6E31500956E00488EFF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F0E8B6D01500945000488EFF /* RestKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 25160D1514564E810060A5C5;
-			remoteInfo = RestKit;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F044F7641502807A0037B7A9 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = Libraries/RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		F044F77D150285270037B7A9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		F044F77F150288FE0037B7A9 /* HKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKUser.h; path = HackfulKit/HKUser.h; sourceTree = "<group>"; };
+		F044F780150288FE0037B7A9 /* HKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKUser.m; path = HackfulKit/HKUser.m; sourceTree = "<group>"; };
+		F044F78215028A9A0037B7A9 /* HKPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKPost.h; path = HackfulKit/HKPost.h; sourceTree = "<group>"; };
+		F044F78315028A9A0037B7A9 /* HKPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKPost.m; path = HackfulKit/HKPost.m; sourceTree = "<group>"; };
+		F044F78515028D820037B7A9 /* HKComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKComment.h; path = HackfulKit/HKComment.h; sourceTree = "<group>"; };
+		F044F78615028D820037B7A9 /* HKComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKComment.m; path = HackfulKit/HKComment.m; sourceTree = "<group>"; };
+		F044F78815028DA00037B7A9 /* HKNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKNotification.h; path = HackfulKit/HKNotification.h; sourceTree = "<group>"; };
+		F044F78915028DA00037B7A9 /* HKNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKNotification.m; path = HackfulKit/HKNotification.m; sourceTree = "<group>"; };
+		F044F78E15028DFD0037B7A9 /* HKLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKLogin.h; path = HackfulKit/HKLogin.h; sourceTree = "<group>"; };
+		F044F78F15028DFD0037B7A9 /* HKLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKLogin.m; path = HackfulKit/HKLogin.m; sourceTree = "<group>"; };
+		F044F79215028E190037B7A9 /* HKMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKMessage.h; path = HackfulKit/HKMessage.h; sourceTree = "<group>"; };
+		F044F79315028E190037B7A9 /* HKMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKMessage.m; path = HackfulKit/HKMessage.m; sourceTree = "<group>"; };
+		F044F79615028E370037B7A9 /* HKNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKNotifications.h; path = HackfulKit/HKNotifications.h; sourceTree = "<group>"; };
+		F044F79715028E370037B7A9 /* HKNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKNotifications.m; path = HackfulKit/HKNotifications.m; sourceTree = "<group>"; };
+		F044F79E150351460037B7A9 /* HKEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKEntry.h; path = HackfulKit/HKEntry.h; sourceTree = "<group>"; };
+		F044F79F150351460037B7A9 /* HKEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKEntry.m; path = HackfulKit/HKEntry.m; sourceTree = "<group>"; };
+		F044F7A2150366650037B7A9 /* CommentTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentTableCell.h; path = Views/CommentTableCell.h; sourceTree = "<group>"; };
+		F044F7A3150366650037B7A9 /* CommentTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableCell.m; path = Views/CommentTableCell.m; sourceTree = "<group>"; };
+		F044F7A4150366650037B7A9 /* SubmissionTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubmissionTableCell.h; path = Views/SubmissionTableCell.h; sourceTree = "<group>"; };
+		F044F7A5150366650037B7A9 /* SubmissionTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubmissionTableCell.m; path = Views/SubmissionTableCell.m; sourceTree = "<group>"; };
+		F044F7AA15036B6E0037B7A9 /* ABTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABTableViewCell.h; path = Views/ABTableViewCell.h; sourceTree = "<group>"; };
+		F044F7AB15036B6E0037B7A9 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABTableViewCell.m; path = Views/ABTableViewCell.m; sourceTree = "<group>"; };
+		F044F7C615038F830037B7A9 /* CommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsController.h; path = Controllers/CommentsController.h; sourceTree = "<group>"; };
+		F044F7C715038F830037B7A9 /* CommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsController.m; path = Controllers/CommentsController.m; sourceTree = "<group>"; };
+		F044F7C9150391EF0037B7A9 /* CommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentList.h; path = HackfulKit/CommentList.h; sourceTree = "<group>"; };
+		F044F7CA150391EF0037B7A9 /* CommentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentList.m; path = HackfulKit/CommentList.m; sourceTree = "<group>"; };
+		F044F7D11503C9EE0037B7A9 /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+TimeAgo.h"; path = "Categories/NSDate+TimeAgo.h"; sourceTree = "<group>"; };
+		F044F7D21503C9EF0037B7A9 /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+TimeAgo.m"; path = "Categories/NSDate+TimeAgo.m"; sourceTree = "<group>"; };
 		F0E5DC4914E6FA2800F60D43 /* hackful.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackful.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0E5DC4D14E6FA2800F60D43 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F0E5DC4F14E6FA2800F60D43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -210,11 +266,12 @@
 		F0E5DD6A14E71D7B00F60D43 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
 		F0E5DD6B14E71D7B00F60D43 /* NSDate+InternetDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+InternetDateTime.h"; sourceTree = "<group>"; };
 		F0E5DD6C14E71D7B00F60D43 /* NSDate+InternetDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+InternetDateTime.m"; sourceTree = "<group>"; };
-		F0E8B6D01500945000488EFF /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		F0E8B6E51500957F00488EFF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F0E8B6E71500958A00488EFF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F0E8B6E91500959500488EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F0E8B6EB150095A200488EFF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		F0E8B6ED150099E100488EFF /* EntryListNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntryListNew.h; path = HackfulKit/EntryListNew.h; sourceTree = "<group>"; };
+		F0E8B6EE150099E100488EFF /* EntryListNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntryListNew.m; path = HackfulKit/EntryListNew.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +279,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F044F77E150285270037B7A9 /* CFNetwork.framework in Frameworks */,
+				F044F77C150284D40037B7A9 /* libRestKit.a in Frameworks */,
 				F0E5DC4E14E6FA2800F60D43 /* UIKit.framework in Frameworks */,
 				F0E8B6E61500957F00488EFF /* Security.framework in Frameworks */,
 				F0E8B6EA1500959500488EFF /* SystemConfiguration.framework in Frameworks */,
@@ -248,15 +307,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F044F7651502807A0037B7A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F044F76F1502807A0037B7A9 /* libRestKit.a */,
+				F044F7711502807A0037B7A9 /* RestKitTests.octest */,
+				F044F7731502807A0037B7A9 /* RestKit.framework */,
+				F044F7751502807A0037B7A9 /* RestKitFrameworkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F0E5DC3E14E6FA2800F60D43 = {
 			isa = PBXGroup;
 			children = (
+				F044F7641502807A0037B7A9 /* RestKit.xcodeproj */,
 				F0E5DC5514E6FA2800F60D43 /* hackful */,
 				F0E5DC7114E6FA2800F60D43 /* hackfulTests */,
 				F0E5DCE414E7009900F60D43 /* Resources */,
 				F0E5DC4C14E6FA2800F60D43 /* Frameworks */,
 				F0E5DC4A14E6FA2800F60D43 /* Products */,
-				F0E8B6D01500945000488EFF /* RestKit.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -272,6 +342,7 @@
 		F0E5DC4C14E6FA2800F60D43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F044F77D150285270037B7A9 /* CFNetwork.framework */,
 				F0E8B6EB150095A200488EFF /* libxml2.dylib */,
 				F0E8B6E91500959500488EFF /* SystemConfiguration.framework */,
 				F0E8B6E71500958A00488EFF /* MobileCoreServices.framework */,
@@ -341,6 +412,8 @@
 				F0E5DCE214E6FFED00F60D43 /* MainTabBarController.m */,
 				F0E5DD3314E7033600F60D43 /* EntryListController.h */,
 				F0E5DD3414E7033600F60D43 /* EntryListController.m */,
+				F044F7C615038F830037B7A9 /* CommentsController.h */,
+				F044F7C715038F830037B7A9 /* CommentsController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -348,8 +421,28 @@
 		F0E5DCE014E6FF8600F60D43 /* HackfulKit */ = {
 			isa = PBXGroup;
 			children = (
+				F044F78E15028DFD0037B7A9 /* HKLogin.h */,
+				F044F78F15028DFD0037B7A9 /* HKLogin.m */,
 				F0E5DD4B14E7168000F60D43 /* EntryList.h */,
 				F0E5DD4C14E7168000F60D43 /* EntryList.m */,
+				F0E8B6ED150099E100488EFF /* EntryListNew.h */,
+				F0E8B6EE150099E100488EFF /* EntryListNew.m */,
+				F044F77F150288FE0037B7A9 /* HKUser.h */,
+				F044F780150288FE0037B7A9 /* HKUser.m */,
+				F044F78215028A9A0037B7A9 /* HKPost.h */,
+				F044F78315028A9A0037B7A9 /* HKPost.m */,
+				F044F78515028D820037B7A9 /* HKComment.h */,
+				F044F78615028D820037B7A9 /* HKComment.m */,
+				F044F78815028DA00037B7A9 /* HKNotification.h */,
+				F044F78915028DA00037B7A9 /* HKNotification.m */,
+				F044F79215028E190037B7A9 /* HKMessage.h */,
+				F044F79315028E190037B7A9 /* HKMessage.m */,
+				F044F79615028E370037B7A9 /* HKNotifications.h */,
+				F044F79715028E370037B7A9 /* HKNotifications.m */,
+				F044F79E150351460037B7A9 /* HKEntry.h */,
+				F044F79F150351460037B7A9 /* HKEntry.m */,
+				F044F7C9150391EF0037B7A9 /* CommentList.h */,
+				F044F7CA150391EF0037B7A9 /* CommentList.m */,
 			);
 			name = HackfulKit;
 			sourceTree = "<group>";
@@ -410,6 +503,12 @@
 		F0E5DD3614E707C500F60D43 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F044F7AA15036B6E0037B7A9 /* ABTableViewCell.h */,
+				F044F7AB15036B6E0037B7A9 /* ABTableViewCell.m */,
+				F044F7A2150366650037B7A9 /* CommentTableCell.h */,
+				F044F7A3150366650037B7A9 /* CommentTableCell.m */,
+				F044F7A4150366650037B7A9 /* SubmissionTableCell.h */,
+				F044F7A5150366650037B7A9 /* SubmissionTableCell.m */,
 				F0E5DD4814E7120A00F60D43 /* PullToRefreshView.h */,
 				F0E5DD4914E7120B00F60D43 /* PullToRefreshView.m */,
 				F0E5DD3A14E7080F00F60D43 /* PlacardButton.h */,
@@ -443,6 +542,8 @@
 				F0E5DD6C14E71D7B00F60D43 /* NSDate+InternetDateTime.m */,
 				F0E5DD6514E71D5500F60D43 /* Depreciated */,
 				F0E5DD6114E71D3900F60D43 /* Google Toolbox for Mac */,
+				F044F7D11503C9EE0037B7A9 /* NSDate+TimeAgo.h */,
+				F044F7D21503C9EF0037B7A9 /* NSDate+TimeAgo.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -465,17 +566,6 @@
 			name = Depreciated;
 			sourceTree = "<group>";
 		};
-		F0E8B6D11500945000488EFF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F0E8B6DB1500945100488EFF /* libRestKit.a */,
-				F0E8B6DD1500945100488EFF /* RestKitTests.octest */,
-				F0E8B6DF1500945100488EFF /* RestKit.framework */,
-				F0E8B6E11500945100488EFF /* RestKitFrameworkTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -490,7 +580,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				F0E8B6E41500956E00488EFF /* PBXTargetDependency */,
+				F044F777150282580037B7A9 /* PBXTargetDependency */,
 			);
 			name = hackful;
 			productName = hackful;
@@ -536,8 +626,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F0E8B6D11500945000488EFF /* Products */;
-					ProjectRef = F0E8B6D01500945000488EFF /* RestKit.xcodeproj */;
+					ProductGroup = F044F7651502807A0037B7A9 /* Products */;
+					ProjectRef = F044F7641502807A0037B7A9 /* RestKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -549,32 +639,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F0E8B6DB1500945100488EFF /* libRestKit.a */ = {
+		F044F76F1502807A0037B7A9 /* libRestKit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKit.a;
-			remoteRef = F0E8B6DA1500945100488EFF /* PBXContainerItemProxy */;
+			remoteRef = F044F76E1502807A0037B7A9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F0E8B6DD1500945100488EFF /* RestKitTests.octest */ = {
+		F044F7711502807A0037B7A9 /* RestKitTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = RestKitTests.octest;
-			remoteRef = F0E8B6DC1500945100488EFF /* PBXContainerItemProxy */;
+			remoteRef = F044F7701502807A0037B7A9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F0E8B6DF1500945100488EFF /* RestKit.framework */ = {
+		F044F7731502807A0037B7A9 /* RestKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = RestKit.framework;
-			remoteRef = F0E8B6DE1500945100488EFF /* PBXContainerItemProxy */;
+			remoteRef = F044F7721502807A0037B7A9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F0E8B6E11500945100488EFF /* RestKitFrameworkTests.octest */ = {
+		F044F7751502807A0037B7A9 /* RestKitFrameworkTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = RestKitFrameworkTests.octest;
-			remoteRef = F0E8B6E01500945100488EFF /* PBXContainerItemProxy */;
+			remoteRef = F044F7741502807A0037B7A9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -673,6 +763,21 @@
 				F0E5DD6814E71D5F00F60D43 /* NSString+XMLEntities.m in Sources */,
 				F0E5DD6D14E71D7B00F60D43 /* NSString+HTML.m in Sources */,
 				F0E5DD6E14E71D7B00F60D43 /* NSDate+InternetDateTime.m in Sources */,
+				F0E8B6EF150099E100488EFF /* EntryListNew.m in Sources */,
+				F044F781150288FE0037B7A9 /* HKUser.m in Sources */,
+				F044F78415028A9A0037B7A9 /* HKPost.m in Sources */,
+				F044F78715028D820037B7A9 /* HKComment.m in Sources */,
+				F044F78A15028DA00037B7A9 /* HKNotification.m in Sources */,
+				F044F79015028DFD0037B7A9 /* HKLogin.m in Sources */,
+				F044F79415028E190037B7A9 /* HKMessage.m in Sources */,
+				F044F79815028E370037B7A9 /* HKNotifications.m in Sources */,
+				F044F7A0150351470037B7A9 /* HKEntry.m in Sources */,
+				F044F7A6150366660037B7A9 /* CommentTableCell.m in Sources */,
+				F044F7A8150366660037B7A9 /* SubmissionTableCell.m in Sources */,
+				F044F7AC15036B6E0037B7A9 /* ABTableViewCell.m in Sources */,
+				F044F7C815038F830037B7A9 /* CommentsController.m in Sources */,
+				F044F7CB150391EF0037B7A9 /* CommentList.m in Sources */,
+				F044F7D31503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,21 +786,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0E5DC7914E6FA2800F60D43 /* hackfulTests.m in Sources */,
+				F044F79115028DFD0037B7A9 /* HKLogin.m in Sources */,
+				F044F79515028E190037B7A9 /* HKMessage.m in Sources */,
+				F044F79915028E370037B7A9 /* HKNotifications.m in Sources */,
+				F044F7A1150351470037B7A9 /* HKEntry.m in Sources */,
+				F044F7A7150366660037B7A9 /* CommentTableCell.m in Sources */,
+				F044F7A9150366660037B7A9 /* SubmissionTableCell.m in Sources */,
+				F044F7AD15036B6E0037B7A9 /* ABTableViewCell.m in Sources */,
+				F044F7CC150391EF0037B7A9 /* CommentList.m in Sources */,
+				F044F7D41503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F044F777150282580037B7A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = F044F776150282580037B7A9 /* PBXContainerItemProxy */;
+		};
 		F0E5DC7014E6FA2800F60D43 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F0E5DC4814E6FA2800F60D43 /* hackful */;
 			targetProxy = F0E5DC6F14E6FA2800F60D43 /* PBXContainerItemProxy */;
-		};
-		F0E8B6E41500956E00488EFF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RestKit;
-			targetProxy = F0E8B6E31500956E00488EFF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -739,7 +853,13 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "\"$(SOURCE_ROOT)/Libraries/RestKit/Build\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"$(SOURCE_ROOT)/Libraries/RestKit/Build/$(BUILD_STYLE)-$(PLATFORM_NAME)\"";
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-ObjC",
+					"-all_load",
+				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -758,7 +878,9 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "\"$(SOURCE_ROOT)/Libraries/RestKit/Build\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"$(SOURCE_ROOT)/Libraries/RestKit/Build/$(BUILD_STYLE)-$(PLATFORM_NAME)\"";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-ObjC",

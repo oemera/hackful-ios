@@ -8,7 +8,7 @@
 
 #import "MainTabBarController.h"
 #import "EntryListController.h"
-#import "EntryList.h"
+#import "EntryListNew.h"
 
 #define HOME_RSS_URL @"http://hackful.com/frontpage.rss"
 #define NEW_RSS_URL @"http://hackful.com/new.rss"
@@ -20,17 +20,17 @@
 
 - (id)init {
     if ((self = [super init])) {
-        EntryList *homeEntryList = [[EntryList alloc] initWithURL:[NSURL URLWithString:HEROKU_SAMPLE_URL]];
+        EntryListNew *homeEntryList = [[EntryListNew alloc] initWithURL:[NSURL URLWithString:HEROKU_SAMPLE_URL]];
         EntryListController *home = [[EntryListController alloc] initWithEntryList:homeEntryList];
         [home setTitle:@"Hackful Europe"];
         [home setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage imageNamed:@"home.png"] tag:0]];
         
-        EntryList *newEntryList = [[EntryList alloc] initWithURL:[NSURL URLWithString:@"http://hackful.com/new.rss"]];
+        EntryListNew *newEntryList = [[EntryListNew alloc] initWithURL:[NSURL URLWithString:@"http://hackful.com/new.rss"]];
         EntryListController *latest = [[EntryListController alloc] initWithEntryList:newEntryList];
         [latest setTitle:@"New Submissions"];
         [latest setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"New" image:[UIImage imageNamed:@"new.png"] tag:0]];
         
-        EntryList *askEntryList = [[EntryList alloc] initWithURL:[NSURL URLWithString:@"http://hackful.com/ask.rss"]];
+        EntryListNew *askEntryList = [[EntryListNew alloc] initWithURL:[NSURL URLWithString:@"http://hackful.com/ask.rss"]];
         EntryListController *ask = [[EntryListController alloc] initWithEntryList:askEntryList];
         [ask setTitle:@"Ask Hackful"];
         [ask setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Ask" image:[UIImage imageNamed:@"person.png"] tag:0]];
@@ -43,6 +43,32 @@
         [self setViewControllers:items];
     }
     return self;
+}
+
+- (void)loadView {
+    [super loadView];
+    
+    composeItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(composePressed)];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [[self navigationItem] setRightBarButtonItem:composeItem];
+}
+
+
+- (void)composePressed {
+    /*if (![[HNSession currentSession] isAnonymous]) {
+        [self requestSubmissionType];
+    } else {
+        loginCompletionBlock = [^{
+            [self requestSubmissionType];
+        } copy];
+        
+        [self showLoginController];
+    }*/
+    NSLog(@"composePressed");
 }
 
 @end

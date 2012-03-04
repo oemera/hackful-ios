@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PullToRefreshView.h"
-#import "EntryList.h"
+#import "EntryListNew.h"
 
 @class LoadingIndicatorView;
 @class PlacardButton;
@@ -16,21 +16,17 @@
 
 @interface EntryListController : UIViewController <UITableViewDelegate, 
     UITableViewDataSource, PullToRefreshViewDelegate, EntryListDelegate> {
-
     PlacardButton *retryButton;
     LoadingIndicatorView *indicator;
-    
     UITableView *tableView;
     UILabel *emptyLabel;
-    
     LoadMoreButton *moreButton;
     PullToRefreshView *pullToRefreshView;
-    
     NSArray *entries;
 }
 
-@property (nonatomic, strong) EntryList *entryList;
+@property (nonatomic, strong) EntryListNew *entryList;
 
-- (id)initWithEntryList:(EntryList *)entryList_;
+- (id)initWithEntryList:(EntryListNew *)entryList_;
 
 @end

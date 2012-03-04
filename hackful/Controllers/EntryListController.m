@@ -10,7 +10,11 @@
 #import "LoadingIndicatorView.h"
 #import "PlacardButton.h"
 #import "EntryList.h"
-#import "MWFeedItem.h"
+#import "HKEntry.h"
+#import "HKPost.h"
+#import "HKComment.h"
+#import "SubmissionTableCell.h"
+#import "CommentsController.h"
 
 @interface EntryListController() {
     NSDate *lastUpdated;
@@ -21,7 +25,7 @@
 
 @synthesize entryList = _entryList;
 
-- (id)initWithEntryList:(EntryList *)entryList_ {
+- (id)initWithEntryList:(EntryListNew *)entryList_ {
     if ((self = [super init])) {
         entryList_.delegate = self;
         [self setEntryList:entryList_];
@@ -37,24 +41,6 @@
     [super loadView];
     
     [pullToRefreshView setState:PullToRefreshViewStateLoading];
-    
-    /*indicator = [[LoadingIndicatorView alloc] initWithFrame:CGRectZero];
-    [indicator setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
-    
-    retryButton = [[PlacardButton alloc] initWithFrame:CGRectZero];
-    [retryButton setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin];
-    [retryButton setTitle:@"Retry Loading" forState:UIControlStateNormal];
-    [retryButton addTarget:self action:@selector(retryPressed) forControlEvents:UIControlEventTouchUpInside];
-    
-    actionItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionTapped)];
-    
-    statusView = [[UIView alloc] initWithFrame:[self.view bounds]];
-    [statusView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
-    [statusView setBackgroundColor:[UIColor whiteColor]];
-    [statusView setHidden:YES];
-    [[self view] addSubview:statusView];
-    
-    statusViews = [[NSMutableSet alloc] init];*/
       
     tableView = [[UITableView alloc] initWithFrame:[[self view] bounds] style:UITableViewStylePlain];
     [tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
@@ -78,6 +64,12 @@
 
 - (void)viewDidLoad {
     [self.entryList beginLoading];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
 #pragma mark - EntryListDelegate
@@ -105,32 +97,35 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView_ cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MWFeedItem *entry = [entries objectAtIndex:indexPath.row];
+    HKPost *post = [entries objectAtIndex:indexPath.row];
+    SubmissionTableCell *cell = (SubmissionTableCell *) [tableView dequeueReusableCellWithIdentifier:@"submission"];
+    if (cell == nil) cell = [[[SubmissionTableCell alloc] initWithReuseIdentifier:@"submission"] autorelease];
+    [cell setSubmission:post];
     
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView_ dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    // Configure the cell...
-    //
-    //
-    cell.textLabel.text = entry.title;
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    HKPost *post = [entries objectAtIndex:[indexPath row]];
+    return [SubmissionTableCell heightForEntry:post withWidth:[[self view] bounds].size.width];
+    //else return [CommentTableCell heightForEntry:entry withWidth:[[self view] bounds].size.width showReplies:YES];
+}
+
 #pragma mark - UITableViewDelegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MWFeedItem *entry = [entries objectAtIndex:indexPath.row];
-    NSURL *articleURL = [NSURL URLWithString:entry.link];
+- (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    HKPost *post = [entries objectAtIndex:indexPath.row];
     
-    UIWebView *webView = [[UIWebView alloc] init];
-    UIViewController *webViewController = [[UIViewController alloc] init];
-    [webViewController setView:webView];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:articleURL];
-    [webView loadRequest:request];
-    [self.navigationController pushViewController:webViewController animated:YES];
+    if ([[post.link host] length] == 0) {
+        CommentsController *commentsController = [[CommentsController alloc] initWithPost:post];
+        [self.navigationController pushViewController:commentsController animated:YES];
+    } else {
+        UIWebView *webView = [[UIWebView alloc] init];
+        UIViewController *webViewController = [[UIViewController alloc] init];
+        [webViewController setView:webView];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:post.link];
+        [webView loadRequest:request];
+        [self.navigationController pushViewController:webViewController animated:YES];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
