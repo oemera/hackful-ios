@@ -34,6 +34,24 @@
 		F044F7D41503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D21503C9EF0037B7A9 /* NSDate+TimeAgo.m */; };
 		F044F7D91503E6730037B7A9 /* HKList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D81503E6720037B7A9 /* HKList.m */; };
 		F044F7DA1503E6730037B7A9 /* HKList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D81503E6720037B7A9 /* HKList.m */; };
+		F0E2007E150419C600F847A2 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E20079150419C600F847A2 /* RootViewController.m */; };
+		F0E2007F150419C600F847A2 /* SideSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E2007B150419C600F847A2 /* SideSwipeTableViewCell.m */; };
+		F0E20080150419C600F847A2 /* SideSwipeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E2007D150419C600F847A2 /* SideSwipeTableViewController.m */; };
+		F0E2009415041A7D00F847A2 /* action.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2008515041A7D00F847A2 /* action.png */; };
+		F0E2009515041A7D00F847A2 /* action@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2008615041A7D00F847A2 /* action@2x.png */; };
+		F0E2009615041A7D00F847A2 /* dotted-pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2008715041A7D00F847A2 /* dotted-pattern.png */; };
+		F0E2009715041A7D00F847A2 /* dotted-pattern@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2008815041A7D00F847A2 /* dotted-pattern@2x.png */; };
+		F0E2009815041A7D00F847A2 /* inner-shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2008915041A7D00F847A2 /* inner-shadow.png */; };
+		F0E2009915041A7D00F847A2 /* paperclip.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2008A15041A7D00F847A2 /* paperclip.png */; };
+		F0E2009A15041A7D00F847A2 /* paperclip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2008B15041A7D00F847A2 /* paperclip@2x.png */; };
+		F0E2009B15041A7D00F847A2 /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2008C15041A7D00F847A2 /* person.png */; };
+		F0E2009C15041A7D00F847A2 /* person@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2008D15041A7D00F847A2 /* person@2x.png */; };
+		F0E2009D15041A7D00F847A2 /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2008E15041A7D00F847A2 /* reply.png */; };
+		F0E2009E15041A7D00F847A2 /* reply@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2008F15041A7D00F847A2 /* reply@2x.png */; };
+		F0E2009F15041A7D00F847A2 /* retweet-outline-button-item.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2009015041A7D00F847A2 /* retweet-outline-button-item.png */; };
+		F0E200A015041A7D00F847A2 /* retweet-outline-button-item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2009115041A7D00F847A2 /* retweet-outline-button-item@2x.png */; };
+		F0E200A115041A7D00F847A2 /* star-hollow.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2009215041A7D00F847A2 /* star-hollow.png */; };
+		F0E200A215041A7D00F847A2 /* star-hollow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E2009315041A7D00F847A2 /* star-hollow@2x.png */; };
 		F0E5DC4E14E6FA2800F60D43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC4D14E6FA2800F60D43 /* UIKit.framework */; };
 		F0E5DC5014E6FA2800F60D43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC4F14E6FA2800F60D43 /* Foundation.framework */; };
 		F0E5DC5214E6FA2800F60D43 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC5114E6FA2800F60D43 /* CoreGraphics.framework */; };
@@ -178,13 +196,34 @@
 		F044F7AB15036B6E0037B7A9 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABTableViewCell.m; path = Views/ABTableViewCell.m; sourceTree = "<group>"; };
 		F044F7C615038F830037B7A9 /* CommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsController.h; path = Controllers/CommentsController.h; sourceTree = "<group>"; };
 		F044F7C715038F830037B7A9 /* CommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsController.m; path = Controllers/CommentsController.m; sourceTree = "<group>"; };
-		F044F7C9150391EF0037B7A9 /* HKCommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; name = HKCommentList.h; path = HackfulKit/HKCommentList.h; sourceTree = "<group>"; };
+		F044F7C9150391EF0037B7A9 /* HKCommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKCommentList.h; path = HackfulKit/HKCommentList.h; sourceTree = "<group>"; };
 		F044F7CA150391EF0037B7A9 /* HKCommentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKCommentList.m; path = HackfulKit/HKCommentList.m; sourceTree = "<group>"; };
 		F044F7D11503C9EE0037B7A9 /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+TimeAgo.h"; path = "Categories/NSDate+TimeAgo.h"; sourceTree = "<group>"; };
 		F044F7D21503C9EF0037B7A9 /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+TimeAgo.m"; path = "Categories/NSDate+TimeAgo.m"; sourceTree = "<group>"; };
 		F044F7D51503E2CF0037B7A9 /* HKListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKListDelegate.h; path = HackfulKit/HKListDelegate.h; sourceTree = "<group>"; };
 		F044F7D71503E6700037B7A9 /* HKList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKList.h; path = HackfulKit/HKList.h; sourceTree = "<group>"; };
 		F044F7D81503E6720037B7A9 /* HKList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKList.m; path = HackfulKit/HKList.m; sourceTree = "<group>"; };
+		F0E20078150419C600F847A2 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		F0E20079150419C600F847A2 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		F0E2007A150419C600F847A2 /* SideSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideSwipeTableViewCell.h; sourceTree = "<group>"; };
+		F0E2007B150419C600F847A2 /* SideSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideSwipeTableViewCell.m; sourceTree = "<group>"; };
+		F0E2007C150419C600F847A2 /* SideSwipeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideSwipeTableViewController.h; sourceTree = "<group>"; };
+		F0E2007D150419C600F847A2 /* SideSwipeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideSwipeTableViewController.m; sourceTree = "<group>"; };
+		F0E2008515041A7D00F847A2 /* action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action.png; sourceTree = "<group>"; };
+		F0E2008615041A7D00F847A2 /* action@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action@2x.png"; sourceTree = "<group>"; };
+		F0E2008715041A7D00F847A2 /* dotted-pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dotted-pattern.png"; sourceTree = "<group>"; };
+		F0E2008815041A7D00F847A2 /* dotted-pattern@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dotted-pattern@2x.png"; sourceTree = "<group>"; };
+		F0E2008915041A7D00F847A2 /* inner-shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inner-shadow.png"; sourceTree = "<group>"; };
+		F0E2008A15041A7D00F847A2 /* paperclip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paperclip.png; sourceTree = "<group>"; };
+		F0E2008B15041A7D00F847A2 /* paperclip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paperclip@2x.png"; sourceTree = "<group>"; };
+		F0E2008C15041A7D00F847A2 /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
+		F0E2008D15041A7D00F847A2 /* person@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person@2x.png"; sourceTree = "<group>"; };
+		F0E2008E15041A7D00F847A2 /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply.png; sourceTree = "<group>"; };
+		F0E2008F15041A7D00F847A2 /* reply@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply@2x.png"; sourceTree = "<group>"; };
+		F0E2009015041A7D00F847A2 /* retweet-outline-button-item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retweet-outline-button-item.png"; sourceTree = "<group>"; };
+		F0E2009115041A7D00F847A2 /* retweet-outline-button-item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retweet-outline-button-item@2x.png"; sourceTree = "<group>"; };
+		F0E2009215041A7D00F847A2 /* star-hollow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-hollow.png"; sourceTree = "<group>"; };
+		F0E2009315041A7D00F847A2 /* star-hollow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-hollow@2x.png"; sourceTree = "<group>"; };
 		F0E5DC4914E6FA2800F60D43 /* hackful.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackful.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0E5DC4D14E6FA2800F60D43 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F0E5DC4F14E6FA2800F60D43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -272,7 +311,7 @@
 		F0E8B6E71500958A00488EFF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F0E8B6E91500959500488EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F0E8B6EB150095A200488EFF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		F0E8B6ED150099E100488EFF /* HKPostList.h */ = {isa = PBXFileReference; fileEncoding = 4; name = HKPostList.h; path = HackfulKit/HKPostList.h; sourceTree = "<group>"; };
+		F0E8B6ED150099E100488EFF /* HKPostList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKPostList.h; path = HackfulKit/HKPostList.h; sourceTree = "<group>"; };
 		F0E8B6EE150099E100488EFF /* HKPostList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKPostList.m; path = HackfulKit/HKPostList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -320,6 +359,42 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		F0E20077150419C600F847A2 /* SideSwipe */ = {
+			isa = PBXGroup;
+			children = (
+				F0E20078150419C600F847A2 /* RootViewController.h */,
+				F0E20079150419C600F847A2 /* RootViewController.m */,
+				F0E2007A150419C600F847A2 /* SideSwipeTableViewCell.h */,
+				F0E2007B150419C600F847A2 /* SideSwipeTableViewCell.m */,
+				F0E2007C150419C600F847A2 /* SideSwipeTableViewController.h */,
+				F0E2007D150419C600F847A2 /* SideSwipeTableViewController.m */,
+			);
+			path = SideSwipe;
+			sourceTree = "<group>";
+		};
+		F0E2008415041A7D00F847A2 /* SideSwipe */ = {
+			isa = PBXGroup;
+			children = (
+				F0E2008515041A7D00F847A2 /* action.png */,
+				F0E2008615041A7D00F847A2 /* action@2x.png */,
+				F0E2008715041A7D00F847A2 /* dotted-pattern.png */,
+				F0E2008815041A7D00F847A2 /* dotted-pattern@2x.png */,
+				F0E2008915041A7D00F847A2 /* inner-shadow.png */,
+				F0E2008A15041A7D00F847A2 /* paperclip.png */,
+				F0E2008B15041A7D00F847A2 /* paperclip@2x.png */,
+				F0E2008C15041A7D00F847A2 /* person.png */,
+				F0E2008D15041A7D00F847A2 /* person@2x.png */,
+				F0E2008E15041A7D00F847A2 /* reply.png */,
+				F0E2008F15041A7D00F847A2 /* reply@2x.png */,
+				F0E2009015041A7D00F847A2 /* retweet-outline-button-item.png */,
+				F0E2009115041A7D00F847A2 /* retweet-outline-button-item@2x.png */,
+				F0E2009215041A7D00F847A2 /* star-hollow.png */,
+				F0E2009315041A7D00F847A2 /* star-hollow@2x.png */,
+			);
+			name = SideSwipe;
+			path = hackful/Resources/SideSwipe;
+			sourceTree = "<group>";
+		};
 		F0E5DC3E14E6FA2800F60D43 = {
 			isa = PBXGroup;
 			children = (
@@ -344,8 +419,8 @@
 		F0E5DC4C14E6FA2800F60D43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F044F77D150285270037B7A9 /* CFNetwork.framework */,
 				F0E8B6EB150095A200488EFF /* libxml2.dylib */,
+				F044F77D150285270037B7A9 /* CFNetwork.framework */,
 				F0E8B6E91500959500488EFF /* SystemConfiguration.framework */,
 				F0E8B6E71500958A00488EFF /* MobileCoreServices.framework */,
 				F0E8B6E51500957F00488EFF /* Security.framework */,
@@ -362,6 +437,7 @@
 		F0E5DC5514E6FA2800F60D43 /* hackful */ = {
 			isa = PBXGroup;
 			children = (
+				F0E20077150419C600F847A2 /* SideSwipe */,
 				F0E5DD6014E71D2900F60D43 /* Categories */,
 				F0E5DD5514E71D0B00F60D43 /* MWFeedParser */,
 				F0E5DD3614E707C500F60D43 /* Views */,
@@ -453,6 +529,7 @@
 		F0E5DCE414E7009900F60D43 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F0E2008415041A7D00F847A2 /* SideSwipe */,
 				F0E5DCE514E7010200F60D43 /* Images */,
 			);
 			name = Resources;
@@ -715,6 +792,21 @@
 				F0E5DD2D14E7010200F60D43 /* upvote@2x.png in Resources */,
 				F0E5DD2E14E7010200F60D43 /* x.png in Resources */,
 				F0E5DD2F14E7010200F60D43 /* x@2x.png in Resources */,
+				F0E2009415041A7D00F847A2 /* action.png in Resources */,
+				F0E2009515041A7D00F847A2 /* action@2x.png in Resources */,
+				F0E2009615041A7D00F847A2 /* dotted-pattern.png in Resources */,
+				F0E2009715041A7D00F847A2 /* dotted-pattern@2x.png in Resources */,
+				F0E2009815041A7D00F847A2 /* inner-shadow.png in Resources */,
+				F0E2009915041A7D00F847A2 /* paperclip.png in Resources */,
+				F0E2009A15041A7D00F847A2 /* paperclip@2x.png in Resources */,
+				F0E2009B15041A7D00F847A2 /* person.png in Resources */,
+				F0E2009C15041A7D00F847A2 /* person@2x.png in Resources */,
+				F0E2009D15041A7D00F847A2 /* reply.png in Resources */,
+				F0E2009E15041A7D00F847A2 /* reply@2x.png in Resources */,
+				F0E2009F15041A7D00F847A2 /* retweet-outline-button-item.png in Resources */,
+				F0E200A015041A7D00F847A2 /* retweet-outline-button-item@2x.png in Resources */,
+				F0E200A115041A7D00F847A2 /* star-hollow.png in Resources */,
+				F0E200A215041A7D00F847A2 /* star-hollow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,6 +873,9 @@
 				F044F7CB150391EF0037B7A9 /* HKCommentList.m in Sources */,
 				F044F7D31503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */,
 				F044F7D91503E6730037B7A9 /* HKList.m in Sources */,
+				F0E2007E150419C600F847A2 /* RootViewController.m in Sources */,
+				F0E2007F150419C600F847A2 /* SideSwipeTableViewCell.m in Sources */,
+				F0E20080150419C600F847A2 /* SideSwipeTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

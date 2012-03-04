@@ -11,7 +11,6 @@
 @class NavigationController;
 
 @interface HackfulAppDelegate : UIResponder <UIApplicationDelegate> {
-    
     NavigationController *navigationController;
 }
 

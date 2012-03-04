@@ -9,6 +9,7 @@
 #import "MainTabBarController.h"
 #import "EntryListController.h"
 #import "HKPostList.h"
+#import "RootViewController.h"
 
 #define FRONTPAGE_RESOURCE_PATH @"/posts/frontpage"
 #define NEW_RESOURCE_PATH @"/posts/new"
@@ -35,7 +36,7 @@
         [ask setTitle:@"Ask Hackful"];
         [ask setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Ask" image:[UIImage imageNamed:@"person.png"] tag:0]];
         
-        UIViewController *more = [[UIViewController alloc] init];
+        RootViewController *more = [[RootViewController alloc] init];
         [more setTitle:@"More"];
         [more setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:0]];
         

@@ -10,20 +10,25 @@
 #import "PullToRefreshView.h"
 #import "HKPostList.h"
 #import "HKListDelegate.h"
+#import "SideSwipeTableViewController.h"
 
 @class LoadingIndicatorView;
 @class PlacardButton;
 @class LoadMoreButton;
 
-@interface EntryListController : UIViewController <UITableViewDelegate, 
+@interface EntryListController : SideSwipeTableViewController <UITableViewDelegate, 
 UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate> {
     PlacardButton *retryButton;
     LoadingIndicatorView *indicator;
-    UITableView *tableView;
+    //UITableView *tableView;
     UILabel *emptyLabel;
     LoadMoreButton *moreButton;
     PullToRefreshView *pullToRefreshView;
     NSArray *entries;
+    NSDate *lastUpdated;
+    UIBarButtonItem *composeItem;
+    NSArray* buttonData;
+    NSMutableArray* buttons;
 }
 
 @property (nonatomic, strong) HKPostList *postList;

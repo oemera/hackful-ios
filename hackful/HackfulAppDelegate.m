@@ -9,10 +9,13 @@
 #import "HackfulAppDelegate.h"
 #import "NavigationController.h"
 #import "MainTabBarController.h"
+#import "RootViewController.h"
 
 @implementation HackfulAppDelegate
 
-@synthesize window = _window;
+@synthesize window;
+
+//@synthesize window = _window;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
