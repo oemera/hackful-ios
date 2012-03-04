@@ -7,7 +7,7 @@
 //
 
 #import "CommentsController.h"
-#import "CommentList.h"
+#import "HKCommentList.h"
 #import "CommentTableCell.h"
 
 @implementation CommentsController
@@ -16,7 +16,7 @@
 
 - (id)initWithPost:(HKPost *)post_ {
     if ((self = [super init])) {
-        CommentList *commentList = [[CommentList alloc] initWithPost:post_];
+        HKCommentList *commentList = [[HKCommentList alloc] initWithPost:post_];
         commentList.delegate = self;
         [self setCommentList:commentList];
     }
@@ -70,9 +70,9 @@
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
-#pragma mark - EntryListDelegate
-- (void)listFinishedLoading:(CommentList *)commentList_ {
-    comments = [[commentList_ entries] copy];
+#pragma mark - HKListDelegate
+- (void)listFinishedLoading:(HKList *)list {
+    comments = [list entries];
     lastUpdated = [NSDate date];
     [pullToRefreshView finishedLoading];
     [tableView reloadData];

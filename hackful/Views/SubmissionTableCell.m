@@ -4,8 +4,6 @@
 #import "HKPost.h"
 #import "NSDate+TimeAgo.h"
 
-static NSDateFormatter* dateFormatter = nil;
-
 @implementation SubmissionTableCell
 @synthesize submission;
 
@@ -56,11 +54,6 @@ static NSDateFormatter* dateFormatter = nil;
 }
 
 - (void)drawContentView:(CGRect)rect {
-    if (!dateFormatter) {
-        dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"dd.MM.yyyy"];
-    }
-    
     CGSize bounds = [self bounds].size;
     CGSize offsets = CGSizeMake(8.0f, 4.0f);
     

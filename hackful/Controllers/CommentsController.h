@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "PullToRefreshView.h"
+#import "HKCommentList.h"
+#import "HKListDelegate.h"
 
 @class HKPost;
 @class LoadMoreButton;
-@class CommentList;
-@protocol CommentListDelegate;
 
 @interface CommentsController : UIViewController <UITableViewDelegate, 
-UITableViewDataSource, PullToRefreshViewDelegate, CommentListDelegate> {
+UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate> {
     UITableView *tableView;
     UILabel *emptyLabel;
     LoadMoreButton *moreButton;
@@ -25,7 +25,7 @@ UITableViewDataSource, PullToRefreshViewDelegate, CommentListDelegate> {
     UIBarButtonItem *composeItem;
 }
 
-@property (nonatomic, strong) CommentList *commentList;
+@property (nonatomic, strong) HKCommentList *commentList;
 
 - (id)initWithPost:(HKPost *)post_;
 

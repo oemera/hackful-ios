@@ -2,8 +2,7 @@
 
 #import "CommentTableCell.h"
 #import "HKComment.h"
-
-static NSDateFormatter* dateFormatter = nil;
+#import "NSDate+TimeAgo.h"
 
 @implementation CommentTableCell
 @synthesize comment, indentationLevel, showReplies;
@@ -112,18 +111,13 @@ static NSDateFormatter* dateFormatter = nil;
 }
 
 - (void)drawContentView:(CGRect)rect {
-    if (!dateFormatter) {
-        dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"dd.MM.yyyy"];
-    }
-    
     CGRect bounds = [self bounds];
     bounds.origin.x += (indentationLevel * 15.0f);
     
     CGSize offsets = CGSizeMake(8.0f, 4.0f);
     
     NSString *user = [[comment user] name];
-    NSString *date = [dateFormatter stringFromDate:[comment posted]];
+    NSString *date = [NSDate stringForTimeIntervalSinceCreated:[comment posted]];
     NSString *points = [[comment votes] intValue] == 1 ? @"1 point" : [NSString stringWithFormat:@"%d points", [comment votes]];
     NSString *comments = @"not implemented";
     //NSString *comments = [comment children] == 0 ? @"" : [comment children] == 1 ? @"1 reply" : [NSString stringWithFormat:@"%d replies", [comment children]];

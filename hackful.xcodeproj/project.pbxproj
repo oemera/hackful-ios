@@ -28,10 +28,12 @@
 		F044F7AC15036B6E0037B7A9 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7AB15036B6E0037B7A9 /* ABTableViewCell.m */; };
 		F044F7AD15036B6E0037B7A9 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7AB15036B6E0037B7A9 /* ABTableViewCell.m */; };
 		F044F7C815038F830037B7A9 /* CommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7C715038F830037B7A9 /* CommentsController.m */; };
-		F044F7CB150391EF0037B7A9 /* CommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7CA150391EF0037B7A9 /* CommentList.m */; };
-		F044F7CC150391EF0037B7A9 /* CommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7CA150391EF0037B7A9 /* CommentList.m */; };
+		F044F7CB150391EF0037B7A9 /* HKCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7CA150391EF0037B7A9 /* HKCommentList.m */; };
+		F044F7CC150391EF0037B7A9 /* HKCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7CA150391EF0037B7A9 /* HKCommentList.m */; };
 		F044F7D31503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D21503C9EF0037B7A9 /* NSDate+TimeAgo.m */; };
 		F044F7D41503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D21503C9EF0037B7A9 /* NSDate+TimeAgo.m */; };
+		F044F7D91503E6730037B7A9 /* HKList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D81503E6720037B7A9 /* HKList.m */; };
+		F044F7DA1503E6730037B7A9 /* HKList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D81503E6720037B7A9 /* HKList.m */; };
 		F0E5DC4E14E6FA2800F60D43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC4D14E6FA2800F60D43 /* UIKit.framework */; };
 		F0E5DC5014E6FA2800F60D43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC4F14E6FA2800F60D43 /* Foundation.framework */; };
 		F0E5DC5214E6FA2800F60D43 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC5114E6FA2800F60D43 /* CoreGraphics.framework */; };
@@ -90,7 +92,6 @@
 		F0E5DD3C14E7080F00F60D43 /* PlacardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD3B14E7080F00F60D43 /* PlacardButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F0E5DD4714E7118600F60D43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DD4614E7118600F60D43 /* QuartzCore.framework */; };
 		F0E5DD4A14E7120B00F60D43 /* PullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD4914E7120B00F60D43 /* PullToRefreshView.m */; };
-		F0E5DD4D14E7168000F60D43 /* EntryList.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD4C14E7168000F60D43 /* EntryList.m */; };
 		F0E5DD5D14E71D2300F60D43 /* MWFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD5814E71D2300F60D43 /* MWFeedParser.m */; };
 		F0E5DD5E14E71D2300F60D43 /* MWFeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD5A14E71D2300F60D43 /* MWFeedInfo.m */; };
 		F0E5DD5F14E71D2300F60D43 /* MWFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD5C14E71D2300F60D43 /* MWFeedItem.m */; };
@@ -102,7 +103,7 @@
 		F0E8B6E81500958A00488EFF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E8B6E71500958A00488EFF /* MobileCoreServices.framework */; };
 		F0E8B6EA1500959500488EFF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E8B6E91500959500488EFF /* SystemConfiguration.framework */; };
 		F0E8B6EC150095A200488EFF /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E8B6EB150095A200488EFF /* libxml2.dylib */; };
-		F0E8B6EF150099E100488EFF /* EntryListNew.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E8B6EE150099E100488EFF /* EntryListNew.m */; };
+		F0E8B6EF150099E100488EFF /* HKPostList.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E8B6EE150099E100488EFF /* HKPostList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,10 +178,13 @@
 		F044F7AB15036B6E0037B7A9 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABTableViewCell.m; path = Views/ABTableViewCell.m; sourceTree = "<group>"; };
 		F044F7C615038F830037B7A9 /* CommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsController.h; path = Controllers/CommentsController.h; sourceTree = "<group>"; };
 		F044F7C715038F830037B7A9 /* CommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsController.m; path = Controllers/CommentsController.m; sourceTree = "<group>"; };
-		F044F7C9150391EF0037B7A9 /* CommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentList.h; path = HackfulKit/CommentList.h; sourceTree = "<group>"; };
-		F044F7CA150391EF0037B7A9 /* CommentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentList.m; path = HackfulKit/CommentList.m; sourceTree = "<group>"; };
+		F044F7C9150391EF0037B7A9 /* HKCommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; name = HKCommentList.h; path = HackfulKit/HKCommentList.h; sourceTree = "<group>"; };
+		F044F7CA150391EF0037B7A9 /* HKCommentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKCommentList.m; path = HackfulKit/HKCommentList.m; sourceTree = "<group>"; };
 		F044F7D11503C9EE0037B7A9 /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+TimeAgo.h"; path = "Categories/NSDate+TimeAgo.h"; sourceTree = "<group>"; };
 		F044F7D21503C9EF0037B7A9 /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+TimeAgo.m"; path = "Categories/NSDate+TimeAgo.m"; sourceTree = "<group>"; };
+		F044F7D51503E2CF0037B7A9 /* HKListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKListDelegate.h; path = HackfulKit/HKListDelegate.h; sourceTree = "<group>"; };
+		F044F7D71503E6700037B7A9 /* HKList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKList.h; path = HackfulKit/HKList.h; sourceTree = "<group>"; };
+		F044F7D81503E6720037B7A9 /* HKList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKList.m; path = HackfulKit/HKList.m; sourceTree = "<group>"; };
 		F0E5DC4914E6FA2800F60D43 /* hackful.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackful.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0E5DC4D14E6FA2800F60D43 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F0E5DC4F14E6FA2800F60D43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -249,8 +253,6 @@
 		F0E5DD4614E7118600F60D43 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F0E5DD4814E7120A00F60D43 /* PullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshView.h; sourceTree = "<group>"; };
 		F0E5DD4914E7120B00F60D43 /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshView.m; sourceTree = "<group>"; };
-		F0E5DD4B14E7168000F60D43 /* EntryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntryList.h; path = HackfulKit/EntryList.h; sourceTree = "<group>"; };
-		F0E5DD4C14E7168000F60D43 /* EntryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntryList.m; path = HackfulKit/EntryList.m; sourceTree = "<group>"; };
 		F0E5DD5614E71D2300F60D43 /* MWFeedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedParser.h; sourceTree = "<group>"; };
 		F0E5DD5714E71D2300F60D43 /* MWFeedParser_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedParser_Private.h; sourceTree = "<group>"; };
 		F0E5DD5814E71D2300F60D43 /* MWFeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWFeedParser.m; sourceTree = "<group>"; };
@@ -270,8 +272,8 @@
 		F0E8B6E71500958A00488EFF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F0E8B6E91500959500488EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F0E8B6EB150095A200488EFF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		F0E8B6ED150099E100488EFF /* EntryListNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntryListNew.h; path = HackfulKit/EntryListNew.h; sourceTree = "<group>"; };
-		F0E8B6EE150099E100488EFF /* EntryListNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntryListNew.m; path = HackfulKit/EntryListNew.m; sourceTree = "<group>"; };
+		F0E8B6ED150099E100488EFF /* HKPostList.h */ = {isa = PBXFileReference; fileEncoding = 4; name = HKPostList.h; path = HackfulKit/HKPostList.h; sourceTree = "<group>"; };
+		F0E8B6EE150099E100488EFF /* HKPostList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKPostList.m; path = HackfulKit/HKPostList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,10 +425,8 @@
 			children = (
 				F044F78E15028DFD0037B7A9 /* HKLogin.h */,
 				F044F78F15028DFD0037B7A9 /* HKLogin.m */,
-				F0E5DD4B14E7168000F60D43 /* EntryList.h */,
-				F0E5DD4C14E7168000F60D43 /* EntryList.m */,
-				F0E8B6ED150099E100488EFF /* EntryListNew.h */,
-				F0E8B6EE150099E100488EFF /* EntryListNew.m */,
+				F0E8B6ED150099E100488EFF /* HKPostList.h */,
+				F0E8B6EE150099E100488EFF /* HKPostList.m */,
 				F044F77F150288FE0037B7A9 /* HKUser.h */,
 				F044F780150288FE0037B7A9 /* HKUser.m */,
 				F044F78215028A9A0037B7A9 /* HKPost.h */,
@@ -441,8 +441,11 @@
 				F044F79715028E370037B7A9 /* HKNotifications.m */,
 				F044F79E150351460037B7A9 /* HKEntry.h */,
 				F044F79F150351460037B7A9 /* HKEntry.m */,
-				F044F7C9150391EF0037B7A9 /* CommentList.h */,
-				F044F7CA150391EF0037B7A9 /* CommentList.m */,
+				F044F7C9150391EF0037B7A9 /* HKCommentList.h */,
+				F044F7CA150391EF0037B7A9 /* HKCommentList.m */,
+				F044F7D51503E2CF0037B7A9 /* HKListDelegate.h */,
+				F044F7D71503E6700037B7A9 /* HKList.h */,
+				F044F7D81503E6720037B7A9 /* HKList.m */,
 			);
 			name = HackfulKit;
 			sourceTree = "<group>";
@@ -540,10 +543,10 @@
 				F0E5DD6A14E71D7B00F60D43 /* NSString+HTML.m */,
 				F0E5DD6B14E71D7B00F60D43 /* NSDate+InternetDateTime.h */,
 				F0E5DD6C14E71D7B00F60D43 /* NSDate+InternetDateTime.m */,
-				F0E5DD6514E71D5500F60D43 /* Depreciated */,
-				F0E5DD6114E71D3900F60D43 /* Google Toolbox for Mac */,
 				F044F7D11503C9EE0037B7A9 /* NSDate+TimeAgo.h */,
 				F044F7D21503C9EF0037B7A9 /* NSDate+TimeAgo.m */,
+				F0E5DD6514E71D5500F60D43 /* Depreciated */,
+				F0E5DD6114E71D3900F60D43 /* Google Toolbox for Mac */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -755,7 +758,6 @@
 				F0E5DD3914E707D400F60D43 /* LoadingIndicatorView.m in Sources */,
 				F0E5DD3C14E7080F00F60D43 /* PlacardButton.m in Sources */,
 				F0E5DD4A14E7120B00F60D43 /* PullToRefreshView.m in Sources */,
-				F0E5DD4D14E7168000F60D43 /* EntryList.m in Sources */,
 				F0E5DD5D14E71D2300F60D43 /* MWFeedParser.m in Sources */,
 				F0E5DD5E14E71D2300F60D43 /* MWFeedInfo.m in Sources */,
 				F0E5DD5F14E71D2300F60D43 /* MWFeedItem.m in Sources */,
@@ -763,7 +765,7 @@
 				F0E5DD6814E71D5F00F60D43 /* NSString+XMLEntities.m in Sources */,
 				F0E5DD6D14E71D7B00F60D43 /* NSString+HTML.m in Sources */,
 				F0E5DD6E14E71D7B00F60D43 /* NSDate+InternetDateTime.m in Sources */,
-				F0E8B6EF150099E100488EFF /* EntryListNew.m in Sources */,
+				F0E8B6EF150099E100488EFF /* HKPostList.m in Sources */,
 				F044F781150288FE0037B7A9 /* HKUser.m in Sources */,
 				F044F78415028A9A0037B7A9 /* HKPost.m in Sources */,
 				F044F78715028D820037B7A9 /* HKComment.m in Sources */,
@@ -776,8 +778,9 @@
 				F044F7A8150366660037B7A9 /* SubmissionTableCell.m in Sources */,
 				F044F7AC15036B6E0037B7A9 /* ABTableViewCell.m in Sources */,
 				F044F7C815038F830037B7A9 /* CommentsController.m in Sources */,
-				F044F7CB150391EF0037B7A9 /* CommentList.m in Sources */,
+				F044F7CB150391EF0037B7A9 /* HKCommentList.m in Sources */,
 				F044F7D31503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */,
+				F044F7D91503E6730037B7A9 /* HKList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,8 +796,9 @@
 				F044F7A7150366660037B7A9 /* CommentTableCell.m in Sources */,
 				F044F7A9150366660037B7A9 /* SubmissionTableCell.m in Sources */,
 				F044F7AD15036B6E0037B7A9 /* ABTableViewCell.m in Sources */,
-				F044F7CC150391EF0037B7A9 /* CommentList.m in Sources */,
+				F044F7CC150391EF0037B7A9 /* HKCommentList.m in Sources */,
 				F044F7D41503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */,
+				F044F7DA1503E6730037B7A9 /* HKList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

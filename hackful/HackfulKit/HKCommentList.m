@@ -6,16 +6,15 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "CommentList.h"
+#import "HKCommentList.h"
 #import "HKPost.h"
 #import "HKComment.h"
 #import "HKUser.h"
 
 #define HACKFUL_API_BASE_URL @"http://192.168.1.110:3000/api/v1"
 
-@interface CommentList()
+@interface HKCommentList()
 
-@property (nonatomic, strong) NSMutableArray *mutableEntries;
 @property (nonatomic, strong, readonly) RKObjectManager *objectManager;
 @property (nonatomic, strong, readonly) RKObjectMapping *commentsMapping;
 
@@ -23,10 +22,9 @@
 
 @end
 
-@implementation CommentList
+@implementation HKCommentList
 
 @synthesize delegate = _delegate;
-@synthesize mutableEntries = _mutableEntries;
 @synthesize objectManager = _objectManager;
 @synthesize commentsMapping = _commentsMapping;
 
@@ -64,10 +62,6 @@
 
 - (BOOL)isLoading {
     return isLoading;
-}
-
-- (NSArray *)entries {
-    return [self.mutableEntries copy];
 }
 
 - (NSMutableArray *)mutableEntries {

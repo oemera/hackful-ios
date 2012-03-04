@@ -6,42 +6,36 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "EntryListNew.h"
+#import "HKPostList.h"
 #import "HKPost.h"
 #import "HKUser.h"
 
 #define HACKFUL_API_BASE_URL @"http://192.168.1.110:3000/api/v1"
 
-@interface EntryListNew()
+@interface HKPostList()
 
-@property (nonatomic, strong) NSMutableArray *mutableEntries;
 @property (nonatomic, strong, readonly) RKObjectManager *objectManager;
 @property (nonatomic, strong, readonly) RKObjectMapping *postsMapping;
 
--(void)finishedLoading;
+- (void)finishedLoading;
 
 @end
 
-@implementation EntryListNew
+@implementation HKPostList
 
 @synthesize delegate = _delegate;
-@synthesize mutableEntries = _mutableEntries;
-@synthesize objectManager = _objectManager;
-@synthesize postsMapping = _postsMapping;
 
-- (id)initWithURL:(NSURL *)apiUrl_ {
+- (id)initWithResourcePath:(NSString *)path {
     if(self = [super init]) {
-        apiUrl = apiUrl_;
+        resourcePath = path;
         isLoading = NO;
     }
-    
     return self;
 }
 
 - (void)beginLoading {
     NSLog(@"beginLoading");
-    
-    [self.objectManager loadObjectsAtResourcePath:@"/posts/frontpage" 
+    [self.objectManager loadObjectsAtResourcePath:resourcePath
                                objectMapping:self.postsMapping 
                                     delegate:self];
     
@@ -50,21 +44,14 @@
 }
 
 - (void)finishedLoading {
-    NSLog(@"finishedLoading");
-    if ([self.delegate respondsToSelector:@selector(entryListFinishedLoading:)]) {
+    if ([self.delegate respondsToSelector:@selector(listFinishedLoading:)]) {
         NSLog(@"respondsToSelector entryListFinishedLoading");
-		[self.delegate entryListFinishedLoading:self];
-    } else {
-        NSLog(@"didn't respondToSelector entryListFinishedLoading");
+		[self.delegate listFinishedLoading:self];
     }
 }
 
 - (BOOL)isLoading {
     return isLoading;
-}
-
-- (NSArray *)entries {
-    return [self.mutableEntries copy];
 }
 
 - (NSMutableArray *)mutableEntries {
@@ -74,8 +61,7 @@
 
 - (RKObjectManager*)objectManager {
     if(_objectManager == nil) {
-        _objectManager = [RKObjectManager objectManagerWithBaseURL:HACKFUL_API_BASE_URL]; 
-        //[objectManager.mappingProvider addObjectMapping:articleMapping];
+        _objectManager = [RKObjectManager objectManagerWithBaseURL:HACKFUL_API_BASE_URL];
     }
     return _objectManager;
 }
@@ -94,7 +80,6 @@
         [_postsMapping mapKeyPath:@"text" toAttribute:@"text"];
         [_postsMapping mapKeyPath:@"title" toAttribute:@"title"];
         [_postsMapping mapKeyPath:@"comment_count" toAttribute:@"commentCount"];
-        [_postsMapping mapKeyPath:@"host" toAttribute:@"host"];
         [_postsMapping mapKeyPath:@"user" toRelationship:@"user" withMapping:userMapping];
     }
     return _postsMapping;

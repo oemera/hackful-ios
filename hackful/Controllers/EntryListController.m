@@ -9,7 +9,7 @@
 #import "EntryListController.h"
 #import "LoadingIndicatorView.h"
 #import "PlacardButton.h"
-#import "EntryList.h"
+#import "HKPostList.h"
 #import "HKEntry.h"
 #import "HKPost.h"
 #import "HKComment.h"
@@ -23,12 +23,12 @@
 
 @implementation EntryListController
 
-@synthesize entryList = _entryList;
+@synthesize postList = _postList;
 
-- (id)initWithEntryList:(EntryListNew *)entryList_ {
+- (id)initWithEntryList:(HKPostList *)postList_ {
     if ((self = [super init])) {
-        entryList_.delegate = self;
-        [self setEntryList:entryList_];
+        postList_.delegate = self;
+        [self setPostList:postList_];
     }
     
     return self;
@@ -63,7 +63,7 @@
 }
 
 - (void)viewDidLoad {
-    [self.entryList beginLoading];
+    [self.postList beginLoading];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,7 +73,7 @@
 }
 
 #pragma mark - EntryListDelegate
-- (void)entryListFinishedLoading:(EntryList *)entryList {
+- (void)listFinishedLoading:(HKPostList *)entryList {
     entries = [[entryList entries] copy];
     lastUpdated = [NSDate date];
     [pullToRefreshView finishedLoading];
@@ -83,7 +83,7 @@
 #pragma mark - PullToRefreshView
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view {
     NSLog(@"pullToRefreshViewShouldRefresh");
-    if (![self.entryList isLoading]) [self.entryList beginLoading];
+    if (![self.postList isLoading]) [self.postList beginLoading];
 }
 
 - (NSDate *)pullToRefreshViewLastUpdated:(PullToRefreshView *)view {

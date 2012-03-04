@@ -8,11 +8,11 @@
 
 #import "MainTabBarController.h"
 #import "EntryListController.h"
-#import "EntryListNew.h"
+#import "HKPostList.h"
 
-#define HOME_RSS_URL @"http://hackful.com/frontpage.rss"
-#define NEW_RSS_URL @"http://hackful.com/new.rss"
-#define ASK_RSS_URL @"http://hackful.com/ask.rss"
+#define FRONTPAGE_RESOURCE_PATH @"/posts/frontpage"
+#define NEW_RESOURCE_PATH @"/posts/new"
+#define ASK_RESOURCE_PATH @"/posts/ask"
 
 #define HEROKU_SAMPLE_URL @"http://radiant-snow-5561.heroku.com/hackful_new.xml"
 
@@ -20,18 +20,18 @@
 
 - (id)init {
     if ((self = [super init])) {
-        EntryListNew *homeEntryList = [[EntryListNew alloc] initWithURL:[NSURL URLWithString:HEROKU_SAMPLE_URL]];
-        EntryListController *home = [[EntryListController alloc] initWithEntryList:homeEntryList];
+        HKPostList *homePostList = [[HKPostList alloc] initWithResourcePath:FRONTPAGE_RESOURCE_PATH];
+        EntryListController *home = [[EntryListController alloc] initWithEntryList:homePostList];
         [home setTitle:@"Hackful Europe"];
         [home setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage imageNamed:@"home.png"] tag:0]];
         
-        EntryListNew *newEntryList = [[EntryListNew alloc] initWithURL:[NSURL URLWithString:@"http://hackful.com/new.rss"]];
-        EntryListController *latest = [[EntryListController alloc] initWithEntryList:newEntryList];
+        HKPostList *newPostList = [[HKPostList alloc] initWithResourcePath:NEW_RESOURCE_PATH];
+        EntryListController *latest = [[EntryListController alloc] initWithEntryList:newPostList];
         [latest setTitle:@"New Submissions"];
         [latest setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"New" image:[UIImage imageNamed:@"new.png"] tag:0]];
         
-        EntryListNew *askEntryList = [[EntryListNew alloc] initWithURL:[NSURL URLWithString:@"http://hackful.com/ask.rss"]];
-        EntryListController *ask = [[EntryListController alloc] initWithEntryList:askEntryList];
+        HKPostList *askPostList = [[HKPostList alloc] initWithResourcePath:ASK_RESOURCE_PATH];
+        EntryListController *ask = [[EntryListController alloc] initWithEntryList:askPostList];
         [ask setTitle:@"Ask Hackful"];
         [ask setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Ask" image:[UIImage imageNamed:@"person.png"] tag:0]];
         

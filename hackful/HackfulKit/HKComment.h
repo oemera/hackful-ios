@@ -14,6 +14,4 @@
 @property (nonatomic, strong) NSString* commentableId;
 @property (nonatomic, strong) NSString* commentableType;
 
-- (BOOL)isComment;
-
 @end
