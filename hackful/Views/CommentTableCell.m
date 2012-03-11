@@ -118,7 +118,7 @@
     
     NSString *user = [[comment user] name];
     NSString *date = [NSDate stringForTimeIntervalSinceCreated:[comment posted]];
-    NSString *points = [[comment votes] intValue] == 1 ? @"1 point" : [NSString stringWithFormat:@"%d points", [comment votes]];
+    NSString *points = [comment votes] == 1 ? @"1 point" : [NSString stringWithFormat:@"%d points", [comment votes]];
     NSString *comments = @"not implemented";
     //NSString *comments = [comment children] == 0 ? @"" : [comment children] == 1 ? @"1 reply" : [NSString stringWithFormat:@"%d replies", [comment children]];
     NSString *body = [[self class] formatBodyText:[comment text]];

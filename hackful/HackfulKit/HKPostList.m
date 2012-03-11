@@ -7,19 +7,11 @@
 //
 
 #import "HKPostList.h"
+#import "AFNetworking.h"
 #import "HKPost.h"
 #import "HKUser.h"
 
-#define HACKFUL_API_BASE_URL @"http://192.168.1.110:3000/api/v1"
-
-@interface HKPostList()
-
-@property (nonatomic, strong, readonly) RKObjectManager *objectManager;
-@property (nonatomic, strong, readonly) RKObjectMapping *postsMapping;
-
-- (void)finishedLoading;
-
-@end
+#define HACKFUL_API_BASE_URL @"http://192.168.1.110:3000"
 
 @implementation HKPostList
 
@@ -35,19 +27,57 @@
 
 - (void)beginLoading {
     NSLog(@"beginLoading");
-    [self.objectManager loadObjectsAtResourcePath:resourcePath
-                               objectMapping:self.postsMapping 
-                                    delegate:self];
     
-    [self.mutableEntries removeAllObjects];
+    NSURL *url = [NSURL URLWithString:HACKFUL_API_BASE_URL];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    //NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:page, @"page", nil];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" 
+                                                            path:resourcePath
+                                                      parameters:nil];
+    
+    __block HKPostList *blocksafeSelf = self;
+    AFJSONRequestOperation *operation;
+    operation =  [AFJSONRequestOperation 
+                  JSONRequestOperationWithRequest:request
+                  success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
+                      [blocksafeSelf.mutableEntries removeAllObjects];
+                      for (id jsonPost in jsonObject) {
+                          NSInteger commentCount = [[jsonPost objectForKey:@"comment_count"] intValue];
+                          NSString *createdAt = [jsonPost objectForKey:@"created_at"];
+                          NSInteger objectId = [[jsonPost objectForKey:@"id"] intValue];
+                          NSString *link = [jsonPost objectForKey:@"link"];
+                          NSString *text = [jsonPost objectForKey:@"text"];
+                          NSString *title = [jsonPost objectForKey:@"title"];
+                          NSInteger upvotes = [[jsonPost objectForKey:@"up_votes"] intValue];
+                          NSInteger userId = [[[jsonPost objectForKey:@"user"] objectForKey:@"id"] intValue];
+                          NSString *username = [[jsonPost objectForKey:@"user"] objectForKey:@"name"];
+                          
+                          NSDate *posted = [NSDate date];
+                          HKUser *user = [[HKUser alloc] initWithId:userId username:username andEmail:nil];
+                          
+                          HKPost *post = [[HKPost alloc] initWithObjectId:objectId 
+                                                                     link:link 
+                                                                    title:title 
+                                                             commentCount:commentCount 
+                                                                   posted:posted 
+                                                                    votes:upvotes 
+                                                                     text:text 
+                                                                  andUser:user];
+                          
+                          [blocksafeSelf.mutableEntries addObject:post];
+                      }
+                      
+                      if ([blocksafeSelf.delegate respondsToSelector:@selector(listFinishedLoading:)]) {
+                          NSLog(@"respondsToSelector entryListFinishedLoading");
+                          [blocksafeSelf.delegate listFinishedLoading:self];
+                      }
+                  }
+                  failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
+                      NSLog(@"Couldn't load posts");
+                      // TODO: show HUD with error message
+                  }];
+    [operation start];
     isLoading = YES;
-}
-
-- (void)finishedLoading {
-    if ([self.delegate respondsToSelector:@selector(listFinishedLoading:)]) {
-        NSLog(@"respondsToSelector entryListFinishedLoading");
-		[self.delegate listFinishedLoading:self];
-    }
 }
 
 - (BOOL)isLoading {
@@ -57,50 +87,6 @@
 - (NSMutableArray *)mutableEntries {
     if(_mutableEntries == nil) _mutableEntries = [[NSMutableArray alloc] init];
     return _mutableEntries;
-}
-
-- (RKObjectManager*)objectManager {
-    if(_objectManager == nil) {
-        _objectManager = [RKObjectManager objectManagerWithBaseURL:HACKFUL_API_BASE_URL];
-    }
-    return _objectManager;
-}
-
-- (RKObjectMapping*)postsMapping {
-    if(_postsMapping == nil) {
-        RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[HKUser class]];
-        [userMapping mapKeyPath:@"id" toAttribute:@"objectId"];
-        [userMapping mapKeyPath:@"name" toAttribute:@"name"];
-        
-        _postsMapping = [RKObjectMapping mappingForClass:[HKPost class]];
-        [_postsMapping mapKeyPath:@"id" toAttribute:@"objectId"];
-        [_postsMapping mapKeyPath:@"created_at" toAttribute:@"posted"];
-        [_postsMapping mapKeyPath:@"up_votes" toAttribute:@"votes"];
-        [_postsMapping mapKeyPath:@"link" toAttribute:@"link"];
-        [_postsMapping mapKeyPath:@"text" toAttribute:@"text"];
-        [_postsMapping mapKeyPath:@"title" toAttribute:@"title"];
-        [_postsMapping mapKeyPath:@"comment_count" toAttribute:@"commentCount"];
-        [_postsMapping mapKeyPath:@"user" toRelationship:@"user" withMapping:userMapping];
-    }
-    return _postsMapping;
-}
-
-#pragma mark - RKObjectMappingDelegate
-
-- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-    RKLogInfo(@"Load collection of Posts: %@", objects);
-    [self.mutableEntries setArray:objects];
-    NSLog(@"posts loaded: %d", [self.mutableEntries count]);
-    
-    isLoading = NO;
-    [self finishedLoading];
-}
-
-- (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
-    NSLog(@"Error while loading: %@", error);
-    
-    isLoading = NO;
-    [self finishedLoading];
 }
 
 @end

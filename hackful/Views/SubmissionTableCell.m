@@ -59,17 +59,17 @@
     
     NSString *user = [[submission user] name];
     NSString *date = [NSDate stringForTimeIntervalSinceCreated:[submission posted]];
-    NSString *site = [[submission link] host];
+    NSString *site = [[NSURL URLWithString:[submission link]] host];
     if (site == nil) site = @""; // don't show URLs for self posts
-    NSString *point = [[submission votes] intValue] == 1 ? @"1 point" : [NSString stringWithFormat:@"%@ points", [submission votes]];
+    NSString *point = [submission votes] == 1 ? @"1 point" : [NSString stringWithFormat:@"%@ points", [submission votes]];
     NSString *comment = nil;
-    if ([[submission commentCount] intValue] == 0) {
+    if ([submission commentCount] == 0) {
         comment = @"no comments";
     } else {
-        if ([[submission commentCount] intValue] == 1) {
+        if ([submission commentCount] == 1) {
             comment = @"1 comment";
         } else {
-            comment = [NSString stringWithFormat:@"%d comments", [[submission commentCount] intValue]];
+            comment = [NSString stringWithFormat:@"%d comments", [submission commentCount]];
         }
     }
     NSString *points = [NSString stringWithFormat:@"%@ • %@", point, comment];

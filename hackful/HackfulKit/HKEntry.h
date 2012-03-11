@@ -11,10 +11,16 @@
 
 @interface HKEntry : NSObject
 
-@property (nonatomic, strong) NSString* objectId;
-@property (nonatomic, strong) NSDate* posted;
-@property (nonatomic, strong) NSNumber* votes;
-@property (nonatomic, strong) NSString* text;
-@property (nonatomic, strong) HKUser* user;
+@property (nonatomic, readonly) NSInteger objectId;
+@property (nonatomic, strong, readonly) NSDate* posted;
+@property (nonatomic, readonly) NSInteger votes;
+@property (nonatomic, strong, readonly) NSString* text;
+@property (nonatomic, strong, readonly) HKUser* user;
+
+- (id)initWithObjectId:(NSInteger)objectId
+                posted:(NSDate*)posted 
+                 votes:(NSInteger)votes
+                  text:(NSString*)text 
+               andUser:(HKUser*)user;
 
 @end

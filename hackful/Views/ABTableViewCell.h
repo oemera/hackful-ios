@@ -31,8 +31,7 @@
 
 // to use: subclass ABTableViewCell and implement -drawContentView:
 
-@interface ABTableViewCell : UITableViewCell
-{
+@interface ABTableViewCell : UITableViewCell {
 	UIView *contentView;
 }
 

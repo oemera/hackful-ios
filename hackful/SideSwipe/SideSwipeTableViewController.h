@@ -7,13 +7,12 @@
 //
 
 
-@interface SideSwipeTableViewController : UIViewController
-{
-  UITableView* tableView;
-  UIView* sideSwipeView;
-  UITableViewCell* sideSwipeCell;
-  UISwipeGestureRecognizerDirection sideSwipeDirection;
-  BOOL animatingSideSwipe;
+@interface SideSwipeTableViewController : UIViewController {
+    UITableView* tableView;
+    UIView* sideSwipeView;
+    UITableViewCell* sideSwipeCell;
+    UISwipeGestureRecognizerDirection sideSwipeDirection;
+    BOOL animatingSideSwipe;
 }
 
 @property (nonatomic, strong) UITableView* tableView;

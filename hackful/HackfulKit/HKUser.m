@@ -14,4 +14,14 @@
 @synthesize name = _name;
 @synthesize email = _email;
 
+- (id)initWithId:(NSInteger)userId username:(NSString*)username andEmail:(NSString*)email {
+    if ((self = [super init])) {
+        _objectId = userId;
+        _name = [username copy];
+        _email = [email copy];
+    }
+    
+    return self;
+}
+
 @end

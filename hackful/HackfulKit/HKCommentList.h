@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RestKit/RestKit.h>
 #import "HKList.h"
 #import "HKListDelegate.h"
 
 @class HKPost;
 
-@interface HKCommentList : HKList <RKRequestDelegate, RKObjectLoaderDelegate> {
+@interface HKCommentList : HKList {
     BOOL isLoading;
     id<HKListDelegate> delegate;
     NSURL *apiUrl;

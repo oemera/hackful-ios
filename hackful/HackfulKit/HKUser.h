@@ -11,8 +11,10 @@
 
 @interface HKUser : NSObject
 
-@property (nonatomic, strong) NSString* objectId;
-@property (nonatomic, strong) NSString* name;
-@property (nonatomic, strong) NSString* email;
+@property (nonatomic, readonly) NSInteger objectId;
+@property (nonatomic, strong, readonly) NSString* name;
+@property (nonatomic, strong, readonly) NSString* email;
+
+- (id)initWithId:(NSInteger)userId username:(NSString*)username andEmail:(NSString*)email;
 
 @end

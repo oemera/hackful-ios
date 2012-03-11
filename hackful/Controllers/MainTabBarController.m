@@ -10,10 +10,13 @@
 #import "EntryListController.h"
 #import "HKPostList.h"
 #import "RootViewController.h"
+#import "HackfulLoginController.h"
+#import "NavigationController.h"
+#import "HKSession.h"
 
-#define FRONTPAGE_RESOURCE_PATH @"/posts/frontpage"
-#define NEW_RESOURCE_PATH @"/posts/new"
-#define ASK_RESOURCE_PATH @"/posts/ask"
+#define FRONTPAGE_RESOURCE_PATH @"/api/v1/posts/frontpage"
+#define NEW_RESOURCE_PATH @"/api/v1/posts/new"
+#define ASK_RESOURCE_PATH @"/api/v1/posts/ask"
 
 #define HEROKU_SAMPLE_URL @"http://radiant-snow-5561.heroku.com/hackful_new.xml"
 
@@ -46,6 +49,34 @@
     return self;
 }
 
+- (void)showLoginController {
+    HackfulLoginController *loginController = [[HackfulLoginController alloc] init];
+    [loginController setDelegate:self];
+    NavigationController *navigation = [[NavigationController alloc] initWithRootViewController:loginController];
+    [self presentModalViewController:navigation animated:YES];
+}
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if ([HKSession isAnonymous]) {
+        [self showLoginController];
+        return NO;
+	}
+    
+    return YES;
+}
+
+- (void)composePressed {
+    NSLog(@"composePressed");
+    HKSession* session = [HKSession currentSession];
+    if (session != nil) {
+        // TODO: show comment viewcontroller 
+        NSLog(@"show comment viewcontroller");
+    } else {
+        [self showLoginController];
+    }
+    
+}
+
 - (void)loadView {
     [super loadView];
     
@@ -54,22 +85,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [[self navigationItem] setRightBarButtonItem:composeItem];
 }
 
+#pragma mark - LoginControllerDelegate
 
-- (void)composePressed {
-    /*if (![[HNSession currentSession] isAnonymous]) {
-        [self requestSubmissionType];
-    } else {
-        loginCompletionBlock = [^{
-            [self requestSubmissionType];
-        } copy];
-        
-        [self showLoginController];
-    }*/
-    NSLog(@"composePressed");
+- (void)loginControllerDidCancel:(LoginController *)controller {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)loginControllerDidLogin:(LoginController *)controller {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

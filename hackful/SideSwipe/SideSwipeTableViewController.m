@@ -31,7 +31,6 @@
 
 - (void)viewDidLoad
 {
-  NSLog(@"SideSwipeTableViewController viewDidLoad");
   [super viewDidLoad];
   animatingSideSwipe = NO;
   [self setupGestureRecognizers];
@@ -49,7 +48,6 @@
 
 - (void) setupGestureRecognizers
 {
-    NSLog(@"SideSwipeTableViewController setupGesture");
   // Do nothing under 3.x
   if (![self gestureRecognizersSupported]) return;
   
@@ -67,21 +65,18 @@
 // Called when a left swipe occurred
 - (void)swipeLeft:(UISwipeGestureRecognizer *)recognizer
 {
-    NSLog(@"SideSwipeTableViewController swipeLeft");
   [self swipe:recognizer direction:UISwipeGestureRecognizerDirectionLeft];
 }
 
 // Called when a right swipe ocurred
 - (void)swipeRight:(UISwipeGestureRecognizer *)recognizer
 {
-    NSLog(@"SideSwipeTableViewController swipeRight");
   [self swipe:recognizer direction:UISwipeGestureRecognizerDirectionRight];
 }
 
 // Handle a left or right swipe
 - (void)swipe:(UISwipeGestureRecognizer *)recognizer direction:(UISwipeGestureRecognizerDirection)direction
 {
-    NSLog(@"SideSwipeTableViewController swipe");
   if (recognizer && recognizer.state == UIGestureRecognizerStateEnded)
   {
     // Get the table view cell where the swipe occured
@@ -109,7 +104,6 @@
 #pragma mark Side Swiping under iPhone 3.x
 - (void)tableView:(UITableView *)theTableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"SideSwipeTableViewController willBegin");
   // If we are using gestures, then don't do anything
   if ([self gestureRecognizersSupported]) return;
   
@@ -128,12 +122,10 @@
 // Apple's docs: To enable the swipe-to-delete feature of table views (wherein a user swipes horizontally across a row to display a Delete button), you must implement the tableView:commitEditingStyle:forRowAtIndexPath: method.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"SideSwipeTableViewController editing style");
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"SideSwipeTableViewController canEdit");
   // If we are using gestures, then don't allow editing
   if ([self gestureRecognizersSupported])
     return NO;
@@ -144,7 +136,6 @@
 #pragma mark Adding the side swipe view
 - (void) addSwipeViewTo:(UITableViewCell*)cell direction:(UISwipeGestureRecognizerDirection)direction
 {
-    NSLog(@"SideSwipeTableViewController addSwipeViewTo");
   // Change the frame of the side swipe view to match the cell
   sideSwipeView.frame = cell.frame;
 
@@ -187,7 +178,6 @@
 // Note that the animation is done
 - (void)animationDidStopAddingSwipeView:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-    NSLog(@"SideSwipeTableViewController animationDidStopAddingSwipeView");
   animatingSideSwipe = NO;
 }
 
@@ -196,7 +186,6 @@
 // When a row is selected, animate the removal of the side swipe view
 - (NSIndexPath *)tableView:(UITableView *)theTableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"SideSwipeTableViewController willSelectRowAtIndexPath");
   [self removeSideSwipeView:YES];
   return indexPath;
 }
@@ -205,14 +194,12 @@
 // When the table is scrolled, animate the removal of the side swipe view
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    NSLog(@"SideSwipeTableViewController srcollViewWillBegin");
   [self removeSideSwipeView:YES];
 }
 
 // When the table is scrolled to the top, remove the side swipe view
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
 {
-    NSLog(@"SideSwipeTableViewController scrollViewShouldToTop");
   [self removeSideSwipeView:NO];
   return YES;
 }
@@ -221,7 +208,6 @@
 // If animated is YES, then the removal is animated using a bounce effect
 - (void) removeSideSwipeView:(BOOL)animated
 {
-    NSLog(@"SideSwipeTableViewController removeSideSwipeView");
   // Make sure we have a cell where the side swipe view appears and that we aren't in the middle of animating
   if (!sideSwipeCell || animatingSideSwipe) return;
   
@@ -259,7 +245,6 @@
     // The next step in a bounce animation is to move the side swipe view a bit on screen
 - (void)animationDidStopOne:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-    NSLog(@"SideSwipeTableViewController animationDidStopOne");
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:0.2];
   if (sideSwipeDirection == UISwipeGestureRecognizerDirectionRight)
@@ -283,7 +268,6 @@
   // The final step in a bounce animation is to move the side swipe completely offscreen
 - (void)animationDidStopTwo:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-    NSLog(@"SideSwipeTableViewController animationDidStopTwo");
   [UIView commitAnimations];
   [UIView beginAnimations:nil context:nil];
   [UIView setAnimationDuration:0.2];
@@ -308,7 +292,6 @@
 // When the bounce animation is completed, remove the side swipe view and reset some state
 - (void)animationDidStopThree:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-    NSLog(@"SideSwipeTableViewController animationDidStopThree");
   animatingSideSwipe = NO;
   self.sideSwipeCell = nil;
   [sideSwipeView removeFromSuperview];

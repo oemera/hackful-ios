@@ -15,10 +15,10 @@
 #import "HKComment.h"
 #import "SubmissionTableCell.h"
 #import "CommentsController.h"
-#import "SwipeTableViewCell.h"
+#import "SideSwipeTableViewCell.h"
 
-#define BUTTON_LEFT_MARGIN 10.0
-#define BUTTON_SPACING 25.0
+#define BUTTON_LEFT_MARGIN 35.5
+#define BUTTON_SPACING 32.0
 
 @interface EntryListController()
 - (void) setupSideSwipeView;
@@ -73,11 +73,10 @@
     buttonData = [NSArray arrayWithObjects:
                   [NSDictionary dictionaryWithObjectsAndKeys:@"Reply", @"title", @"reply.png", @"image", nil],
                   [NSDictionary dictionaryWithObjectsAndKeys:@"Retweet", @"title", @"retweet-outline-button-item.png", @"image", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"Favorite", @"title", @"star-hollow.png", @"image", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"Profile", @"title", @"person.png", @"image", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"Links", @"title", @"paperclip.png", @"image", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"Action", @"title", @"action.png", @"image", nil],
-                  nil];
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"Upvote", @"title", @"up_arrow.png", @"image", nil],
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"ReadLater", @"title", @"58-bookmark.png", @"image", nil],
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"SendTo", @"title", @"action.png", @"image", nil], nil];
+    
     buttons = [[NSMutableArray alloc] initWithCapacity:buttonData.count];
     
     self.sideSwipeView = [[UIView alloc] initWithFrame:CGRectMake(tableView.frame.origin.x, tableView.frame.origin.y, tableView.frame.size.width, tableView.rowHeight)];
@@ -121,11 +120,12 @@
     [cell setSubmission:post];*/
     
     static NSString *CellIdentifier = @"SwipeCell";
-    SwipeTableViewCell *cell = (SwipeTableViewCell*)[tableView_ dequeueReusableCellWithIdentifier:CellIdentifier];
+    SideSwipeTableViewCell *cell = (SideSwipeTableViewCell*)[tableView_ dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[SwipeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[SideSwipeTableViewCell alloc] initWithReuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = [post title];
+    
+    cell.post = post;
     cell.supressDeleteButton = ![self gestureRecognizersSupported];
     
     return cell;
@@ -160,7 +160,9 @@
 
 #pragma mark Button touch up inside action
 - (void) touchUpInsideAction:(UIButton*)button {
-    NSIndexPath* indexPath = [tableView indexPathForCell:sideSwipeCell];
+    // TODO: do the same with HUD
+    
+    /*NSIndexPath* indexPath = [tableView indexPathForCell:sideSwipeCell];
     
     NSUInteger index = [buttons indexOfObject:button];
     NSDictionary* buttonInfo = [buttonData objectAtIndex:index];
@@ -168,7 +170,7 @@
                                  message:nil
                                 delegate:nil
                        cancelButtonTitle:nil
-                       otherButtonTitles:@"OK", nil] autorelease] show];
+                       otherButtonTitles:@"OK", nil] autorelease] show];*/
     
     [self removeSideSwipeView:YES];
 }
@@ -202,19 +204,34 @@
 
 #pragma mark - Swipe implementation
 - (void) setupSideSwipeView {
+    
+    // TODO: we need a bigger tap field for buttons. At the moment there is 
+    //       fair chance that you miss the button and it is really frustrating
+    
     // Add the background pattern
     self.sideSwipeView.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"dotted-pattern.png"]];
-
+    
     // Overlay a shadow image that adds a subtle darker drop shadow around the edges
     UIImage* shadow = [[UIImage imageNamed:@"inner-shadow.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
-    UIImageView* shadowImageView = [[[UIImageView alloc] initWithFrame:sideSwipeView.frame] autorelease];
+    UIImageView* shadowImageView = [[UIImageView alloc] initWithFrame:sideSwipeView.frame];
     shadowImageView.alpha = 0.6;
     shadowImageView.image = shadow;
     shadowImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.sideSwipeView addSubview:shadowImageView];
 
+    // find out how much space the buttons need
+    CGFloat neededSpace = 0.0;
+    if (sideSwipeView.frame.size.width > 0) {
+        for (NSDictionary* buttonInfo in buttonData) {
+            UIImage* buttonImage = [UIImage imageNamed:[buttonInfo objectForKey:@"image"]];
+            neededSpace = neededSpace + buttonImage.size.width + BUTTON_SPACING;
+        }
+    }
+    // we add BUTTON_SPACING cause we added to the last button but it is free
+    CGFloat spaceLeft = sideSwipeView.frame.size.width - neededSpace + BUTTON_SPACING;
+    
     // Iterate through the button data and create a button for each entry
-    CGFloat leftEdge = BUTTON_LEFT_MARGIN;
+    CGFloat leftEdge = spaceLeft/2;
     for (NSDictionary* buttonInfo in buttonData) {
         // Create the button
         UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];

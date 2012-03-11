@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginController.h"
 
-@interface MainTabBarController : UITabBarController {
+@interface MainTabBarController : UITabBarController <LoginControllerDelegate> {
     UIBarButtonItem *composeItem;
 }
 

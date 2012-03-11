@@ -9,10 +9,21 @@
 #import <Foundation/Foundation.h>
 #import "HKEntry.h"
 
+@class HKUser;
+
 @interface HKPost : HKEntry
 
-@property (nonatomic, strong) NSURL* link;
-@property (nonatomic, strong) NSString* title;
-@property (nonatomic, strong) NSNumber* commentCount;
+@property (nonatomic, strong, readonly) NSString* link;
+@property (nonatomic, strong, readonly) NSString* title;
+@property (nonatomic, readonly) NSInteger commentCount;
+
+- (id)initWithObjectId:(NSInteger)objectId 
+                  link:(NSString*)link
+                 title:(NSString*)title
+          commentCount:(NSInteger)commentCount
+                posted:(NSDate*)posted
+                 votes:(NSInteger)votes
+                  text:(NSString*)text
+                  andUser:(HKUser*)user;
 
 @end
