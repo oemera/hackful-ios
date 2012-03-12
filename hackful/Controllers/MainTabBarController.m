@@ -8,11 +8,14 @@
 
 #import "MainTabBarController.h"
 #import "EntryListController.h"
+#import "ComposeController.h"
+#import "SubmissionComposeController.h"
 #import "HKPostList.h"
 #import "RootViewController.h"
 #import "HackfulLoginController.h"
 #import "NavigationController.h"
 #import "HKSession.h"
+#import "HKUser.h"
 
 #define FRONTPAGE_RESOURCE_PATH @"/api/v1/posts/frontpage"
 #define NEW_RESOURCE_PATH @"/api/v1/posts/new"
@@ -67,10 +70,19 @@
 
 - (void)composePressed {
     NSLog(@"composePressed");
-    HKSession* session = [HKSession currentSession];
-    if (session != nil) {
+    //HKSession* session = [HKSession currentSession];
+    if (![HKSession isAnonymous]) {
         // TODO: show comment viewcontroller 
         NSLog(@"show comment viewcontroller");
+        HKSession *session = [HKSession currentSession];
+        NSLog(@"session: %@ %@", session.user.name, session.authenticationToken);
+        
+        
+        NavigationController *navigation = [[NavigationController alloc] init];
+        ComposeController *compose = [[SubmissionComposeController alloc] init];
+        
+        [navigation setViewControllers:[NSArray arrayWithObject:compose]];
+        [self presentModalViewController:navigation animated:YES];
     } else {
         [self showLoginController];
     }

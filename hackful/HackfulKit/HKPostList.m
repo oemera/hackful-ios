@@ -65,11 +65,13 @@
                                                                   andUser:user];
                           
                           [blocksafeSelf.mutableEntries addObject:post];
+                          isLoading = NO;
                       }
                       
                       if ([blocksafeSelf.delegate respondsToSelector:@selector(listFinishedLoading:)]) {
                           NSLog(@"respondsToSelector entryListFinishedLoading");
                           [blocksafeSelf.delegate listFinishedLoading:self];
+                          isLoading = NO;
                       }
                   }
                   failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {

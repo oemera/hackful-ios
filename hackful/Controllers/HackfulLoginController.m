@@ -64,7 +64,7 @@
     operation =  [AFJSONRequestOperation 
                   JSONRequestOperationWithRequest:request
                   success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
-                      NSString *userId = [jsonObject objectForKey:@"id"];
+                      NSInteger userId = [[jsonObject objectForKey:@"id"] intValue];
                       NSString *username = [jsonObject objectForKey:@"name"];
                       NSString *email = [jsonObject objectForKey:@"email"];
                       NSString *authToken = [jsonObject objectForKey:@"auth_token"];

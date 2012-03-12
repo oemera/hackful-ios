@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LoginController.h"
 
-@interface MainTabBarController : UITabBarController <LoginControllerDelegate> {
+@interface MainTabBarController : UITabBarController <UIActionSheetDelegate, LoginControllerDelegate> {
     UIBarButtonItem *composeItem;
 }
 

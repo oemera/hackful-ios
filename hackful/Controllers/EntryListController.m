@@ -43,8 +43,6 @@
 - (void)loadView {
     [super loadView];
     
-    //[pullToRefreshView setState:PullToRefreshViewStateLoading];
-
     tableView = [[UITableView alloc] initWithFrame:[[self view] bounds] style:UITableViewStylePlain];
     [tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
     [tableView setDelegate:self];
@@ -56,11 +54,13 @@
     [emptyLabel setTextColor:[UIColor grayColor]];
     [emptyLabel setBackgroundColor:[UIColor clearColor]];
     [emptyLabel setText:@"No Items"];
-    [emptyLabel setTextAlignment:UITextAlignmentCenter];
+    [emptyLabel setTextAlignment:UITextAlignmentCenter];*/
         
     pullToRefreshView = [[PullToRefreshView alloc] initWithScrollView:tableView];
+    [pullToRefreshView setState:PullToRefreshViewStateLoading];
+    [pullToRefreshView setDelegate:self];
+    
     [tableView addSubview:pullToRefreshView];
-    [pullToRefreshView setDelegate:self];*/
     
     [self setupSideSwipeView];
 }
@@ -91,6 +91,7 @@
 
 #pragma mark - EntryListDelegate
 - (void)listFinishedLoading:(HKPostList *)entryList {
+    NSLog(@"listFinishedLoading");
     entries = [[entryList entries] copy];
     lastUpdated = [NSDate date];
     [pullToRefreshView finishedLoading];
@@ -100,6 +101,7 @@
 #pragma mark - PullToRefreshView
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view {
     NSLog(@"pullToRefreshViewShouldRefresh");
+    NSLog(@"is already loading? %@", [self.postList isLoading]);
     if (![self.postList isLoading]) [self.postList beginLoading];
 }
 

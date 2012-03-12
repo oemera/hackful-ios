@@ -51,6 +51,9 @@
 		F0B9EBEE150D3D7B006CC3E7 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBE2150D3D7B006CC3E7 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F0B9EBEF150D3D7B006CC3E7 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBE4150D3D7B006CC3E7 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F0B9EBF0150D3D7B006CC3E7 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBE6150D3D7B006CC3E7 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F0B9EBF3150DC160006CC3E7 /* ComposeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBF2150DC160006CC3E7 /* ComposeController.m */; };
+		F0B9EBF6150DC264006CC3E7 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBF5150DC264006CC3E7 /* PlaceholderTextView.m */; };
+		F0B9EBF9150DC473006CC3E7 /* SubmissionComposeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBF8150DC472006CC3E7 /* SubmissionComposeController.m */; };
 		F0E2007E150419C600F847A2 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E20079150419C600F847A2 /* RootViewController.m */; };
 		F0E2007F150419C600F847A2 /* SideSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E2007B150419C600F847A2 /* SideSwipeTableViewCell.m */; };
 		F0E20080150419C600F847A2 /* SideSwipeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E2007D150419C600F847A2 /* SideSwipeTableViewController.m */; };
@@ -125,9 +128,6 @@
 		F0E5DD3C14E7080F00F60D43 /* PlacardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD3B14E7080F00F60D43 /* PlacardButton.m */; };
 		F0E5DD4714E7118600F60D43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DD4614E7118600F60D43 /* QuartzCore.framework */; };
 		F0E5DD4A14E7120B00F60D43 /* PullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD4914E7120B00F60D43 /* PullToRefreshView.m */; };
-		F0E5DD5D14E71D2300F60D43 /* MWFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD5814E71D2300F60D43 /* MWFeedParser.m */; };
-		F0E5DD5E14E71D2300F60D43 /* MWFeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD5A14E71D2300F60D43 /* MWFeedInfo.m */; };
-		F0E5DD5F14E71D2300F60D43 /* MWFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD5C14E71D2300F60D43 /* MWFeedItem.m */; };
 		F0E5DD6414E71D4600F60D43 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD6314E71D4600F60D43 /* GTMNSString+HTML.m */; };
 		F0E5DD6814E71D5F00F60D43 /* NSString+XMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD6714E71D5F00F60D43 /* NSString+XMLEntities.m */; };
 		F0E5DD6D14E71D7B00F60D43 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD6A14E71D7B00F60D43 /* NSString+HTML.m */; };
@@ -210,6 +210,12 @@
 		F0B9EBE4150D3D7B006CC3E7 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		F0B9EBE5150D3D7B006CC3E7 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		F0B9EBE6150D3D7B006CC3E7 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		F0B9EBF1150DC15F006CC3E7 /* ComposeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComposeController.h; path = Controllers/ComposeController.h; sourceTree = "<group>"; };
+		F0B9EBF2150DC160006CC3E7 /* ComposeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeController.m; path = Controllers/ComposeController.m; sourceTree = "<group>"; };
+		F0B9EBF4150DC264006CC3E7 /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceholderTextView.h; path = Views/PlaceholderTextView.h; sourceTree = "<group>"; };
+		F0B9EBF5150DC264006CC3E7 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceholderTextView.m; path = Views/PlaceholderTextView.m; sourceTree = "<group>"; };
+		F0B9EBF7150DC471006CC3E7 /* SubmissionComposeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubmissionComposeController.h; path = Controllers/SubmissionComposeController.h; sourceTree = "<group>"; };
+		F0B9EBF8150DC472006CC3E7 /* SubmissionComposeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubmissionComposeController.m; path = Controllers/SubmissionComposeController.m; sourceTree = "<group>"; };
 		F0E20078150419C600F847A2 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		F0E20079150419C600F847A2 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		F0E2007A150419C600F847A2 /* SideSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideSwipeTableViewCell.h; sourceTree = "<group>"; };
@@ -298,13 +304,6 @@
 		F0E5DD4614E7118600F60D43 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F0E5DD4814E7120A00F60D43 /* PullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshView.h; sourceTree = "<group>"; };
 		F0E5DD4914E7120B00F60D43 /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshView.m; sourceTree = "<group>"; };
-		F0E5DD5614E71D2300F60D43 /* MWFeedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedParser.h; sourceTree = "<group>"; };
-		F0E5DD5714E71D2300F60D43 /* MWFeedParser_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedParser_Private.h; sourceTree = "<group>"; };
-		F0E5DD5814E71D2300F60D43 /* MWFeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWFeedParser.m; sourceTree = "<group>"; };
-		F0E5DD5914E71D2300F60D43 /* MWFeedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedInfo.h; sourceTree = "<group>"; };
-		F0E5DD5A14E71D2300F60D43 /* MWFeedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWFeedInfo.m; sourceTree = "<group>"; };
-		F0E5DD5B14E71D2300F60D43 /* MWFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWFeedItem.h; sourceTree = "<group>"; };
-		F0E5DD5C14E71D2300F60D43 /* MWFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWFeedItem.m; sourceTree = "<group>"; };
 		F0E5DD6214E71D4600F60D43 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		F0E5DD6314E71D4600F60D43 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		F0E5DD6614E71D5F00F60D43 /* NSString+XMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XMLEntities.h"; sourceTree = "<group>"; };
@@ -470,7 +469,6 @@
 			children = (
 				F0E20077150419C600F847A2 /* SideSwipe */,
 				F0E5DD6014E71D2900F60D43 /* Categories */,
-				F0E5DD5514E71D0B00F60D43 /* MWFeedParser */,
 				F0E5DD3614E707C500F60D43 /* Views */,
 				F0E5DCE014E6FF8600F60D43 /* HackfulKit */,
 				F0E5DC8614E6FB4F00F60D43 /* Controllers */,
@@ -526,6 +524,10 @@
 				F044F7C715038F830037B7A9 /* CommentsController.m */,
 				F0B9EBC8150CBB0D006CC3E7 /* HackfulLoginController.h */,
 				F0B9EBC9150CBB0D006CC3E7 /* HackfulLoginController.m */,
+				F0B9EBF1150DC15F006CC3E7 /* ComposeController.h */,
+				F0B9EBF2150DC160006CC3E7 /* ComposeController.m */,
+				F0B9EBF7150DC471006CC3E7 /* SubmissionComposeController.h */,
+				F0B9EBF8150DC472006CC3E7 /* SubmissionComposeController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -618,6 +620,8 @@
 		F0E5DD3614E707C500F60D43 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F0B9EBF4150DC264006CC3E7 /* PlaceholderTextView.h */,
+				F0B9EBF5150DC264006CC3E7 /* PlaceholderTextView.m */,
 				F044F7AA15036B6E0037B7A9 /* ABTableViewCell.h */,
 				F044F7AB15036B6E0037B7A9 /* ABTableViewCell.m */,
 				F044F7A2150366650037B7A9 /* CommentTableCell.h */,
@@ -632,20 +636,6 @@
 				F0E5DD3814E707D400F60D43 /* LoadingIndicatorView.m */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		F0E5DD5514E71D0B00F60D43 /* MWFeedParser */ = {
-			isa = PBXGroup;
-			children = (
-				F0E5DD5614E71D2300F60D43 /* MWFeedParser.h */,
-				F0E5DD5714E71D2300F60D43 /* MWFeedParser_Private.h */,
-				F0E5DD5814E71D2300F60D43 /* MWFeedParser.m */,
-				F0E5DD5914E71D2300F60D43 /* MWFeedInfo.h */,
-				F0E5DD5A14E71D2300F60D43 /* MWFeedInfo.m */,
-				F0E5DD5B14E71D2300F60D43 /* MWFeedItem.h */,
-				F0E5DD5C14E71D2300F60D43 /* MWFeedItem.m */,
-			);
-			name = MWFeedParser;
 			sourceTree = "<group>";
 		};
 		F0E5DD6014E71D2900F60D43 /* Categories */ = {
@@ -853,9 +843,6 @@
 				F0E5DD3914E707D400F60D43 /* LoadingIndicatorView.m in Sources */,
 				F0E5DD3C14E7080F00F60D43 /* PlacardButton.m in Sources */,
 				F0E5DD4A14E7120B00F60D43 /* PullToRefreshView.m in Sources */,
-				F0E5DD5D14E71D2300F60D43 /* MWFeedParser.m in Sources */,
-				F0E5DD5E14E71D2300F60D43 /* MWFeedInfo.m in Sources */,
-				F0E5DD5F14E71D2300F60D43 /* MWFeedItem.m in Sources */,
 				F0E5DD6414E71D4600F60D43 /* GTMNSString+HTML.m in Sources */,
 				F0E5DD6814E71D5F00F60D43 /* NSString+XMLEntities.m in Sources */,
 				F0E5DD6D14E71D7B00F60D43 /* NSString+HTML.m in Sources */,
@@ -891,6 +878,9 @@
 				F0B9EBEE150D3D7B006CC3E7 /* AFURLConnectionOperation.m in Sources */,
 				F0B9EBEF150D3D7B006CC3E7 /* AFXMLRequestOperation.m in Sources */,
 				F0B9EBF0150D3D7B006CC3E7 /* UIImageView+AFNetworking.m in Sources */,
+				F0B9EBF3150DC160006CC3E7 /* ComposeController.m in Sources */,
+				F0B9EBF6150DC264006CC3E7 /* PlaceholderTextView.m in Sources */,
+				F0B9EBF9150DC473006CC3E7 /* SubmissionComposeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
