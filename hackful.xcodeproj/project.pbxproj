@@ -39,6 +39,7 @@
 		F044F7D41503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D21503C9EF0037B7A9 /* NSDate+TimeAgo.m */; };
 		F044F7D91503E6730037B7A9 /* HKList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D81503E6720037B7A9 /* HKList.m */; };
 		F044F7DA1503E6730037B7A9 /* HKList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D81503E6720037B7A9 /* HKList.m */; };
+		F078C1DA150F104E00F713F3 /* NSDate+RailsDate.m in Sources */ = {isa = PBXBuildFile; fileRef = F078C1D9150F104E00F713F3 /* NSDate+RailsDate.m */; };
 		F0B9EBCA150CBB0D006CC3E7 /* HackfulLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBC9150CBB0D006CC3E7 /* HackfulLoginController.m */; };
 		F0B9EBCD150CBC48006CC3E7 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBCC150CBC48006CC3E7 /* LoginController.m */; };
 		F0B9EBE7150D3D7B006CC3E7 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBD3150D3D7B006CC3E7 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -185,6 +186,8 @@
 		F044F7D51503E2CF0037B7A9 /* HKListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKListDelegate.h; path = HackfulKit/HKListDelegate.h; sourceTree = "<group>"; };
 		F044F7D71503E6700037B7A9 /* HKList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKList.h; path = HackfulKit/HKList.h; sourceTree = "<group>"; };
 		F044F7D81503E6720037B7A9 /* HKList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKList.m; path = HackfulKit/HKList.m; sourceTree = "<group>"; };
+		F078C1D8150F104E00F713F3 /* NSDate+RailsDate.h */ = {isa = PBXFileReference; fileEncoding = 4; name = "NSDate+RailsDate.h"; path = "Categories/NSDate+RailsDate.h"; sourceTree = "<group>"; };
+		F078C1D9150F104E00F713F3 /* NSDate+RailsDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+RailsDate.m"; path = "Categories/NSDate+RailsDate.m"; sourceTree = "<group>"; };
 		F0B9EBC8150CBB0D006CC3E7 /* HackfulLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HackfulLoginController.h; path = Controllers/HackfulLoginController.h; sourceTree = "<group>"; };
 		F0B9EBC9150CBB0D006CC3E7 /* HackfulLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HackfulLoginController.m; path = Controllers/HackfulLoginController.m; sourceTree = "<group>"; };
 		F0B9EBCB150CBC48006CC3E7 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = Controllers/LoginController.h; sourceTree = "<group>"; };
@@ -647,6 +650,8 @@
 				F0E5DD6C14E71D7B00F60D43 /* NSDate+InternetDateTime.m */,
 				F044F7D11503C9EE0037B7A9 /* NSDate+TimeAgo.h */,
 				F044F7D21503C9EF0037B7A9 /* NSDate+TimeAgo.m */,
+				F078C1D8150F104E00F713F3 /* NSDate+RailsDate.h */,
+				F078C1D9150F104E00F713F3 /* NSDate+RailsDate.m */,
 				F0E5DD6514E71D5500F60D43 /* Depreciated */,
 				F0E5DD6114E71D3900F60D43 /* Google Toolbox for Mac */,
 			);
@@ -881,6 +886,7 @@
 				F0B9EBF3150DC160006CC3E7 /* ComposeController.m in Sources */,
 				F0B9EBF6150DC264006CC3E7 /* PlaceholderTextView.m in Sources */,
 				F0B9EBF9150DC473006CC3E7 /* SubmissionComposeController.m in Sources */,
+				F078C1DA150F104E00F713F3 /* NSDate+RailsDate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "NSDate+RailsDate.h"
 #import "HKPostList.h"
 #import "AFNetworking.h"
 #import "HKPost.h"
@@ -52,7 +53,7 @@
                           NSInteger userId = [[[jsonPost objectForKey:@"user"] objectForKey:@"id"] intValue];
                           NSString *username = [[jsonPost objectForKey:@"user"] objectForKey:@"name"];
                           
-                          NSDate *posted = [NSDate date];
+                          NSDate *posted = [NSDate dateForRailsDateString:createdAt];
                           HKUser *user = [[HKUser alloc] initWithId:userId username:username andEmail:nil];
                           
                           HKPost *post = [[HKPost alloc] initWithObjectId:objectId 
