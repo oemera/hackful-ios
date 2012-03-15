@@ -8,14 +8,24 @@
 
 #import "CommentsController.h"
 #import "HKCommentList.h"
+#import "HKPost.h"
+#import "HKComment.h"
 #import "CommentTableCell.h"
+#import "LoginController.h"
+#import "TableHeaderView.h"
+
+@interface CommentsController ()
++ (int)countCommentRecursively:(NSArray*)comments;
+@end
 
 @implementation CommentsController
 
 @synthesize commentList = _commentList;
+@synthesize post = _post;
 
 - (id)initWithPost:(HKPost *)post_ {
     if ((self = [super init])) {
+        _post = post_;
         HKCommentList *commentList = [[HKCommentList alloc] initWithPost:post_];
         commentList.delegate = self;
         [self setCommentList:commentList];
@@ -26,7 +36,6 @@
 
 #pragma mark - View lifecycle
 
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
     [super loadView];
     
@@ -53,10 +62,6 @@
     //[[self view] bringSubviewToFront:statusView];
 }
 
-- (void)composePressed {
-    NSLog(@"composePressed");
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -70,15 +75,23 @@
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
+#pragma mark - Actions
+
+- (void)composePressed {
+    NSLog(@"composePressed");
+}
+
 #pragma mark - HKListDelegate
+
 - (void)listFinishedLoading:(HKList *)list {
-    comments = [list entries];
+    comments = [CommentsController flattenTree:[list entries]];
     lastUpdated = [NSDate date];
     [pullToRefreshView finishedLoading];
     [tableView reloadData];
 }
 
 #pragma mark - PullToRefreshView
+
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view {
     NSLog(@"pullToRefreshViewShouldRefresh");
     if (![self.commentList isLoading]) [self.commentList beginLoading];
@@ -89,6 +102,7 @@
 }
 
 #pragma mark - UITableViewDataSource
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (comments == nil) return 0;
     return [comments count];
@@ -110,10 +124,77 @@
                                 showReplies:NO];
 }
 
+#pragma mark - Header
+
+- (void)setupHeader {
+    // Only show it if the source is at least partially loaded.
+    if (self.post.user == nil) return;
+    
+    detailsHeaderContainer = nil;
+    tableHeaderContainer = nil;
+    detailsHeaderView = nil;
+    
+    detailsHeaderView = [[TableHeaderView alloc] initWithPost:self.post];
+    [detailsHeaderView setClipsToBounds:YES];
+    [detailsHeaderView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin];
+    
+    detailsHeaderContainer = [[UIView alloc] initWithFrame:[detailsHeaderView bounds]];
+    [detailsHeaderContainer addSubview:detailsHeaderView];
+    [detailsHeaderContainer setClipsToBounds:YES];
+    [detailsHeaderContainer setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin];
+    [[detailsHeaderContainer layer] setContentsGravity:kCAGravityTopLeft];
+    
+    UIView *shadow = [[UIView alloc] initWithFrame:CGRectMake(-50.0f, [detailsHeaderView bounds].size.height, [[self view] bounds].size.width + 100.0f, 1.0f)];
+    CALayer *layer = [shadow layer];
+    [layer setShadowOffset:CGSizeMake(0, -2.0f)];
+    [layer setShadowRadius:5.0f];
+    [layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [layer setShadowOpacity:1.0f];
+    [shadow setBackgroundColor:[UIColor grayColor]];
+    [shadow setClipsToBounds:NO];
+    [shadow setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+    
+    tableHeaderContainer = [[UIView alloc] initWithFrame:[detailsHeaderView bounds]];
+    [tableHeaderContainer setBackgroundColor:[UIColor clearColor]];
+    [tableHeaderContainer addSubview:detailsHeaderContainer];
+    [tableHeaderContainer addSubview:shadow];
+    [tableHeaderContainer setClipsToBounds:NO];
+    [tableView setTableHeaderView:tableHeaderContainer];
+    
+    suggestedHeaderHeight = [detailsHeaderView bounds].size.height;
+    maximumHeaderHeight = [tableView bounds].size.height - 64.0f;
+    
+    // necessary since the core text view can steal this
+    [tableView setScrollsToTop:YES];
+}
+
+
 #pragma mark - UITableViewDelegate
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return NO;
 }
 
+#pragma mark - Comment Utils
+
++ (NSArray *)flattenTree:(NSArray*)comments {
+    NSMutableArray *flatArray = [[NSMutableArray alloc] init];
+    for (HKComment *child in comments) {
+        [flatArray addObject:child];
+        [flatArray addObjectsFromArray:[self flattenTree:child.comments]];
+    }
+    return [flatArray copy];
+}
+
++ (int)countCommentRecursively:(NSArray*)comments {
+    //NSLog(@"comment array length: %d ", [comments count]);
+    int recursiveCount = 0;
+    for (HKComment *child in comments) {
+        NSLog(@"text: %@ depth:%d", child.text, child.depth);
+        recursiveCount++;
+        recursiveCount += [self countCommentRecursively:child.comments];
+    }
+    return recursiveCount;
+}
 
 @end

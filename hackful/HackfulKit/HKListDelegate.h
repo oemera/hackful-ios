@@ -13,5 +13,6 @@
 
 @optional
 - (void)listFinishedLoading:(HKList *)list;
+- (void)listFinishedLoading:(HKList *)list withError:(NSError*)error;
 
 @end

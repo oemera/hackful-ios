@@ -17,4 +17,6 @@
 
 - (id)initWithId:(NSInteger)userId username:(NSString*)username andEmail:(NSString*)email;
 
++ (HKUser*)userFromJSON:(id)json;
+
 @end

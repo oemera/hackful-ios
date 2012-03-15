@@ -40,6 +40,7 @@
 		F044F7D91503E6730037B7A9 /* HKList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D81503E6720037B7A9 /* HKList.m */; };
 		F044F7DA1503E6730037B7A9 /* HKList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D81503E6720037B7A9 /* HKList.m */; };
 		F078C1DA150F104E00F713F3 /* NSDate+RailsDate.m in Sources */ = {isa = PBXBuildFile; fileRef = F078C1D9150F104E00F713F3 /* NSDate+RailsDate.m */; };
+		F078C1E0150F15C500F713F3 /* DetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F078C1DD150F15C500F713F3 /* DetailsHeaderView.m */; };
 		F0B9EBCA150CBB0D006CC3E7 /* HackfulLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBC9150CBB0D006CC3E7 /* HackfulLoginController.m */; };
 		F0B9EBCD150CBC48006CC3E7 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBCC150CBC48006CC3E7 /* LoginController.m */; };
 		F0B9EBE7150D3D7B006CC3E7 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBD3150D3D7B006CC3E7 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -55,6 +56,7 @@
 		F0B9EBF3150DC160006CC3E7 /* ComposeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBF2150DC160006CC3E7 /* ComposeController.m */; };
 		F0B9EBF6150DC264006CC3E7 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBF5150DC264006CC3E7 /* PlaceholderTextView.m */; };
 		F0B9EBF9150DC473006CC3E7 /* SubmissionComposeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBF8150DC472006CC3E7 /* SubmissionComposeController.m */; };
+		F0CC6C3F151061F3000FDE89 /* TableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CC6C3E151061F2000FDE89 /* TableHeaderView.m */; };
 		F0E2007E150419C600F847A2 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E20079150419C600F847A2 /* RootViewController.m */; };
 		F0E2007F150419C600F847A2 /* SideSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E2007B150419C600F847A2 /* SideSwipeTableViewCell.m */; };
 		F0E20080150419C600F847A2 /* SideSwipeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E2007D150419C600F847A2 /* SideSwipeTableViewController.m */; };
@@ -186,8 +188,10 @@
 		F044F7D51503E2CF0037B7A9 /* HKListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKListDelegate.h; path = HackfulKit/HKListDelegate.h; sourceTree = "<group>"; };
 		F044F7D71503E6700037B7A9 /* HKList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKList.h; path = HackfulKit/HKList.h; sourceTree = "<group>"; };
 		F044F7D81503E6720037B7A9 /* HKList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKList.m; path = HackfulKit/HKList.m; sourceTree = "<group>"; };
-		F078C1D8150F104E00F713F3 /* NSDate+RailsDate.h */ = {isa = PBXFileReference; fileEncoding = 4; name = "NSDate+RailsDate.h"; path = "Categories/NSDate+RailsDate.h"; sourceTree = "<group>"; };
+		F078C1D8150F104E00F713F3 /* NSDate+RailsDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+RailsDate.h"; path = "Categories/NSDate+RailsDate.h"; sourceTree = "<group>"; };
 		F078C1D9150F104E00F713F3 /* NSDate+RailsDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+RailsDate.m"; path = "Categories/NSDate+RailsDate.m"; sourceTree = "<group>"; };
+		F078C1DC150F15C500F713F3 /* DetailsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailsHeaderView.h; path = Views/DetailsHeaderView.h; sourceTree = "<group>"; };
+		F078C1DD150F15C500F713F3 /* DetailsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailsHeaderView.m; path = Views/DetailsHeaderView.m; sourceTree = "<group>"; };
 		F0B9EBC8150CBB0D006CC3E7 /* HackfulLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HackfulLoginController.h; path = Controllers/HackfulLoginController.h; sourceTree = "<group>"; };
 		F0B9EBC9150CBB0D006CC3E7 /* HackfulLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HackfulLoginController.m; path = Controllers/HackfulLoginController.m; sourceTree = "<group>"; };
 		F0B9EBCB150CBC48006CC3E7 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = Controllers/LoginController.h; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 		F0B9EBF5150DC264006CC3E7 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceholderTextView.m; path = Views/PlaceholderTextView.m; sourceTree = "<group>"; };
 		F0B9EBF7150DC471006CC3E7 /* SubmissionComposeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubmissionComposeController.h; path = Controllers/SubmissionComposeController.h; sourceTree = "<group>"; };
 		F0B9EBF8150DC472006CC3E7 /* SubmissionComposeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubmissionComposeController.m; path = Controllers/SubmissionComposeController.m; sourceTree = "<group>"; };
+		F0CC6C3D151061F2000FDE89 /* TableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableHeaderView.h; path = Views/TableHeaderView.h; sourceTree = "<group>"; };
+		F0CC6C3E151061F2000FDE89 /* TableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableHeaderView.m; path = Views/TableHeaderView.m; sourceTree = "<group>"; };
 		F0E20078150419C600F847A2 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		F0E20079150419C600F847A2 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		F0E2007A150419C600F847A2 /* SideSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideSwipeTableViewCell.h; sourceTree = "<group>"; };
@@ -305,8 +311,8 @@
 		F0E5DD3A14E7080F00F60D43 /* PlacardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacardButton.h; sourceTree = "<group>"; };
 		F0E5DD3B14E7080F00F60D43 /* PlacardButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacardButton.m; sourceTree = "<group>"; };
 		F0E5DD4614E7118600F60D43 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		F0E5DD4814E7120A00F60D43 /* PullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshView.h; sourceTree = "<group>"; };
-		F0E5DD4914E7120B00F60D43 /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshView.m; sourceTree = "<group>"; };
+		F0E5DD4814E7120A00F60D43 /* PullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PullToRefreshView.h; path = hackful/PullToRefreshView.h; sourceTree = "<group>"; };
+		F0E5DD4914E7120B00F60D43 /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PullToRefreshView.m; path = hackful/PullToRefreshView.m; sourceTree = "<group>"; };
 		F0E5DD6214E71D4600F60D43 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		F0E5DD6314E71D4600F60D43 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		F0E5DD6614E71D5F00F60D43 /* NSString+XMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XMLEntities.h"; sourceTree = "<group>"; };
@@ -392,6 +398,15 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		F0C5BB201511C08600F14F5E /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				F0E5DD4814E7120A00F60D43 /* PullToRefreshView.h */,
+				F0E5DD4914E7120B00F60D43 /* PullToRefreshView.m */,
+			);
+			name = PullToRefresh;
+			sourceTree = "<group>";
+		};
 		F0E20077150419C600F847A2 /* SideSwipe */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +446,7 @@
 		F0E5DC3E14E6FA2800F60D43 = {
 			isa = PBXGroup;
 			children = (
+				F0C5BB201511C08600F14F5E /* PullToRefresh */,
 				F0B9EBD1150D3D7B006CC3E7 /* AFNetworking */,
 				F0E5DC5514E6FA2800F60D43 /* hackful */,
 				F0E5DC7114E6FA2800F60D43 /* hackfulTests */,
@@ -540,8 +556,6 @@
 			children = (
 				F044F78E15028DFD0037B7A9 /* HKSession.h */,
 				F044F78F15028DFD0037B7A9 /* HKSession.m */,
-				F0E8B6ED150099E100488EFF /* HKPostList.h */,
-				F0E8B6EE150099E100488EFF /* HKPostList.m */,
 				F044F77F150288FE0037B7A9 /* HKUser.h */,
 				F044F780150288FE0037B7A9 /* HKUser.m */,
 				F044F78215028A9A0037B7A9 /* HKPost.h */,
@@ -556,11 +570,13 @@
 				F044F79715028E370037B7A9 /* HKNotifications.m */,
 				F044F79E150351460037B7A9 /* HKEntry.h */,
 				F044F79F150351460037B7A9 /* HKEntry.m */,
-				F044F7C9150391EF0037B7A9 /* HKCommentList.h */,
-				F044F7CA150391EF0037B7A9 /* HKCommentList.m */,
 				F044F7D51503E2CF0037B7A9 /* HKListDelegate.h */,
 				F044F7D71503E6700037B7A9 /* HKList.h */,
 				F044F7D81503E6720037B7A9 /* HKList.m */,
+				F0E8B6ED150099E100488EFF /* HKPostList.h */,
+				F0E8B6EE150099E100488EFF /* HKPostList.m */,
+				F044F7C9150391EF0037B7A9 /* HKCommentList.h */,
+				F044F7CA150391EF0037B7A9 /* HKCommentList.m */,
 			);
 			name = HackfulKit;
 			sourceTree = "<group>";
@@ -623,6 +639,8 @@
 		F0E5DD3614E707C500F60D43 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F078C1DC150F15C500F713F3 /* DetailsHeaderView.h */,
+				F078C1DD150F15C500F713F3 /* DetailsHeaderView.m */,
 				F0B9EBF4150DC264006CC3E7 /* PlaceholderTextView.h */,
 				F0B9EBF5150DC264006CC3E7 /* PlaceholderTextView.m */,
 				F044F7AA15036B6E0037B7A9 /* ABTableViewCell.h */,
@@ -631,12 +649,12 @@
 				F044F7A3150366650037B7A9 /* CommentTableCell.m */,
 				F044F7A4150366650037B7A9 /* SubmissionTableCell.h */,
 				F044F7A5150366650037B7A9 /* SubmissionTableCell.m */,
-				F0E5DD4814E7120A00F60D43 /* PullToRefreshView.h */,
-				F0E5DD4914E7120B00F60D43 /* PullToRefreshView.m */,
 				F0E5DD3A14E7080F00F60D43 /* PlacardButton.h */,
 				F0E5DD3B14E7080F00F60D43 /* PlacardButton.m */,
 				F0E5DD3714E707D400F60D43 /* LoadingIndicatorView.h */,
 				F0E5DD3814E707D400F60D43 /* LoadingIndicatorView.m */,
+				F0CC6C3D151061F2000FDE89 /* TableHeaderView.h */,
+				F0CC6C3E151061F2000FDE89 /* TableHeaderView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -887,6 +905,8 @@
 				F0B9EBF6150DC264006CC3E7 /* PlaceholderTextView.m in Sources */,
 				F0B9EBF9150DC473006CC3E7 /* SubmissionComposeController.m in Sources */,
 				F078C1DA150F104E00F713F3 /* NSDate+RailsDate.m in Sources */,
+				F078C1E0150F15C500F713F3 /* DetailsHeaderView.m in Sources */,
+				F0CC6C3F151061F3000FDE89 /* TableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,9 +978,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				"HEADER_SEARCH_PATHS[arch=*]" = "\"$(SOURCE_ROOT)/Libraries/RestKit/Build\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"$(SOURCE_ROOT)/Libraries/RestKit/Build/$(BUILD_STYLE)-$(PLATFORM_NAME)\"";
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-ObjC",
 					"-all_load",
@@ -983,9 +1001,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				"HEADER_SEARCH_PATHS[arch=*]" = "\"$(SOURCE_ROOT)/Libraries/RestKit/Build\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"$(SOURCE_ROOT)/Libraries/RestKit/Build/$(BUILD_STYLE)-$(PLATFORM_NAME)\"";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-ObjC",

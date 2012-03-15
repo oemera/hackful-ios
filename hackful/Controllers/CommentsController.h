@@ -12,20 +12,27 @@
 #import "HKListDelegate.h"
 
 @class HKPost;
-@class LoadMoreButton;
+@class TableHeaderView;
+
 
 @interface CommentsController : UIViewController <UITableViewDelegate, 
 UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate> {
     UITableView *tableView;
     UILabel *emptyLabel;
-    LoadMoreButton *moreButton;
     PullToRefreshView *pullToRefreshView;
     NSArray *comments;
     NSDate *lastUpdated;
     UIBarButtonItem *composeItem;
+    
+    UIView *detailsHeaderContainer;
+    TableHeaderView *detailsHeaderView;
+    UIView *tableHeaderContainer;
+    CGFloat suggestedHeaderHeight;
+    CGFloat maximumHeaderHeight;
 }
 
 @property (nonatomic, strong) HKCommentList *commentList;
+@property (nonatomic, strong, readonly) HKPost *post;
 
 - (id)initWithPost:(HKPost *)post_;
 

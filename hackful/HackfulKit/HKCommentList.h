@@ -15,9 +15,8 @@
 @interface HKCommentList : HKList {
     BOOL isLoading;
     id<HKListDelegate> delegate;
-    NSURL *apiUrl;
     HKPost *post;
-    NSString *commentPath;
+    NSString *resourcePath;
 }
 
 @property (nonatomic, assign) id<HKListDelegate> delegate;

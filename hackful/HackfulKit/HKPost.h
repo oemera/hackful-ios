@@ -26,4 +26,6 @@
                   text:(NSString*)text
                   andUser:(HKUser*)user;
 
++ (HKPost*)postFromJSON:(id)json;
+
 @end

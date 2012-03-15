@@ -140,21 +140,21 @@
 }
 
 #pragma mark - UITableViewDelegate
-/*- (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HKPost *post = [entries objectAtIndex:indexPath.row];
     
-    if ([[post.link host] length] == 0) {
-        CommentsController *commentsController = [[CommentsController alloc] initWithPost:post];
-        [self.navigationController pushViewController:commentsController animated:YES];
-    } else {
+    //if ([post.link length] == 0) {
+    CommentsController *commentsController = [[CommentsController alloc] initWithPost:post];
+    [self.navigationController pushViewController:commentsController animated:YES];
+    /*} else {
         UIWebView *webView = [[UIWebView alloc] init];
         UIViewController *webViewController = [[UIViewController alloc] init];
         [webViewController setView:webView];
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:post.link];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:post.link]];
         [webView loadRequest:request];
         [self.navigationController pushViewController:webViewController animated:YES];
-    }
-}*/
+    }*/
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return NO;

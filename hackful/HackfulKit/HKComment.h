@@ -11,7 +11,9 @@
 
 @interface HKComment : HKEntry
 
-@property (nonatomic, strong) NSString* commentableId;
-@property (nonatomic, strong) NSString* commentableType;
+@property (nonatomic, strong) NSArray* comments;
+@property (nonatomic) NSInteger depth;
+
++ (HKComment*)commentFromJSON:(id)json;
 
 @end

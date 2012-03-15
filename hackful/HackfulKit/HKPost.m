@@ -7,6 +7,7 @@
 //
 
 #import "HKPost.h"
+#import "NSDate+RailsDate.h"
 
 @implementation HKPost
 
@@ -35,6 +36,28 @@
     }
     
     return self;
+}
+
++ (HKPost*)postFromJSON:(id)json {
+    NSInteger commentCount = [[json objectForKey:@"comment_count"] intValue];
+    NSString *createdAt = [json objectForKey:@"created_at"];
+    NSInteger objectId = [[json objectForKey:@"id"] intValue];
+    NSString *link = [json objectForKey:@"link"];
+    NSString *text = [json objectForKey:@"text"];
+    NSString *title = [json objectForKey:@"title"];
+    NSInteger upvotes = [[json objectForKey:@"up_votes"] intValue];
+    NSDate *posted = [NSDate dateForRailsDateString:createdAt];
+    HKUser *user = [HKUser userFromJSON:[json objectForKey:@"user"]];
+    
+    HKPost *post = [[HKPost alloc] initWithObjectId:objectId 
+                                               link:link 
+                                              title:title 
+                                       commentCount:commentCount 
+                                             posted:posted 
+                                              votes:upvotes 
+                                               text:text 
+                                            andUser:user];
+    return post;
 }
 
 @end

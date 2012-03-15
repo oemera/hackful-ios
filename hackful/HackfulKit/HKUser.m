@@ -24,4 +24,13 @@
     return self;
 }
 
++ (HKUser*)userFromJSON:(id)json {
+    NSInteger objectId = [[json objectForKey:@"id"] intValue];
+    NSString *name = [json objectForKey:@"name"];
+    NSString *email = [json objectForKey:@"email"];
+    
+    HKUser *user = [[HKUser alloc] initWithId:objectId username:name andEmail:email];
+    return user;
+}
+
 @end

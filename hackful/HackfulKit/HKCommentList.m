@@ -6,12 +6,13 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "AFNetworking.h"
 #import "HKCommentList.h"
 #import "HKPost.h"
 #import "HKComment.h"
 #import "HKUser.h"
 
-#define HACKFUL_API_BASE_URL @"http://192.168.1.110:3000/api/v1"
+#define HACKFUL_API_BASE_URL @"http://192.168.1.110:3000"
 
 @implementation HKCommentList
 
@@ -20,8 +21,9 @@
 - (id)initWithPost:(HKPost *)post_ {
     if(self = [super init]) {
         post = post_;
+        NSLog(@"objectId: %d", post_.objectId);
         // TODO: change objectId to int
-        commentPath = [NSString stringWithFormat:@"/comments/post/%@", [post objectId]];
+        resourcePath = [NSString stringWithFormat:@"/api/v1/comments/post/%d", [post objectId]];
         isLoading = NO;
     }
     
@@ -29,20 +31,44 @@
 }
 
 - (void)beginLoading {
-    NSLog(@"beginLoading path: %@", commentPath);
+    NSLog(@"beginLoading path: %@", resourcePath);
     
-    [self.mutableEntries removeAllObjects];
+    NSURL *url = [NSURL URLWithString:HACKFUL_API_BASE_URL];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" 
+                                                            path:resourcePath
+                                                      parameters:nil];
+    
+    __block HKCommentList *blocksafeSelf = self;
+    AFJSONRequestOperation *operation;
+    operation =  [AFJSONRequestOperation 
+                  JSONRequestOperationWithRequest:request
+                  success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
+                      [blocksafeSelf.mutableEntries removeAllObjects];
+                      for (id jsonComment in jsonObject) {
+                          HKComment *comment = [HKComment commentFromJSON:jsonComment];
+                          [blocksafeSelf.mutableEntries addObject:comment];
+                      }
+                      isLoading = NO;
+                      
+                      if ([blocksafeSelf.delegate respondsToSelector:@selector(listFinishedLoading:)]) {
+                          NSLog(@"respondsToSelector entryListFinishedLoading");
+                          [blocksafeSelf.delegate listFinishedLoading:self];
+                      }
+                  }
+                  failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
+                      NSLog(@"Couldn't load comments");
+                      NSLog(@"error %@", error);
+                      if ([blocksafeSelf.delegate respondsToSelector:@selector(listFinishedLoading:withError:)]) {
+                          NSLog(@"respondsToSelector listFinishedLoading:withError:");
+                          /*NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                          [errorDetail setValue:@"Failed to load comments" forKey:NSLocalizedDescriptionKey];
+                          NSError *error = [NSError errorWithDomain:@"HKCommentList" code:-1 userInfo:errorDetail];*/
+                          [blocksafeSelf.delegate listFinishedLoading:self withError:error];
+                      }
+                  }];
+    [operation start];
     isLoading = YES;
-}
-
-- (void)finishedLoading {
-    NSLog(@"finishedLoading");
-    if ([self.delegate respondsToSelector:@selector(listFinishedLoading:)]) {
-        NSLog(@"respondsToSelector entryListFinishedLoading");
-		[self.delegate listFinishedLoading:self];
-    } else {
-        NSLog(@"didn't respondToSelector entryListFinishedLoading");
-    }
 }
 
 - (BOOL)isLoading {
