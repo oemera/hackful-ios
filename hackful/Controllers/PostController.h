@@ -16,7 +16,7 @@
 @class PlacardButton;
 @class LoadMoreButton;
 
-@interface EntryListController : SideSwipeTableViewController <UITableViewDelegate, 
+@interface PostController : SideSwipeTableViewController <UITableViewDelegate, 
 UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate> {
     PlacardButton *retryButton;
     LoadingIndicatorView *indicator;

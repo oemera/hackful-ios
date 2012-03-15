@@ -5,7 +5,7 @@
 #import "NSDate+TimeAgo.h"
 
 @implementation CommentTableCell
-@synthesize comment, indentationLevel, showReplies;
+@synthesize comment;
 
 - (id)initWithReuseIdentifier:(NSString *)identifier {
     if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier])) {
@@ -27,18 +27,6 @@
 
 - (void)setComment:(HKComment *)comment_ {
     comment = comment_;
-    
-    [self setNeedsDisplay];
-}
-
-- (void)setShowReplies:(BOOL)replies {
-    showReplies = replies;
-    
-    [self setNeedsDisplay];
-}
-
-- (void)setIndentationLevel:(int)level {
-    indentationLevel = level;
     
     [self setNeedsDisplay];
 }
@@ -88,14 +76,14 @@
     CGSize size = CGSizeMake(width - 16.0f, CGFLOAT_MAX);
     size.width -= (indentationLevel * 15.0f);
     
-    NSNumber *shortComments = [[NSUserDefaults standardUserDefaults] objectForKey:@"interface-short-comments"];
+    //NSNumber *shortComments = [[NSUserDefaults standardUserDefaults] objectForKey:@"interface-short-comments"];
     
-    if (shortComments == nil || [shortComments boolValue]) {
+    /*if (shortComments == nil || [shortComments boolValue]) {
         // Show only three lines of text.
         CGFloat singleHeight = [[self bodyFont] lineHeight];
         CGFloat tripleHeight = singleHeight * 3;
         if (size.height > tripleHeight) size.height = tripleHeight;
-    }
+    }*/
     
     return ceilf([[self formatBodyText:text] sizeWithFont:[self bodyFont] constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap].height);
 }
@@ -112,15 +100,16 @@
 
 - (void)drawContentView:(CGRect)rect {
     CGRect bounds = [self bounds];
-    bounds.origin.x += (indentationLevel * 15.0f);
+    bounds.origin.x += (comment.depth * 15.0f);
     
-    CGSize offsets = CGSizeMake(8.0f, 4.0f);
+    int replyOffset = 0;
+    if (comment.depth > 0) replyOffset = 1; 
+    CGSize offsets = CGSizeMake((8.0f + replyOffset), 4.0f);
     
     NSString *user = [[comment user] name];
     NSString *date = [NSDate stringForTimeIntervalSinceCreated:[comment posted]];
     NSString *points = [comment votes] == 1 ? @"1 point" : [NSString stringWithFormat:@"%d points", [comment votes]];
-    NSString *comments = @"not implemented";
-    //NSString *comments = [comment children] == 0 ? @"" : [comment children] == 1 ? @"1 reply" : [NSString stringWithFormat:@"%d replies", [comment children]];
+    //NSString *comments = @"not implemented";
     NSString *body = [[self class] formatBodyText:[comment text]];
     
     if ([self isHighlighted] || [self isSelected]) [[UIColor whiteColor] set];
@@ -134,7 +123,9 @@
     
     if (!([self isHighlighted] || [self isSelected])) [[UIColor blackColor] set];
     CGRect bodyrect;
-    bodyrect.size.height = [[self class] heightForBodyText:body withWidth:bounds.size.width indentationLevel:indentationLevel];
+    NSLog(@"height: %f", [[self class] heightForBodyText:body withWidth:bounds.size.width indentationLevel:self.comment.depth]);
+    
+    bodyrect.size.height = [[self class] heightForBodyText:body withWidth:bounds.size.width indentationLevel:self.comment.depth];
     bodyrect.size.width = bounds.size.width - bounds.origin.x - offsets.width - offsets.width;
     bodyrect.origin.x = bounds.origin.x + offsets.width;
     bodyrect.origin.y = offsets.height + 19.0f;
@@ -149,14 +140,19 @@
     if ([[self class] entryShowsPoints:comment])
           [points drawInRect:pointsrect withFont:[[self class] subtleFont] lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
     
-    if (!([self isHighlighted] || [self isSelected])) [[UIColor grayColor] set];
+    if (comment.depth > 0) {
+        UIImage *replyArrow = [UIImage imageNamed:@"comment-arrow.png"];
+        [replyArrow drawInRect:CGRectMake(bounds.origin.x - 5, bounds.origin.y + 6, 9, 10)];
+    }
+    /*if (!([self isHighlighted] || [self isSelected])) [[UIColor grayColor] set];
     CGRect commentsrect;
     commentsrect.size.height = [comments sizeWithFont:[[self class] subtleFont]].height;
     commentsrect.size.width = (bounds.size.width - bounds.origin.x) / 2 - offsets.width * 2;
-    commentsrect.origin.x = bounds.size.width - (bounds.size.width - bounds.origin.x) / 2 + offsets.width;
+    commentsrect.origin.x = 100 + bounds.size.width - (bounds.size.width - bounds.origin.x) / 2 + offsets.width;
     commentsrect.origin.y = bounds.size.height - offsets.height - commentsrect.size.height;
     if (showReplies)
-        [comments drawInRect:commentsrect withFont:[[self class] subtleFont] lineBreakMode:UILineBreakModeHeadTruncation alignment:UITextAlignmentRight];    
+        [comments drawInRect:commentsrect withFont:[[self class] subtleFont] lineBreakMode:UILineBreakModeHeadTruncation alignment:UITextAlignmentRight];*/
+    
 }
 
 @end

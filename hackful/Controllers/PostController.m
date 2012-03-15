@@ -6,26 +6,26 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "EntryListController.h"
+#import "PostController.h"
 #import "LoadingIndicatorView.h"
 #import "PlacardButton.h"
 #import "HKPostList.h"
 #import "HKEntry.h"
 #import "HKPost.h"
 #import "HKComment.h"
-#import "SubmissionTableCell.h"
 #import "CommentsController.h"
 #import "SideSwipeTableViewCell.h"
+#import "SubmissionTableCell.h"
 
 #define BUTTON_LEFT_MARGIN 35.5
 #define BUTTON_SPACING 32.0
 
-@interface EntryListController()
+@interface PostController()
 - (void) setupSideSwipeView;
 - (UIImage*) imageFilledWith:(UIColor*)color using:(UIImage*)startImage;
 @end
 
-@implementation EntryListController
+@implementation PostController
 
 @synthesize postList = _postList;
 
@@ -48,13 +48,6 @@
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     [[self view] addSubview:tableView];
-        
-    /*emptyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    [emptyLabel setFont:[UIFont systemFontOfSize:17.0f]];
-    [emptyLabel setTextColor:[UIColor grayColor]];
-    [emptyLabel setBackgroundColor:[UIColor clearColor]];
-    [emptyLabel setText:@"No Items"];
-    [emptyLabel setTextAlignment:UITextAlignmentCenter];*/
         
     pullToRefreshView = [[PullToRefreshView alloc] initWithScrollView:tableView];
     [pullToRefreshView setState:PullToRefreshViewStateLoading];
@@ -89,7 +82,8 @@
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
-#pragma mark - EntryListDelegate
+#pragma mark - ListDelegate
+
 - (void)listFinishedLoading:(HKPostList *)entryList {
     NSLog(@"listFinishedLoading");
     entries = [[entryList entries] copy];
@@ -99,8 +93,8 @@
 }
 
 #pragma mark - PullToRefreshView
+
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view {
-    NSLog(@"pullToRefreshViewShouldRefresh");
     NSLog(@"is already loading? %@", [self.postList isLoading]);
     if (![self.postList isLoading]) [self.postList beginLoading];
 }
@@ -110,6 +104,7 @@
 }
 
 #pragma mark - UITableViewDataSource
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (entries == nil) return 0;
     return [entries count];
@@ -117,9 +112,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView_ cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HKPost *post = [entries objectAtIndex:indexPath.row];
-    /*SubmissionTableCell *cell = (SubmissionTableCell *) [tableView dequeueReusableCellWithIdentifier:@"submission"];
-    if (cell == nil) cell = [[[SubmissionTableCell alloc] initWithReuseIdentifier:@"submission"] autorelease];
-    [cell setSubmission:post];*/
     
     static NSString *CellIdentifier = @"SwipeCell";
     SideSwipeTableViewCell *cell = (SideSwipeTableViewCell*)[tableView_ dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -140,6 +132,7 @@
 }
 
 #pragma mark - UITableViewDelegate
+
 - (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HKPost *post = [entries objectAtIndex:indexPath.row];
     
@@ -161,6 +154,7 @@
 }
 
 #pragma mark Button touch up inside action
+
 - (void) touchUpInsideAction:(UIButton*)button {
     // TODO: do the same with HUD
     
@@ -178,6 +172,7 @@
 }
 
 #pragma mark Generate images with given fill color
+
 // Convert the image's fill color to the passed in color
 -(UIImage*) imageFilledWith:(UIColor*)color using:(UIImage*)startImage {
     // Create the proper sized rect
@@ -205,6 +200,7 @@
 }
 
 #pragma mark - Swipe implementation
+
 - (void) setupSideSwipeView {
     
     // TODO: we need a bigger tap field for buttons. At the moment there is 

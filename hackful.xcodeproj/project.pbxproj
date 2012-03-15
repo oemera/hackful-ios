@@ -27,11 +27,8 @@
 		F044F7A0150351470037B7A9 /* HKEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F79F150351460037B7A9 /* HKEntry.m */; };
 		F044F7A1150351470037B7A9 /* HKEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F79F150351460037B7A9 /* HKEntry.m */; };
 		F044F7A6150366660037B7A9 /* CommentTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7A3150366650037B7A9 /* CommentTableCell.m */; };
-		F044F7A7150366660037B7A9 /* CommentTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7A3150366650037B7A9 /* CommentTableCell.m */; };
 		F044F7A8150366660037B7A9 /* SubmissionTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7A5150366650037B7A9 /* SubmissionTableCell.m */; };
-		F044F7A9150366660037B7A9 /* SubmissionTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7A5150366650037B7A9 /* SubmissionTableCell.m */; };
 		F044F7AC15036B6E0037B7A9 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7AB15036B6E0037B7A9 /* ABTableViewCell.m */; };
-		F044F7AD15036B6E0037B7A9 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7AB15036B6E0037B7A9 /* ABTableViewCell.m */; };
 		F044F7C815038F830037B7A9 /* CommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7C715038F830037B7A9 /* CommentsController.m */; };
 		F044F7CB150391EF0037B7A9 /* HKCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7CA150391EF0037B7A9 /* HKCommentList.m */; };
 		F044F7CC150391EF0037B7A9 /* HKCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7CA150391EF0037B7A9 /* HKCommentList.m */; };
@@ -56,6 +53,7 @@
 		F0B9EBF3150DC160006CC3E7 /* ComposeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBF2150DC160006CC3E7 /* ComposeController.m */; };
 		F0B9EBF6150DC264006CC3E7 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBF5150DC264006CC3E7 /* PlaceholderTextView.m */; };
 		F0B9EBF9150DC473006CC3E7 /* SubmissionComposeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBF8150DC472006CC3E7 /* SubmissionComposeController.m */; };
+		F0C5BB27151286DD00F14F5E /* comment-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F0C5BB26151286DD00F14F5E /* comment-arrow.png */; };
 		F0CC6C3F151061F3000FDE89 /* TableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CC6C3E151061F2000FDE89 /* TableHeaderView.m */; };
 		F0E2007E150419C600F847A2 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E20079150419C600F847A2 /* RootViewController.m */; };
 		F0E2007F150419C600F847A2 /* SideSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E2007B150419C600F847A2 /* SideSwipeTableViewCell.m */; };
@@ -126,7 +124,7 @@
 		F0E5DD2D14E7010200F60D43 /* upvote@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E5DD0814E7010200F60D43 /* upvote@2x.png */; };
 		F0E5DD2E14E7010200F60D43 /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E5DD0914E7010200F60D43 /* x.png */; };
 		F0E5DD2F14E7010200F60D43 /* x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E5DD0A14E7010200F60D43 /* x@2x.png */; };
-		F0E5DD3514E7033600F60D43 /* EntryListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD3414E7033600F60D43 /* EntryListController.m */; };
+		F0E5DD3514E7033600F60D43 /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD3414E7033600F60D43 /* PostController.m */; };
 		F0E5DD3914E707D400F60D43 /* LoadingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD3814E707D400F60D43 /* LoadingIndicatorView.m */; };
 		F0E5DD3C14E7080F00F60D43 /* PlacardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD3B14E7080F00F60D43 /* PlacardButton.m */; };
 		F0E5DD4714E7118600F60D43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DD4614E7118600F60D43 /* QuartzCore.framework */; };
@@ -223,6 +221,7 @@
 		F0B9EBF5150DC264006CC3E7 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceholderTextView.m; path = Views/PlaceholderTextView.m; sourceTree = "<group>"; };
 		F0B9EBF7150DC471006CC3E7 /* SubmissionComposeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubmissionComposeController.h; path = Controllers/SubmissionComposeController.h; sourceTree = "<group>"; };
 		F0B9EBF8150DC472006CC3E7 /* SubmissionComposeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubmissionComposeController.m; path = Controllers/SubmissionComposeController.m; sourceTree = "<group>"; };
+		F0C5BB26151286DD00F14F5E /* comment-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-arrow.png"; sourceTree = "<group>"; };
 		F0CC6C3D151061F2000FDE89 /* TableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableHeaderView.h; path = Views/TableHeaderView.h; sourceTree = "<group>"; };
 		F0CC6C3E151061F2000FDE89 /* TableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableHeaderView.m; path = Views/TableHeaderView.m; sourceTree = "<group>"; };
 		F0E20078150419C600F847A2 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -304,8 +303,8 @@
 		F0E5DD0814E7010200F60D43 /* upvote@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upvote@2x.png"; sourceTree = "<group>"; };
 		F0E5DD0914E7010200F60D43 /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
 		F0E5DD0A14E7010200F60D43 /* x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x@2x.png"; sourceTree = "<group>"; };
-		F0E5DD3314E7033600F60D43 /* EntryListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntryListController.h; path = Controllers/EntryListController.h; sourceTree = "<group>"; };
-		F0E5DD3414E7033600F60D43 /* EntryListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntryListController.m; path = Controllers/EntryListController.m; sourceTree = "<group>"; };
+		F0E5DD3314E7033600F60D43 /* PostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostController.h; path = Controllers/PostController.h; sourceTree = "<group>"; };
+		F0E5DD3414E7033600F60D43 /* PostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostController.m; path = Controllers/PostController.m; sourceTree = "<group>"; };
 		F0E5DD3714E707D400F60D43 /* LoadingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingIndicatorView.h; sourceTree = "<group>"; };
 		F0E5DD3814E707D400F60D43 /* LoadingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingIndicatorView.m; sourceTree = "<group>"; };
 		F0E5DD3A14E7080F00F60D43 /* PlacardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacardButton.h; sourceTree = "<group>"; };
@@ -358,6 +357,7 @@
 		F04333941506B7B100C676F0 /* New */ = {
 			isa = PBXGroup;
 			children = (
+				F0C5BB26151286DD00F14F5E /* comment-arrow.png */,
 				F04333B11506BE6300C676F0 /* 58-bookmark.png */,
 				F04333B21506BE6300C676F0 /* 58-bookmark@2x.png */,
 				F04333AB1506BE0200C676F0 /* comments.png */,
@@ -537,8 +537,8 @@
 				F0E5DC8814E6FB9000F60D43 /* NavigationController.m */,
 				F0E5DCE114E6FFED00F60D43 /* MainTabBarController.h */,
 				F0E5DCE214E6FFED00F60D43 /* MainTabBarController.m */,
-				F0E5DD3314E7033600F60D43 /* EntryListController.h */,
-				F0E5DD3414E7033600F60D43 /* EntryListController.m */,
+				F0E5DD3314E7033600F60D43 /* PostController.h */,
+				F0E5DD3414E7033600F60D43 /* PostController.m */,
 				F044F7C615038F830037B7A9 /* CommentsController.h */,
 				F044F7C715038F830037B7A9 /* CommentsController.m */,
 				F0B9EBC8150CBB0D006CC3E7 /* HackfulLoginController.h */,
@@ -824,6 +824,7 @@
 				F04333B01506BE0300C676F0 /* up_arrow.png in Resources */,
 				F04333B31506BE6300C676F0 /* 58-bookmark.png in Resources */,
 				F04333B41506BE6300C676F0 /* 58-bookmark@2x.png in Resources */,
+				F0C5BB27151286DD00F14F5E /* comment-arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,7 +863,7 @@
 				F0E5DC6014E6FA2800F60D43 /* HackfulAppDelegate.m in Sources */,
 				F0E5DC8914E6FB9100F60D43 /* NavigationController.m in Sources */,
 				F0E5DCE314E6FFED00F60D43 /* MainTabBarController.m in Sources */,
-				F0E5DD3514E7033600F60D43 /* EntryListController.m in Sources */,
+				F0E5DD3514E7033600F60D43 /* PostController.m in Sources */,
 				F0E5DD3914E707D400F60D43 /* LoadingIndicatorView.m in Sources */,
 				F0E5DD3C14E7080F00F60D43 /* PlacardButton.m in Sources */,
 				F0E5DD4A14E7120B00F60D43 /* PullToRefreshView.m in Sources */,
@@ -919,9 +920,6 @@
 				F044F79515028E190037B7A9 /* HKMessage.m in Sources */,
 				F044F79915028E370037B7A9 /* HKNotifications.m in Sources */,
 				F044F7A1150351470037B7A9 /* HKEntry.m in Sources */,
-				F044F7A7150366660037B7A9 /* CommentTableCell.m in Sources */,
-				F044F7A9150366660037B7A9 /* SubmissionTableCell.m in Sources */,
-				F044F7AD15036B6E0037B7A9 /* ABTableViewCell.m in Sources */,
 				F044F7CC150391EF0037B7A9 /* HKCommentList.m in Sources */,
 				F044F7D41503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */,
 				F044F7DA1503E6730037B7A9 /* HKList.m in Sources */,

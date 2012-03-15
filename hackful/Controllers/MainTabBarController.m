@@ -7,7 +7,7 @@
 //
 
 #import "MainTabBarController.h"
-#import "EntryListController.h"
+#import "PostController.h"
 #import "ComposeController.h"
 #import "SubmissionComposeController.h"
 #import "HKPostList.h"
@@ -28,17 +28,17 @@
 - (id)init {
     if ((self = [super init])) {
         HKPostList *homePostList = [[HKPostList alloc] initWithResourcePath:FRONTPAGE_RESOURCE_PATH];
-        EntryListController *home = [[EntryListController alloc] initWithEntryList:homePostList];
+        PostController *home = [[PostController alloc] initWithEntryList:homePostList];
         [home setTitle:@"Hackful Europe"];
         [home setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage imageNamed:@"home.png"] tag:0]];
         
         HKPostList *newPostList = [[HKPostList alloc] initWithResourcePath:NEW_RESOURCE_PATH];
-        EntryListController *latest = [[EntryListController alloc] initWithEntryList:newPostList];
+        PostController *latest = [[PostController alloc] initWithEntryList:newPostList];
         [latest setTitle:@"New Submissions"];
         [latest setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"New" image:[UIImage imageNamed:@"new.png"] tag:0]];
         
         HKPostList *askPostList = [[HKPostList alloc] initWithResourcePath:ASK_RESOURCE_PATH];
-        EntryListController *ask = [[EntryListController alloc] initWithEntryList:askPostList];
+        PostController *ask = [[PostController alloc] initWithEntryList:askPostList];
         [ask setTitle:@"Ask Hackful"];
         [ask setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Ask" image:[UIImage imageNamed:@"person.png"] tag:0]];
         

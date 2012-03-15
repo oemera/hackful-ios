@@ -10,14 +10,14 @@
 #import "PullToRefreshView.h"
 #import "HKCommentList.h"
 #import "HKListDelegate.h"
+#import "SideSwipeTableViewController.h"
 
 @class HKPost;
 @class TableHeaderView;
 
 
-@interface CommentsController : UIViewController <UITableViewDelegate, 
+@interface CommentsController : SideSwipeTableViewController <UITableViewDelegate, 
 UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate> {
-    UITableView *tableView;
     UILabel *emptyLabel;
     PullToRefreshView *pullToRefreshView;
     NSArray *comments;
@@ -29,6 +29,9 @@ UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate> {
     UIView *tableHeaderContainer;
     CGFloat suggestedHeaderHeight;
     CGFloat maximumHeaderHeight;
+    
+    NSArray* buttonData;
+    NSMutableArray* buttons;
 }
 
 @property (nonatomic, strong) HKCommentList *commentList;
