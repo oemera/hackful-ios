@@ -16,6 +16,7 @@
 @property (nonatomic, strong, readonly) NSString* link;
 @property (nonatomic, strong, readonly) NSString* title;
 @property (nonatomic, readonly) NSInteger commentCount;
+@property (nonatomic, strong) NSArray* comments;
 
 - (id)initWithObjectId:(NSInteger)objectId 
                   link:(NSString*)link

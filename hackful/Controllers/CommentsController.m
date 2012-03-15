@@ -30,6 +30,7 @@
 - (id)initWithPost:(HKPost *)post_ {
     if ((self = [super init])) {
         _post = post_;
+        comments = [CommentsController flattenTree:_post.comments];;
         HKCommentList *commentList = [[HKCommentList alloc] initWithPost:post_];
         commentList.delegate = self;
         [self setCommentList:commentList];
@@ -92,6 +93,7 @@
 #pragma mark - HKListDelegate
 
 - (void)listFinishedLoading:(HKList *)list {
+    self.post.comments = [list entries];
     comments = [CommentsController flattenTree:[list entries]];
     lastUpdated = [NSDate date];
     [pullToRefreshView finishedLoading];

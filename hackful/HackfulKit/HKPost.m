@@ -14,6 +14,7 @@
 @synthesize link = _link;
 @synthesize title = _title;
 @synthesize commentCount = _commentCount;
+@synthesize comments = _comments;
 
 - (id)initWithObjectId:(NSInteger)objectId 
                   link:(NSString*)link
