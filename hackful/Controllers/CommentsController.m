@@ -57,6 +57,7 @@
     [tableView addSubview:pullToRefreshView];
     [pullToRefreshView setDelegate:self];
     
+    [self setupHeader];
     [self setupSideSwipeView];
 }
 
@@ -142,7 +143,7 @@
     tableHeaderContainer = nil;
     detailsHeaderView = nil;
     
-    detailsHeaderView = [[TableHeaderView alloc] initWithPost:self.post];
+    detailsHeaderView = [[TableHeaderView alloc] initWithPost:self.post andWidth:self.view.bounds.size.width];
     [detailsHeaderView setClipsToBounds:YES];
     [detailsHeaderView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin];
     
@@ -167,6 +168,9 @@
     [tableHeaderContainer addSubview:detailsHeaderContainer];
     [tableHeaderContainer addSubview:shadow];
     [tableHeaderContainer setClipsToBounds:NO];
+    
+    //UIView *test = [[UIView alloc] initWithFrame:CGRectMake(0,70,320,44)];
+    //[test setBackgroundColor:[UIColor redColor]];
     [tableView setTableHeaderView:tableHeaderContainer];
     
     suggestedHeaderHeight = [detailsHeaderView bounds].size.height;

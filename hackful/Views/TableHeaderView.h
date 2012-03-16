@@ -15,7 +15,7 @@
     UIView *textView;
 }
 
-- (id)initWithPost:(HKPost*)post_;
+- (id)initWithPost:(HKPost*)post_ andWidth:(int)width;
 - (BOOL)hasURL;
 
 + (CGSize)offsets;

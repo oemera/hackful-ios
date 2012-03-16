@@ -11,7 +11,7 @@
 
 @implementation TableHeaderView
 
-- (id)initWithPost:(HKPost *)post_ {
+- (id)initWithPost:(HKPost *)post_ andWidth:(int)width {
     self = [super init];
     if (self) {
         post = post_;
@@ -20,7 +20,13 @@
         
         textView = [[UIView alloc] init];
         [self addSubview:textView];
+        [self setBackgroundColor:[UIColor whiteColor]];
         
+        CGRect frame;
+        frame.origin = CGPointZero;
+        frame.size.width = width;
+        frame.size.height = 100;
+        [self setFrame:frame];
     }
     
     return self;

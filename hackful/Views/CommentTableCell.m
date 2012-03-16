@@ -123,8 +123,6 @@
     
     if (!([self isHighlighted] || [self isSelected])) [[UIColor blackColor] set];
     CGRect bodyrect;
-    NSLog(@"height: %f", [[self class] heightForBodyText:body withWidth:bounds.size.width indentationLevel:self.comment.depth]);
-    
     bodyrect.size.height = [[self class] heightForBodyText:body withWidth:bounds.size.width indentationLevel:self.comment.depth];
     bodyrect.size.width = bounds.size.width - bounds.origin.x - offsets.width - offsets.width;
     bodyrect.origin.x = bounds.origin.x + offsets.width;
