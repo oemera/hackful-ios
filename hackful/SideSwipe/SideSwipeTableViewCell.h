@@ -17,6 +17,7 @@
 @property (nonatomic, strong) HKPost *post;
 
 - (id)initWithReuseIdentifier:(NSString *)identifier;
+
 + (CGFloat)heightForEntry:(HKPost *)post withWidth:(CGFloat)width;
 
 @end

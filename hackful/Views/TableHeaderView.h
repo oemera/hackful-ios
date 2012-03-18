@@ -15,12 +15,19 @@
     UIView *textView;
 }
 
-- (id)initWithPost:(HKPost*)post_ andWidth:(int)width;
+- (id)initWithPost:(HKPost*)post_ andWidth:(int)width_;
 - (BOOL)hasURL;
 
 + (CGSize)offsets;
 + (UIFont *)titleFont;
 + (UIFont *)subtleFont;
 + (UIImage *)disclosureImage;
+
+@end
+
+@protocol HeaderViewDelegate<NSObject>
+@optional
+
+- (void)detailsHeaderView:(TableHeaderView *)header selectedURL:(NSURL *)url;
 
 @end

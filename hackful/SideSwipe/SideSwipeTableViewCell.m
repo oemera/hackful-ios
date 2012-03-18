@@ -7,11 +7,12 @@
 //
 #import <QuartzCore/QuartzCore.h>
 #import "SideSwipeTableViewCell.h"
+#import "UIImage+Color.h"
 #import "HKPost.h"
 #import "NSDate+TimeAgo.h"
 
 @interface SideSwipeTableViewCell ()
-+ (NSString*)createPointsCommentsLabelWith:(int)votes and:(int)commentCount;
++ (NSString*)createPointsAndDateLabelWith:(int)votes and:(NSString*)date;
 + (UIFont *)titleFont;
 + (UIFont *)userFont;
 + (UIFont *)dateFont;
@@ -77,17 +78,18 @@
     NSString *site = [[NSURL URLWithString:[self.post link]] host];
     NSString *title = [self.post title];
     NSString *date = [NSDate stringForTimeIntervalSinceCreated:[self.post posted]];
-    NSString *points = [SideSwipeTableViewCell createPointsCommentsLabelWith:[self.post votes] 
-                                                                         and:[self.post commentCount]];
+    NSString *comments = [NSString stringWithFormat:@"%d", self.post.commentCount];
+    NSString *points = [SideSwipeTableViewCell createPointsAndDateLabelWith:[self.post votes] 
+                                                                         and:date];
     
     
     if ([self isHighlighted] || [self isSelected]) [[UIColor whiteColor] set];
     if (!([self isHighlighted] || [self isSelected])) [[UIColor grayColor] set];
     [user drawAtPoint:CGPointMake(offsets.width, offsets.height) withFont:[[self class] userFont]];
     
-    if (!([self isHighlighted] || [self isSelected])) [[UIColor lightGrayColor] set];
+    /*if (!([self isHighlighted] || [self isSelected])) [[UIColor lightGrayColor] set];
     CGFloat datewidth = [date sizeWithFont:[[self class] dateFont]].width;
-    [date drawAtPoint:CGPointMake(bounds.width - datewidth - offsets.width, offsets.height) withFont:[[self class] dateFont]];
+    [date drawAtPoint:CGPointMake(bounds.width - datewidth - offsets.width, offsets.height) withFont:[[self class] dateFont]];*/
     
     if (!([self isHighlighted] || [self isSelected])) [[UIColor blackColor] set];
     [title drawInRect:CGRectMake(offsets.width, offsets.height + 19.0f, bounds.width - (2 * offsets.width), bounds.height - 45.0f) 
@@ -106,7 +108,7 @@
          lineBreakMode:UILineBreakModeTailTruncation 
              alignment:UITextAlignmentLeft];
     
-    if (!([self isHighlighted] || [self isSelected])) [[UIColor lightGrayColor] set];
+    /*if (!([self isHighlighted] || [self isSelected])) [[UIColor lightGrayColor] set];
     CGRect siterect;
     siterect.size.height = [site sizeWithFont:[[self class] subtleFont]].height;
     siterect.size.width = (bounds.width / 2) * 0.9 - offsets.width * 2;
@@ -115,10 +117,29 @@
     [site drawInRect:siterect 
             withFont:[[self class] subtleFont] 
        lineBreakMode:UILineBreakModeHeadTruncation 
-           alignment:UITextAlignmentRight];
+           alignment:UITextAlignmentRight];*/
+    
+    CGSize commentOffsets = CGSizeMake(13.0f, 4.0f);
+    UIImage *commentsImage = [UIImage imageFilledWith:[UIColor colorWithWhite:0.5 alpha:1.0] using:[UIImage imageNamed:@"comments.png"]];
+    [commentsImage drawAtPoint:CGPointMake(bounds.width - commentsImage.size.width - commentOffsets.width, offsets.height + 11)];
+    
+    if (!([self isHighlighted] || [self isSelected])) [[UIColor lightGrayColor] set];
+    CGRect commentRect;
+    commentRect.size.height = [comments sizeWithFont:[[self class] subtleFont]].height;
+    commentRect.size.width = [comments sizeWithFont:[[self class] subtleFont]].width;
+    
+    CGFloat commentsImageCenterPoint    = (commentsImage.size.width/2);
+    CGFloat commentsCenterPoint         = commentsImage.size.width - commentsImageCenterPoint - (commentRect.size.width/2);
+    CGFloat commentLableX               = bounds.width - commentOffsets.width - commentsImage.size.width + commentsCenterPoint;
+    CGFloat commentLableY               = bounds.height - offsets.height - 6 - commentRect.size.height;
+    commentRect.origin = CGPointMake(commentLableX, commentLableY);
+    [comments drawInRect:commentRect 
+                withFont:[[self class] subtleFont] 
+           lineBreakMode:UILineBreakModeHeadTruncation 
+               alignment:UITextAlignmentRight];
 }
 
-#pragma mark helpers
+#pragma mark - helpers
 
 + (CGFloat)heightForEntry:(HKPost *)post withWidth:(CGFloat)width {
     CGSize titlesize = [[post title] sizeWithFont:[self titleFont] 
@@ -127,7 +148,7 @@
     return titlesize.height + 45.0f;
 }
 
-+ (NSString*)createPointsCommentsLabelWith:(int)votes and:(int)commentCount {
++ (NSString*)createPointsAndDateLabelWith:(int)votes and:(NSString*)date {
     NSString *point = nil;
     if (votes == 1) {
         point = @"1 point";
@@ -135,7 +156,7 @@
         point = [NSString stringWithFormat:@"%d points", votes];
     }
     
-    NSString *comment = nil;
+    /*NSString *comment = nil;
     if (commentCount == 0) {
         comment = @"no comments";
     } else {
@@ -144,9 +165,9 @@
         } else {
             comment = [NSString stringWithFormat:@"%d comments", commentCount];
         }
-    }
+    }*/
     
-    return [NSString stringWithFormat:@"%@ • %@", point, comment];
+    return [NSString stringWithFormat:@"%@ • %@", point, date];
 }
 
 + (UIFont *)titleFont {

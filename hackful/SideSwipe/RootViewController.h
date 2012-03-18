@@ -14,6 +14,4 @@
   NSMutableArray* buttons;
 }
 
-+ (UIImage*) imageFilledWith:(UIColor*)color using:(UIImage*)startImage;
-
 @end

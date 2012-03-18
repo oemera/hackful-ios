@@ -7,6 +7,7 @@
 //
 
 #import "CommentsController.h"
+#import "UIImage+Color.h"
 #import "HKCommentList.h"
 #import "HKPost.h"
 #import "HKComment.h"
@@ -227,34 +228,6 @@
     [self removeSideSwipeView:YES];
 }
 
-#pragma mark Generate images with given fill color
-
-// Convert the image's fill color to the passed in color
--(UIImage*) imageFilledWith:(UIColor*)color using:(UIImage*)startImage {
-    // Create the proper sized rect
-    CGRect imageRect = CGRectMake(0, 0, CGImageGetWidth(startImage.CGImage), CGImageGetHeight(startImage.CGImage));
-    
-    // Create a new bitmap context
-    CGContextRef context = CGBitmapContextCreate(NULL, imageRect.size.width, imageRect.size.height, 8, 0, CGImageGetColorSpace(startImage.CGImage), kCGImageAlphaPremultipliedLast);
-    
-    // Use the passed in image as a clipping mask
-    CGContextClipToMask(context, imageRect, startImage.CGImage);
-    // Set the fill color
-    CGContextSetFillColorWithColor(context, color.CGColor);
-    // Fill with color
-    CGContextFillRect(context, imageRect);
-    
-    // Generate a new image
-    CGImageRef newCGImage = CGBitmapContextCreateImage(context);
-    UIImage* newImage = [UIImage imageWithCGImage:newCGImage scale:startImage.scale orientation:startImage.imageOrientation];
-    
-    // Cleanup
-    CGContextRelease(context);
-    CGImageRelease(newCGImage);
-    
-    return newImage;
-}
-
 #pragma mark - Swipe implementation
 
 - (void) setupSideSwipeView {
@@ -301,7 +274,7 @@
         
         // Add the image as the button's background image
         // [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
-        UIImage* grayImage = [self imageFilledWith:[UIColor colorWithWhite:0.9 alpha:1.0] using:buttonImage];
+        UIImage* grayImage = [UIImage imageFilledWith:[UIColor colorWithWhite:0.9 alpha:1.0] using:buttonImage];
         [button setImage:grayImage forState:UIControlStateNormal];
         
         // Add a touch up inside action

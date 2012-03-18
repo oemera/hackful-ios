@@ -7,11 +7,12 @@
 //
 
 #import "TableHeaderView.h"
+#import "NSDate+TimeAgo.h"
 #import "HKPost.h"
 
 @implementation TableHeaderView
 
-- (id)initWithPost:(HKPost *)post_ andWidth:(int)width {
+- (id)initWithPost:(HKPost *)post_ andWidth:(int)width_ {
     self = [super init];
     if (self) {
         post = post_;
@@ -24,8 +25,8 @@
         
         CGRect frame;
         frame.origin = CGPointZero;
-        frame.size.width = width;
-        frame.size.height = 100;
+        frame.size.width = width_;
+        frame.size.height = [self suggestedHeightWithWidth:width_];
         [self setFrame:frame];
     }
     
@@ -39,7 +40,7 @@
     CGSize offsets = CGSizeMake(8.0f, 4.0f);
     
     NSString *title = post.title;
-    NSDate *date = post.posted;
+    NSString *date = [NSDate stringForTimeIntervalSinceCreated:post.posted];
     NSString *points = post.votes == 1 ? @"1 point" : [NSString stringWithFormat:@"%d points", post.votes];
     NSString *pointdate = [NSString stringWithFormat:@"%@ • %@", points, date];;
     NSString *user = post.user.name;
@@ -96,6 +97,17 @@
 
 - (BOOL)hasURL {
     return (post.link != nil && ![post.link isEqualToString:@""]);
+}
+                             
+- (CGFloat)suggestedHeightWithWidth:(CGFloat)width {
+    CGSize offsets = [[self class] offsets];
+    CGFloat body = [textView sizeThatFits:CGSizeMake(width - offsets.width, 0)].height;
+    CGFloat disclosure = [self hasURL] ? [[[self class] disclosureImage] size].width + offsets.width : 0.0f;
+    CGFloat title = [[post title] sizeWithFont:[[self class] titleFont] constrainedToSize:CGSizeMake(width - (offsets.width * 2) - disclosure, 400.0f) lineBreakMode:UILineBreakModeWordWrap].height;
+    CGFloat bodyArea = [[post text] length] > 0 ? offsets.height + body - 12.0f : 0;
+    CGFloat titleArea = [[post title] length] > 0 ? offsets.height + title : 0;
+    
+    return titleArea + bodyArea + 30.0f + offsets.height + (titleArea > 0 && bodyArea > 0 ? 8.0f : 0);
 }
      
 #pragma mark - Style Attributes

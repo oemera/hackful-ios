@@ -7,6 +7,7 @@
 //
 
 #import "PostController.h"
+#import "UIImage+Color.h"
 #import "LoadingIndicatorView.h"
 #import "PlacardButton.h"
 #import "HKPostList.h"
@@ -15,14 +16,13 @@
 #import "HKComment.h"
 #import "CommentsController.h"
 #import "SideSwipeTableViewCell.h"
-#import "SubmissionTableCell.h"
+#import "WebViewController.h"
 
 #define BUTTON_LEFT_MARGIN 35.5
 #define BUTTON_SPACING 32.0
 
 @interface PostController()
 - (void) setupSideSwipeView;
-- (UIImage*) imageFilledWith:(UIColor*)color using:(UIImage*)startImage;
 @end
 
 @implementation PostController
@@ -127,26 +127,21 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     HKPost *post = [entries objectAtIndex:[indexPath row]];
-    return [SubmissionTableCell heightForEntry:post withWidth:[[self view] bounds].size.width];
-    //else return [CommentTableCell heightForEntry:entry withWidth:[[self view] bounds].size.width showReplies:YES];
+    return [SideSwipeTableViewCell heightForEntry:post withWidth:[[self view] bounds].size.width];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HKPost *post = [entries objectAtIndex:indexPath.row];
-    
-    //if ([post.link length] == 0) {
-    CommentsController *commentsController = [[CommentsController alloc] initWithPost:post];
-    [self.navigationController pushViewController:commentsController animated:YES];
-    /*} else {
-        UIWebView *webView = [[UIWebView alloc] init];
-        UIViewController *webViewController = [[UIViewController alloc] init];
-        [webViewController setView:webView];
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:post.link]];
-        [webView loadRequest:request];
+    if ([post.link length] == 0) {
+        CommentsController *commentsController = [[CommentsController alloc] initWithPost:post];
+        [self.navigationController pushViewController:commentsController animated:YES];
+    } else {
+        NSURL *url = [NSURL URLWithString:post.link];
+        WebViewController *webViewController = [[WebViewController alloc] initWithURL:url];
         [self.navigationController pushViewController:webViewController animated:YES];
-    }*/
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -171,37 +166,9 @@
     [self removeSideSwipeView:YES];
 }
 
-#pragma mark Generate images with given fill color
-
-// Convert the image's fill color to the passed in color
--(UIImage*) imageFilledWith:(UIColor*)color using:(UIImage*)startImage {
-    // Create the proper sized rect
-    CGRect imageRect = CGRectMake(0, 0, CGImageGetWidth(startImage.CGImage), CGImageGetHeight(startImage.CGImage));
-
-    // Create a new bitmap context
-    CGContextRef context = CGBitmapContextCreate(NULL, imageRect.size.width, imageRect.size.height, 8, 0, CGImageGetColorSpace(startImage.CGImage), kCGImageAlphaPremultipliedLast);
-
-    // Use the passed in image as a clipping mask
-    CGContextClipToMask(context, imageRect, startImage.CGImage);
-    // Set the fill color
-    CGContextSetFillColorWithColor(context, color.CGColor);
-    // Fill with color
-    CGContextFillRect(context, imageRect);
-
-    // Generate a new image
-    CGImageRef newCGImage = CGBitmapContextCreateImage(context);
-    UIImage* newImage = [UIImage imageWithCGImage:newCGImage scale:startImage.scale orientation:startImage.imageOrientation];
-
-    // Cleanup
-    CGContextRelease(context);
-    CGImageRelease(newCGImage);
-
-    return newImage;
-}
-
 #pragma mark - Swipe implementation
 
-- (void) setupSideSwipeView {
+- (void)setupSideSwipeView {
     
     // TODO: we need a bigger tap field for buttons. At the moment there is 
     //       fair chance that you miss the button and it is really frustrating
@@ -245,7 +212,7 @@
 
         // Add the image as the button's background image
         // [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
-        UIImage* grayImage = [self imageFilledWith:[UIColor colorWithWhite:0.9 alpha:1.0] using:buttonImage];
+        UIImage* grayImage = [UIImage imageFilledWith:[UIColor colorWithWhite:0.9 alpha:1.0] using:buttonImage];
         [button setImage:grayImage forState:UIControlStateNormal];
 
         // Add a touch up inside action

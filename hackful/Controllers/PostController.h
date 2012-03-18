@@ -15,6 +15,7 @@
 @class LoadingIndicatorView;
 @class PlacardButton;
 @class LoadMoreButton;
+@class HKPost;
 
 @interface PostController : SideSwipeTableViewController <UITableViewDelegate, 
 UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate> {
@@ -34,5 +35,4 @@ UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate> {
 @property (nonatomic, strong) HKPostList *postList;
 
 - (id)initWithEntryList:(HKPostList *)postList_;
-
 @end

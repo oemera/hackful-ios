@@ -38,10 +38,7 @@
         bodyText = [bodyText stringByReplacingOccurrencesOfString:@"<p>" withString:@"\n\n"];
     }
     
-    //bodyText = [bodyText stringByRemovingHTMLTags];
-    //bodyText = [bodyText stringByDecodingHTMLEntities];
     bodyText = [bodyText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
     return bodyText;
 }
 
