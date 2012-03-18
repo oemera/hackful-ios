@@ -121,6 +121,7 @@
     
     cell.post = post;
     cell.supressDeleteButton = ![self gestureRecognizersSupported];
+    cell.delegate = self;
     
     return cell;
 }
@@ -134,7 +135,8 @@
 
 - (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HKPost *post = [entries objectAtIndex:indexPath.row];
-    if ([post.link length] == 0) {
+    NSURL *url = [NSURL URLWithString:post.link];
+    if ([post.link length] == 0 || url == nil) {
         CommentsController *commentsController = [[CommentsController alloc] initWithPost:post];
         [self.navigationController pushViewController:commentsController animated:YES];
     } else {
@@ -146,6 +148,14 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return NO;
+}
+
+#pragma mark - SideSwipeTableViewCellDelegate
+
+- (void)touchUpInsideCommentButtonForPost:(HKPost *)post {
+    NSLog(@"touch in tableviewcell happend with post: %@", post.title);
+    CommentsController *commentsController = [[CommentsController alloc] initWithPost:post];
+    [self.navigationController pushViewController:commentsController animated:YES];
 }
 
 #pragma mark Button touch up inside action

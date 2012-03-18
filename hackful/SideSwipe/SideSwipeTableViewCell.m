@@ -11,7 +11,14 @@
 #import "HKPost.h"
 #import "NSDate+TimeAgo.h"
 
-@interface SideSwipeTableViewCell ()
+static UIImage *commentImage = nil;
+
+@interface SideSwipeTableViewCell () {
+    CGRect commentButtonActiveArea;
+}
+
+- (void)touchUpInsideComment;
+
 + (NSString*)createPointsAndDateLabelWith:(int)votes and:(NSString*)date;
 + (UIFont *)titleFont;
 + (UIFont *)userFont;
@@ -23,6 +30,7 @@
 
 @synthesize supressDeleteButton;
 @synthesize post = _post;
+@synthesize delegate = _delegate;
 
 - (id)initWithReuseIdentifier:(NSString *)identifier {
     if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier])) {
@@ -31,6 +39,10 @@
         CALayer *layer = [contentView layer];
         [layer setContentsGravity:kCAGravityTopLeft];
         [layer setNeedsDisplayOnBoundsChange:YES];
+        
+        if (commentImage == nil) {
+            commentImage = [UIImage imageFilledWith:[UIColor colorWithWhite:0.5 alpha:1.0] using:[UIImage imageNamed:@"comments.png"]];
+        }
     }
     
     return self;
@@ -75,7 +87,7 @@
     CGSize offsets = CGSizeMake(8.0f, 4.0f);
     
     NSString *user = [[self.post user] name];
-    NSString *site = [[NSURL URLWithString:[self.post link]] host];
+    //NSString *site = [[NSURL URLWithString:[self.post link]] host];
     NSString *title = [self.post title];
     NSString *date = [NSDate stringForTimeIntervalSinceCreated:[self.post posted]];
     NSString *comments = [NSString stringWithFormat:@"%d", self.post.commentCount];
@@ -119,6 +131,7 @@
        lineBreakMode:UILineBreakModeHeadTruncation 
            alignment:UITextAlignmentRight];*/
     
+    // BIG TODO: Refactoring! Too much copy paste code
     CGSize commentOffsets = CGSizeMake(13.0f, 4.0f);
     UIImage *commentsImage = [UIImage imageFilledWith:[UIColor colorWithWhite:0.5 alpha:1.0] using:[UIImage imageNamed:@"comments.png"]];
     [commentsImage drawAtPoint:CGPointMake(bounds.width - commentsImage.size.width - commentOffsets.width, offsets.height + 11)];
@@ -137,6 +150,40 @@
                 withFont:[[self class] subtleFont] 
            lineBreakMode:UILineBreakModeHeadTruncation 
                alignment:UITextAlignmentRight];
+    
+    
+    CGFloat commentAreaWidth = bounds.width - (bounds.width - commentsImage.size.width - commentOffsets.width) + 15;
+    CGFloat commentAreaHeight = bounds.height;
+    CGFloat commentAreaX = bounds.width - commentAreaWidth - commentOffsets.width + 15;
+    CGFloat commentAreaY = 0;
+    commentButtonActiveArea = CGRectMake(commentAreaX, commentAreaY, commentAreaWidth, commentAreaHeight);
+    
+    /*CGContextRef context = UIGraphicsGetCurrentContext();
+    CGRect rectangle = commentButtonActiveArea;
+    CGContextAddRect(context, rectangle);
+    CGContextStrokePath(context);
+    CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
+    CGContextFillRect(context, rectangle);*/
+}
+
+#pragma mark - touch events
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch =[touches anyObject]; 
+    CGPoint startPoint = [touch locationInView:self.contentView];
+    if(CGRectContainsPoint(commentButtonActiveArea, startPoint)) {
+        [self touchUpInsideComment];
+    } else {
+        [super touchesBegan:touches withEvent:event];
+    }
+}
+
+#pragma mark - actions
+
+- (void)touchUpInsideComment {
+    if ([self.delegate respondsToSelector:@selector(touchUpInsideCommentButtonForPost:)]) {
+        [self.delegate touchUpInsideCommentButtonForPost:self.post];
+    }
 }
 
 #pragma mark - helpers

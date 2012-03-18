@@ -6,7 +6,6 @@
 //  Copyright 2011 Peter Boctor. All rights reserved.
 //
 
-
 @interface SideSwipeTableViewController : UIViewController {
     UITableView* tableView;
     UIView* sideSwipeView;
