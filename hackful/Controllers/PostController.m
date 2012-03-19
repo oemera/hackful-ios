@@ -39,7 +39,6 @@
 
 #pragma mark - View lifecycle
 
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
     [super loadView];
     
@@ -160,7 +159,7 @@
 
 #pragma mark Button touch up inside action
 
-- (void) touchUpInsideAction:(UIButton*)button {
+- (void)touchUpInsideAction:(UIButton*)button {
     // TODO: do the same with HUD
     
     /*NSIndexPath* indexPath = [tableView indexPathForCell:sideSwipeCell];

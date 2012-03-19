@@ -28,8 +28,9 @@
 - (void)_cancel {
     [self close];
     
-    if ([delegate respondsToSelector:@selector(composeControllerDidCancel:)])
-        [delegate composeControllerDidCancel:self];
+    if ([self.delegate respondsToSelector:@selector(composeControllerDidCancel:)]) {
+        [self.delegate composeControllerDidCancel:self];
+    }
 }
 
 - (void)actionSheet:(UIActionSheet *)sheet clickedButtonAtIndex:(NSInteger)index {
@@ -46,28 +47,19 @@
         [sheet addButtonWithTitle:@"Cancel"];
         [sheet setDestructiveButtonIndex:0];
         [sheet setCancelButtonIndex:1];
-        //[sheet setSheetContext:@"cancel"];
         [sheet setDelegate:self];
         [sheet showInView:[[self view] window]];
     }
 }
 
-- (void)_sendFinished {
-    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-}
-
 - (void)sendComplete {
-    [self _sendFinished];
-    
     [self close];
     
-    if ([delegate respondsToSelector:@selector(composeControllerDidSubmit:)])
-        [delegate composeControllerDidSubmit:self];
+    if ([self.delegate respondsToSelector:@selector(composeControllerDidSubmit:)])
+        [self.delegate composeControllerDidSubmit:self];
 }
 
 - (void)sendFailed {
-    [self _sendFinished];
-    
     [[self navigationItem] setRightBarButtonItem:completeItem];
     
     UIAlertView *alert = [[UIAlertView alloc] init];
@@ -82,9 +74,8 @@
 }
 
 - (void)send {
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    //[[self navigationItem] setRightBarButtonItem:loadingItem];
-    
+    // TODO: show loading item instead send-button
+    // [[self navigationItem] setRightBarButtonItem:loadingItem];
     [self performSubmission];
 }
 

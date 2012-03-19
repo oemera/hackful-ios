@@ -6,13 +6,12 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "HKAPI.h"
 #import "AFNetworking.h"
 #import "HKCommentList.h"
 #import "HKPost.h"
 #import "HKComment.h"
 #import "HKUser.h"
-
-#define HACKFUL_API_BASE_URL @"http://192.168.1.110:3000"
 
 @implementation HKCommentList
 
@@ -23,7 +22,7 @@
         post = post_;
         NSLog(@"objectId: %d", post_.objectId);
         // TODO: change objectId to int
-        resourcePath = [NSString stringWithFormat:@"/api/v1/comments/post/%d", [post objectId]];
+        resourcePath = [NSString stringWithFormat:kHKCommentsForPostResourcePath, [post objectId]];
         isLoading = NO;
     }
     
@@ -33,7 +32,7 @@
 - (void)beginLoading {
     NSLog(@"beginLoading path: %@", resourcePath);
     
-    NSURL *url = [NSURL URLWithString:HACKFUL_API_BASE_URL];
+    NSURL *url = [NSURL URLWithString:kHKBaseAPIURL];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" 
                                                             path:resourcePath

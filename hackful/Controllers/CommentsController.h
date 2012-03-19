@@ -11,13 +11,14 @@
 #import "HKCommentList.h"
 #import "HKListDelegate.h"
 #import "SideSwipeTableViewController.h"
+#import "LoginController.h"
+#import "ComposeController.h"
 
 @class HKPost;
 @class TableHeaderView;
 
-
 @interface CommentsController : SideSwipeTableViewController <UITableViewDelegate, 
-UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate> {
+UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate, LoginControllerDelegate, ComposeControllerDelegate> {
     UILabel *emptyLabel;
     PullToRefreshView *pullToRefreshView;
     NSArray *comments;

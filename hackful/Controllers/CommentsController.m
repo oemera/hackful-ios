@@ -6,21 +6,28 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "HKAPI.h"
 #import "CommentsController.h"
+#import "AFNetworking.h"
 #import "UIImage+Color.h"
 #import "HKCommentList.h"
 #import "HKPost.h"
 #import "HKComment.h"
+#import "HKSession.h"
 #import "CommentTableCell.h"
-#import "LoginController.h"
 #import "TableHeaderView.h"
 #import "SideSwipeTableViewCell.h"
+#import "HackfulLoginController.h"
+#import "NavigationController.h"
+#import "CommentComposeController.h"
 
 #define BUTTON_LEFT_MARGIN 35.5
 #define BUTTON_SPACING 32.0
 
 @interface CommentsController ()
+- (void)composePressed;
 + (int)countCommentRecursively:(NSArray*)comments;
++ (void)upvoteEntry:(HKEntry*)entry;
 @end
 
 @implementation CommentsController
@@ -55,6 +62,7 @@
     [[self view] addSubview:tableView];
     
     pullToRefreshView = [[PullToRefreshView alloc] initWithScrollView:tableView];
+    [pullToRefreshView setState:PullToRefreshViewStateLoading];
     [tableView addSubview:pullToRefreshView];
     [pullToRefreshView setDelegate:self];
     
@@ -88,8 +96,53 @@
 
 #pragma mark - Actions
 
+- (void)showLoginController {
+    HackfulLoginController *loginController = [[HackfulLoginController alloc] init];
+    [loginController setDelegate:self];
+    NavigationController *navigation = [[NavigationController alloc] initWithRootViewController:loginController];
+    [self presentModalViewController:navigation animated:YES];
+}
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if ([HKSession isAnonymous]) {
+        [self showLoginController];
+        return NO;
+	}
+    
+    return YES;
+}
+
 - (void)composePressed {
-    NSLog(@"composePressed");
+    if (![HKSession isAnonymous]) {
+        HKSession *session = [HKSession currentSession];
+        NSLog(@"session: %@ %@", session.user.name, session.authenticationToken);
+        
+        NavigationController *navigation = [[NavigationController alloc] init];
+        ComposeController *compose = [[CommentComposeController alloc] initWithEntry:self.post];
+        compose.delegate = self;
+        
+        [navigation setViewControllers:[NSArray arrayWithObject:compose]];
+        [self presentModalViewController:navigation animated:YES];
+    } else {
+        [self showLoginController];
+    }
+}
+
+#pragma mark - ComposeControllerDelegate
+
+- (void)composeControllerDidSubmit:(ComposeController *)controller {
+    [pullToRefreshView setState:PullToRefreshViewStateLoading];
+    [self.commentList beginLoading];
+}
+
+#pragma mark - LoginControllerDelegate
+
+- (void)loginControllerDidCancel:(LoginController *)controller {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)loginControllerDidLogin:(LoginController *)controller {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - HKListDelegate
@@ -188,42 +241,38 @@
     return NO;
 }
 
-#pragma mark - Comment Utils
-
-+ (NSArray *)flattenTree:(NSArray*)comments {
-    NSMutableArray *flatArray = [[NSMutableArray alloc] init];
-    for (HKComment *child in comments) {
-        [flatArray addObject:child];
-        [flatArray addObjectsFromArray:[self flattenTree:child.comments]];
-    }
-    return [flatArray copy];
-}
-
-+ (int)countCommentRecursively:(NSArray*)comments {
-    //NSLog(@"comment array length: %d ", [comments count]);
-    int recursiveCount = 0;
-    for (HKComment *child in comments) {
-        NSLog(@"text: %@ depth:%d", child.text, child.depth);
-        recursiveCount++;
-        recursiveCount += [self countCommentRecursively:child.comments];
-    }
-    return recursiveCount;
-}
-
 #pragma mark Button touch up inside action
 
 - (void) touchUpInsideAction:(UIButton*)button {
-    // TODO: do the same with HUD
+    NSIndexPath* indexPath = [tableView indexPathForCell:sideSwipeCell];
+    NSUInteger index = [buttons indexOfObject:button];
+    NSDictionary* buttonInfo = [buttonData objectAtIndex:index];
+    HKComment *comment = [comments objectAtIndex:indexPath.row];
+    NSString *buttonTitle = [buttonInfo objectForKey:@"title"];
     
-    /*NSIndexPath* indexPath = [tableView indexPathForCell:sideSwipeCell];
-     
-     NSUInteger index = [buttons indexOfObject:button];
-     NSDictionary* buttonInfo = [buttonData objectAtIndex:index];
-     [[[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat: @"%@ on cell %d", [buttonInfo objectForKey:@"title"], indexPath.row]
-     message:nil
-     delegate:nil
-     cancelButtonTitle:nil
-     otherButtonTitles:@"OK", nil] autorelease] show];*/
+    if ([buttonTitle isEqualToString:@"Reply"]) {
+        if (![HKSession isAnonymous]) {
+            HKSession *session = [HKSession currentSession];
+            NSLog(@"session: %@ %@", session.user.name, session.authenticationToken);
+            
+            NavigationController *navigation = [[NavigationController alloc] init];
+            ComposeController *compose = [[CommentComposeController alloc] initWithEntry:comment];
+            compose.delegate = self;
+            
+            [navigation setViewControllers:[NSArray arrayWithObject:compose]];
+            [self presentModalViewController:navigation animated:YES];
+        } else {
+            [self showLoginController];
+        }
+    } else if ([buttonTitle isEqualToString:@"Upvote"]) {
+        if (![HKSession isAnonymous]) {
+            [CommentsController upvoteEntry:comment withDelegate:self];
+        } else {
+            [self showLoginController];
+        }
+    } else if ([buttonTitle isEqualToString:@"SendTo"]) {
+        // TODO: Send to implementation as action sheet
+    }
     
     [self removeSideSwipeView:YES];
 }
@@ -288,6 +337,67 @@
         
         // Move the left edge in prepartion for the next button
         leftEdge = leftEdge + buttonImage.size.width + BUTTON_SPACING;
+    }
+}
+
+#pragma mark - Comment Utils
+
++ (NSArray *)flattenTree:(NSArray*)comments {
+    NSMutableArray *flatArray = [[NSMutableArray alloc] init];
+    for (HKComment *child in comments) {
+        [flatArray addObject:child];
+        [flatArray addObjectsFromArray:[self flattenTree:child.comments]];
+    }
+    return [flatArray copy];
+}
+
++ (int)countCommentRecursively:(NSArray*)comments {
+    //NSLog(@"comment array length: %d ", [comments count]);
+    int recursiveCount = 0;
+    for (HKComment *child in comments) {
+        NSLog(@"text: %@ depth:%d", child.text, child.depth);
+        recursiveCount++;
+        recursiveCount += [self countCommentRecursively:child.comments];
+    }
+    return recursiveCount;
+}
+
++ (void)upvoteEntry:(HKEntry*)entry withDelegate:(id)delegate {
+    NSString *resourcePath = nil;
+    if ([entry isKindOfClass:[HKPost class]]) {
+        resourcePath = [NSString stringWithFormat:kHKPostUpvoteResourcePath, entry.objectId];
+    } else if ([entry isKindOfClass:[HKComment class]]) {
+        resourcePath = [NSString stringWithFormat:kHKCommentUpvoteResourcePath, entry.objectId];
+    }
+    
+    if (resourcePath != nil) {
+        if (HKSession.currentSession.user.objectId != entry.user.objectId) {
+            NSURL *url = [NSURL URLWithString:kHKBaseAPIURL];
+            AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+            NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    HKSession.currentSession.authenticationToken, @"auth_token", nil];
+            NSMutableURLRequest *request = [httpClient requestWithMethod:@"PUT" 
+                                                                    path:resourcePath
+                                                              parameters:params];
+            
+            AFJSONRequestOperation *operation;
+            operation =  [AFJSONRequestOperation 
+                          JSONRequestOperationWithRequest:request
+                          success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
+                              //[delegate sendComplete];
+                              NSLog(@"sendComplete");
+                          }
+                          failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
+                              // TODO: show HUD with error message
+                              NSLog(@"Couldn't create post with params: %@", params);
+                              NSLog(@"error: %@", error);
+                              
+                              //[delegate sendFailed];
+                          }];
+            [operation start];
+        } else {
+            NSLog(@"you can't upvote your own entry");
+        }
     }
 }
 

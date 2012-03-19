@@ -6,13 +6,12 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "HKAPI.h"
 #import "SubmissionComposeController.h"
 #import "AFNetworking.h"
 #import "PlaceholderTextView.h"
 #import "HKPost.h"
 #import "HKSession.h"
-
-#define HACKFUL_API_BASE_URL @"http://192.168.1.110:3000"
 
 @implementation SubmissionComposeController
 
@@ -66,16 +65,7 @@
     if (![self ableToSubmit]) {
         [self sendFailed];
     } else {
-        /*HKPost *post = [[HKPost alloc] initWithObjectId:nil 
-                                                   link:textView.text
-                                                  title:titleField.text
-                                           commentCount:nil 
-                                                 posted:nil 
-                                                  votes:nil 
-                                                   text:titleField.text
-                                                andUser:HKSession.currentSession.user];*/
-        
-        NSURL *url = [NSURL URLWithString:HACKFUL_API_BASE_URL];
+        NSURL *url = [NSURL URLWithString:kHKBaseAPIURL];
         AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
         NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
                                 HKSession.currentSession.authenticationToken, @"auth_token", 
@@ -83,7 +73,7 @@
                                 titleField.text, @"post[title]", 
                                 textView.text, @"post[text]", nil];
         NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" 
-                                                                path:@"/api/v1/post"
+                                                                path:kHKPostCreateResourcePath
                                                           parameters:params];
         
         AFJSONRequestOperation *operation;

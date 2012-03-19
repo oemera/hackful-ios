@@ -6,13 +6,12 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "HKAPI.h"
 #import "NSDate+RailsDate.h"
 #import "HKPostList.h"
 #import "AFNetworking.h"
 #import "HKPost.h"
 #import "HKUser.h"
-
-#define HACKFUL_API_BASE_URL @"http://192.168.1.110:3000"
 
 @implementation HKPostList
 
@@ -29,7 +28,7 @@
 - (void)beginLoading {
     NSLog(@"beginLoading");
     
-    NSURL *url = [NSURL URLWithString:HACKFUL_API_BASE_URL];
+    NSURL *url = [NSURL URLWithString:kHKBaseAPIURL];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     //NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:page, @"page", nil];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" 

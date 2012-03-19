@@ -53,6 +53,7 @@
 		F0B9EBF3150DC160006CC3E7 /* ComposeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBF2150DC160006CC3E7 /* ComposeController.m */; };
 		F0B9EBF6150DC264006CC3E7 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBF5150DC264006CC3E7 /* PlaceholderTextView.m */; };
 		F0B9EBF9150DC473006CC3E7 /* SubmissionComposeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBF8150DC472006CC3E7 /* SubmissionComposeController.m */; };
+		F0BC9B9B15166EA300E1348A /* CommentComposeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0BC9B9A15166EA300E1348A /* CommentComposeController.m */; };
 		F0C5BB27151286DD00F14F5E /* comment-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F0C5BB26151286DD00F14F5E /* comment-arrow.png */; };
 		F0CC6C3F151061F3000FDE89 /* TableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CC6C3E151061F2000FDE89 /* TableHeaderView.m */; };
 		F0E2007E150419C600F847A2 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E20079150419C600F847A2 /* RootViewController.m */; };
@@ -218,6 +219,9 @@
 		F0B9EBF5150DC264006CC3E7 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceholderTextView.m; path = Views/PlaceholderTextView.m; sourceTree = "<group>"; };
 		F0B9EBF7150DC471006CC3E7 /* SubmissionComposeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubmissionComposeController.h; path = Controllers/SubmissionComposeController.h; sourceTree = "<group>"; };
 		F0B9EBF8150DC472006CC3E7 /* SubmissionComposeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubmissionComposeController.m; path = Controllers/SubmissionComposeController.m; sourceTree = "<group>"; };
+		F0BC9B9915166EA300E1348A /* CommentComposeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentComposeController.h; path = Controllers/CommentComposeController.h; sourceTree = "<group>"; };
+		F0BC9B9A15166EA300E1348A /* CommentComposeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentComposeController.m; path = Controllers/CommentComposeController.m; sourceTree = "<group>"; };
+		F0BC9B9D15166F5E00E1348A /* HKAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKAPI.h; path = HackfulKit/HKAPI.h; sourceTree = "<group>"; };
 		F0C5BB26151286DD00F14F5E /* comment-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-arrow.png"; sourceTree = "<group>"; };
 		F0CC6C3D151061F2000FDE89 /* TableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableHeaderView.h; path = Views/TableHeaderView.h; sourceTree = "<group>"; };
 		F0CC6C3E151061F2000FDE89 /* TableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableHeaderView.m; path = Views/TableHeaderView.m; sourceTree = "<group>"; };
@@ -532,14 +536,16 @@
 				F0E5DD3414E7033600F60D43 /* PostController.m */,
 				F044F7C615038F830037B7A9 /* CommentsController.h */,
 				F044F7C715038F830037B7A9 /* CommentsController.m */,
+				F0E33E431514E13700EE551C /* WebViewController.h */,
+				F0E33E441514E13700EE551C /* WebViewController.m */,
 				F0B9EBC8150CBB0D006CC3E7 /* HackfulLoginController.h */,
 				F0B9EBC9150CBB0D006CC3E7 /* HackfulLoginController.m */,
 				F0B9EBF1150DC15F006CC3E7 /* ComposeController.h */,
 				F0B9EBF2150DC160006CC3E7 /* ComposeController.m */,
 				F0B9EBF7150DC471006CC3E7 /* SubmissionComposeController.h */,
 				F0B9EBF8150DC472006CC3E7 /* SubmissionComposeController.m */,
-				F0E33E431514E13700EE551C /* WebViewController.h */,
-				F0E33E441514E13700EE551C /* WebViewController.m */,
+				F0BC9B9915166EA300E1348A /* CommentComposeController.h */,
+				F0BC9B9A15166EA300E1348A /* CommentComposeController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -547,6 +553,7 @@
 		F0E5DCE014E6FF8600F60D43 /* HackfulKit */ = {
 			isa = PBXGroup;
 			children = (
+				F0BC9B9D15166F5E00E1348A /* HKAPI.h */,
 				F044F78E15028DFD0037B7A9 /* HKSession.h */,
 				F044F78F15028DFD0037B7A9 /* HKSession.m */,
 				F044F77F150288FE0037B7A9 /* HKUser.h */,
@@ -874,6 +881,7 @@
 				F0E33E411514D71B00EE551C /* LoadingIndicatorView.m in Sources */,
 				F0E33E421514D71B00EE551C /* PlacardButton.m in Sources */,
 				F0E33E451514E13700EE551C /* WebViewController.m in Sources */,
+				F0BC9B9B15166EA300E1348A /* CommentComposeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

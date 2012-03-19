@@ -6,12 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "HKAPI.h"
 #import "HackfulLoginController.h"
 #import "AFNetworking.h"
 #import "HKUser.h"
 #import "HKSession.h"
-
-#define HACKFUL_API_BASE_URL @"http://192.168.1.110:3000"
 
 @implementation HackfulLoginController
 
@@ -51,13 +50,13 @@
 - (void)authenticate {
     [super authenticate];
     
-    NSURL *url = [NSURL URLWithString:HACKFUL_API_BASE_URL];
+    NSURL *url = [NSURL URLWithString:kHKBaseAPIURL];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
                             usernameField.text, @"user[email]", 
                             passwordField.text, @"user[password]", nil];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" 
-                                                            path:@"/api/v1/sessions/login"
+                                                            path:kHKSessionLoginResourcePath
                                                       parameters:params];
     
     AFJSONRequestOperation *operation;
