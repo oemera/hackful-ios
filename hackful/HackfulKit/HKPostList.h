@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "HKList.h"
 #import "HKListDelegate.h"
+#import "HKAPI.h"
 
-@interface HKPostList : HKList {
+@interface HKPostList : HKList <HKAPIDelegate> {
     BOOL isLoading;
     id<HKListDelegate> delegate;
     NSString *resourcePath;

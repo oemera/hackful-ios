@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "HKAPI.h"
 #import "CommentsController.h"
 #import "AFNetworking.h"
 #import "UIImage+Color.h"
 #import "HKCommentList.h"
 #import "HKPost.h"
 #import "HKComment.h"
+#import "HKEntry.h"
 #import "HKSession.h"
 #import "CommentTableCell.h"
 #import "TableHeaderView.h"
@@ -79,8 +79,8 @@
     // Setup the title and image for each button within the side swipe view
     buttonData = [NSArray arrayWithObjects:
                   [NSDictionary dictionaryWithObjectsAndKeys:@"Reply", @"title", @"reply.png", @"image", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"Upvote", @"title", @"up_arrow.png", @"image", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"SendTo", @"title", @"person.png", @"image", nil], nil];
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"Upvote", @"title", @"up_arrow.png", @"image", nil], nil];
+                  //[NSDictionary dictionaryWithObjectsAndKeys:@"SendTo", @"title", @"person.png", @"image", nil], nil];
     
     buttons = [[NSMutableArray alloc] initWithCapacity:buttonData.count];
     
@@ -243,7 +243,7 @@
 
 #pragma mark Button touch up inside action
 
-- (void) touchUpInsideAction:(UIButton*)button {
+- (void)touchUpInsideAction:(UIButton*)button {
     NSIndexPath* indexPath = [tableView indexPathForCell:sideSwipeCell];
     NSUInteger index = [buttons indexOfObject:button];
     NSDictionary* buttonInfo = [buttonData objectAtIndex:index];
@@ -266,7 +266,7 @@
         }
     } else if ([buttonTitle isEqualToString:@"Upvote"]) {
         if (![HKSession isAnonymous]) {
-            [CommentsController upvoteEntry:comment withDelegate:self];
+            [HKAPI upvoteEntry:comment delegate:self];
         } else {
             [self showLoginController];
         }
@@ -360,45 +360,6 @@
         recursiveCount += [self countCommentRecursively:child.comments];
     }
     return recursiveCount;
-}
-
-+ (void)upvoteEntry:(HKEntry*)entry withDelegate:(id)delegate {
-    NSString *resourcePath = nil;
-    if ([entry isKindOfClass:[HKPost class]]) {
-        resourcePath = [NSString stringWithFormat:kHKPostUpvoteResourcePath, entry.objectId];
-    } else if ([entry isKindOfClass:[HKComment class]]) {
-        resourcePath = [NSString stringWithFormat:kHKCommentUpvoteResourcePath, entry.objectId];
-    }
-    
-    if (resourcePath != nil) {
-        if (HKSession.currentSession.user.objectId != entry.user.objectId) {
-            NSURL *url = [NSURL URLWithString:kHKBaseAPIURL];
-            AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-            NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    HKSession.currentSession.authenticationToken, @"auth_token", nil];
-            NSMutableURLRequest *request = [httpClient requestWithMethod:@"PUT" 
-                                                                    path:resourcePath
-                                                              parameters:params];
-            
-            AFJSONRequestOperation *operation;
-            operation =  [AFJSONRequestOperation 
-                          JSONRequestOperationWithRequest:request
-                          success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
-                              //[delegate sendComplete];
-                              NSLog(@"sendComplete");
-                          }
-                          failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
-                              // TODO: show HUD with error message
-                              NSLog(@"Couldn't create post with params: %@", params);
-                              NSLog(@"error: %@", error);
-                              
-                              //[delegate sendFailed];
-                          }];
-            [operation start];
-        } else {
-            NSLog(@"you can't upvote your own entry");
-        }
-    }
 }
 
 @end

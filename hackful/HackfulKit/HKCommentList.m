@@ -31,42 +31,7 @@
 
 - (void)beginLoading {
     NSLog(@"beginLoading path: %@", resourcePath);
-    
-    NSURL *url = [NSURL URLWithString:kHKBaseAPIURL];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" 
-                                                            path:resourcePath
-                                                      parameters:nil];
-    
-    __block HKCommentList *blocksafeSelf = self;
-    AFJSONRequestOperation *operation;
-    operation =  [AFJSONRequestOperation 
-                  JSONRequestOperationWithRequest:request
-                  success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
-                      [blocksafeSelf.mutableEntries removeAllObjects];
-                      for (id jsonComment in jsonObject) {
-                          HKComment *comment = [HKComment commentFromJSON:jsonComment];
-                          [blocksafeSelf.mutableEntries addObject:comment];
-                      }
-                      isLoading = NO;
-                      
-                      if ([blocksafeSelf.delegate respondsToSelector:@selector(listFinishedLoading:)]) {
-                          NSLog(@"respondsToSelector entryListFinishedLoading");
-                          [blocksafeSelf.delegate listFinishedLoading:self];
-                      }
-                  }
-                  failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
-                      NSLog(@"Couldn't load comments");
-                      NSLog(@"error %@", error);
-                      if ([blocksafeSelf.delegate respondsToSelector:@selector(listFinishedLoading:withError:)]) {
-                          NSLog(@"respondsToSelector listFinishedLoading:withError:");
-                          /*NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-                          [errorDetail setValue:@"Failed to load comments" forKey:NSLocalizedDescriptionKey];
-                          NSError *error = [NSError errorWithDomain:@"HKCommentList" code:-1 userInfo:errorDetail];*/
-                          [blocksafeSelf.delegate listFinishedLoading:self withError:error];
-                      }
-                  }];
-    [operation start];
+    [HKAPI loadEntriesWithResourcePath:resourcePath type:kHKEntryTypeComment delegate:self];
     isLoading = YES;
 }
 
@@ -74,9 +39,26 @@
     return isLoading;
 }
 
-- (NSMutableArray *)mutableEntries {
-    if(_mutableEntries == nil) _mutableEntries = [[NSMutableArray alloc] init];
-    return _mutableEntries;
+#pragma mark - HKAPIDelegate
+
+- (void)APICallCompleteWithList:(NSArray*)entries {
+    self.entries = entries;
+    isLoading = NO;
+    if ([self.delegate respondsToSelector:@selector(listFinishedLoading:)]) {
+        NSLog(@"respondsToSelector entryListFinishedLoading");
+        [self.delegate listFinishedLoading:self];
+    }
+}
+
+- (void)APICallFailed:(NSError*)error {
+    isLoading = NO;
+    if ([self.delegate respondsToSelector:@selector(listFinishedLoading:withError:)]) {
+        NSLog(@"respondsToSelector listFinishedLoading:withError:");
+        /*NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+         [errorDetail setValue:@"Failed to load comments" forKey:NSLocalizedDescriptionKey];
+         NSError *error = [NSError errorWithDomain:@"HKCommentList" code:-1 userInfo:errorDetail];*/
+        [self.delegate listFinishedLoading:self withError:error];
+    }
 }
 
 @end

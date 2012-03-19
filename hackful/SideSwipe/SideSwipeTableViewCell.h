@@ -29,7 +29,7 @@
 @protocol SideSwipeTableViewCellDelegate <NSObject>
 
 @optional
-- (void)touchUpInsideCommentButtonForPost:(HKPost *)post;
+- (void)commentButtonPressedForPost:(HKPost *)post;
 
 @end
 

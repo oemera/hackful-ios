@@ -10,13 +10,16 @@
 #import "UIImage+Color.h"
 #import "LoadingIndicatorView.h"
 #import "PlacardButton.h"
+#import "HKSession.h"
 #import "HKPostList.h"
 #import "HKEntry.h"
 #import "HKPost.h"
 #import "HKComment.h"
+#import "NavigationController.h"
 #import "CommentsController.h"
 #import "SideSwipeTableViewCell.h"
 #import "WebViewController.h"
+#import "CommentComposeController.h"
 
 #define BUTTON_LEFT_MARGIN 35.5
 #define BUTTON_SPACING 32.0
@@ -151,28 +154,82 @@
 
 #pragma mark - SideSwipeTableViewCellDelegate
 
-- (void)touchUpInsideCommentButtonForPost:(HKPost *)post {
+- (void)commentButtonPressedForPost:(HKPost *)post {
     NSLog(@"touch in tableviewcell happend with post: %@", post.title);
     CommentsController *commentsController = [[CommentsController alloc] initWithPost:post];
     [self.navigationController pushViewController:commentsController animated:YES];
 }
 
-#pragma mark Button touch up inside action
+#pragma mark - LoginControllerDelegate
+
+- (void)loginControllerDidCancel:(LoginController *)controller {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)loginControllerDidLogin:(LoginController *)controller {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - HKAPIDelegate
+
+- (void)APICallComplete {
+
+}
+
+- (void)APICallFailed:(NSError*)error {
+
+}
+
+- (void)APICallNotLoggedInError {
+
+}
+
+#pragma mark - Button touch up inside action
 
 - (void)touchUpInsideAction:(UIButton*)button {
-    // TODO: do the same with HUD
     
-    /*NSIndexPath* indexPath = [tableView indexPathForCell:sideSwipeCell];
-    
+    NSIndexPath* indexPath = [tableView indexPathForCell:sideSwipeCell];
     NSUInteger index = [buttons indexOfObject:button];
     NSDictionary* buttonInfo = [buttonData objectAtIndex:index];
-    [[[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat: @"%@ on cell %d", [buttonInfo objectForKey:@"title"], indexPath.row]
-                                 message:nil
-                                delegate:nil
-                       cancelButtonTitle:nil
-                       otherButtonTitles:@"OK", nil] autorelease] show];*/
+    HKPost *post = [entries objectAtIndex:indexPath.row];
+    NSString *buttonTitle = [buttonInfo objectForKey:@"title"];
+    
+    if ([buttonTitle isEqualToString:@"Reply"]) {
+        if (![HKSession isAnonymous]) {
+            HKSession *session = [HKSession currentSession];
+            NSLog(@"session: %@ %@", session.user.name, session.authenticationToken);
+            
+            NavigationController *navigation = [[NavigationController alloc] init];
+            ComposeController *compose = [[CommentComposeController alloc] initWithEntry:post];
+            compose.delegate = self;
+            
+            [navigation setViewControllers:[NSArray arrayWithObject:compose]];
+            [self presentModalViewController:navigation animated:YES];
+        } else {
+            [self showLoginController];
+        }
+    } else if ([buttonTitle isEqualToString:@"Retweet"]) {
+        // TODO: Retweet implementation as action sheet
+    } else if ([buttonTitle isEqualToString:@"Upvote"]) {
+        if (![HKSession isAnonymous]) {
+            [HKAPI upvoteEntry:post delegate:self];
+        } else {
+            [self showLoginController];
+        }
+    } else if ([buttonTitle isEqualToString:@"ReadLater"]) {
+        // TODO: ReadLater implementation as action sheet
+    } else if ([buttonTitle isEqualToString:@"SendTo"]) {
+        // TODO: Send to implementation as action sheet
+    }
     
     [self removeSideSwipeView:YES];
+}
+
+- (void)showLoginController {
+    HackfulLoginController *loginController = [[HackfulLoginController alloc] init];
+    [loginController setDelegate:self];
+    NavigationController *navigation = [[NavigationController alloc] initWithRootViewController:loginController];
+    [self presentModalViewController:navigation animated:YES];
 }
 
 #pragma mark - Swipe implementation

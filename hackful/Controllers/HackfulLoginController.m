@@ -50,38 +50,19 @@
 - (void)authenticate {
     [super authenticate];
     
-    NSURL *url = [NSURL URLWithString:kHKBaseAPIURL];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            usernameField.text, @"user[email]", 
-                            passwordField.text, @"user[password]", nil];
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" 
-                                                            path:kHKSessionLoginResourcePath
-                                                      parameters:params];
-    
-    AFJSONRequestOperation *operation;
-    operation =  [AFJSONRequestOperation 
-                  JSONRequestOperationWithRequest:request
-                  success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
-                      NSInteger userId = [[jsonObject objectForKey:@"id"] intValue];
-                      NSString *username = [jsonObject objectForKey:@"name"];
-                      NSString *email = [jsonObject objectForKey:@"email"];
-                      NSString *authToken = [jsonObject objectForKey:@"auth_token"];
-                      HKUser *user = [[HKUser alloc] initWithId:userId username:username andEmail:email];
-                      
-                      HKSession *session = [[HKSession alloc] initWithUser:user
-                                                                     token:authToken];
-                      HKSession.currentSession = session;
-                      [self dismissModalViewControllerAnimated:YES];
-                  }
-                  failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
-                      NSLog(@"Couldn't login user");
-                      // TODO: show HUD with error message
-                      [HKSession setCurrentSession:nil];
-                      [self dismissModalViewControllerAnimated:YES];
-                  }];
-    
-    [operation start];
+    [HKAPI authenticateUserWithName:usernameField.text 
+                           password:passwordField.text 
+                           delegate:self];
+}
+
+#pragma mark - HKAPIDelegate
+
+- (void)APICallComplete {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)APICallFailed:(NSError*)error {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

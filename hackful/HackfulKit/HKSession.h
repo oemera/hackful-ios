@@ -14,11 +14,12 @@
 @property (nonatomic, strong) NSString* authenticationToken;
 @property (nonatomic, strong) HKUser* user;
 
+- (id)initWithUser:(HKUser *)user_ token:(NSString *)token_;
+
 + (BOOL)isAnonymous;
 + (HKSession *)currentSession;
 + (void)setCurrentSession:(HKSession *)session;
 + (void)initialize;
-
-- (id)initWithUser:(HKUser *)user_ token:(NSString *)token_;
++ (HKSession *)sessionFromJSON:(id)json;
 
 @end

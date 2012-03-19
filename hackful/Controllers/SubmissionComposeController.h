@@ -7,8 +7,9 @@
 //
 
 #import "ComposeController.h"
+#import "HKAPI.h"
 
-@interface SubmissionComposeController : ComposeController {
+@interface SubmissionComposeController : ComposeController <HKAPIDelegate> {
     UITextField *titleField;
     UITextField *urlField;
 }

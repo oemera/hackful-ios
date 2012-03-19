@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "HKAPI.h"
 #import "SubmissionComposeController.h"
 #import "AFNetworking.h"
 #import "PlaceholderTextView.h"
@@ -65,30 +64,10 @@
     if (![self ableToSubmit]) {
         [self sendFailed];
     } else {
-        NSURL *url = [NSURL URLWithString:kHKBaseAPIURL];
-        AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-        NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                                HKSession.currentSession.authenticationToken, @"auth_token", 
-                                urlField.text, @"post[link]", 
-                                titleField.text, @"post[title]", 
-                                textView.text, @"post[text]", nil];
-        NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" 
-                                                                path:kHKPostCreateResourcePath
-                                                          parameters:params];
-        
-        AFJSONRequestOperation *operation;
-        operation =  [AFJSONRequestOperation 
-                      JSONRequestOperationWithRequest:request
-                      success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
-                            [self sendComplete];
-                      }
-                      failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
-                          NSLog(@"Couldn't create post with params: %@", params);
-                          NSLog(@"error: %@", error);
-                          // TODO: show HUD with error message
-                          //[self sendFailed];
-                      }];
-        [operation start];
+        [HKAPI createPostWithTitle:titleField.text 
+                               URL:urlField.text 
+                              text:textView.text 
+                          delegate:self];
     }
 }
 
@@ -101,6 +80,16 @@
     return (titleField.text.length > 0) 
             && ((urlField.text.length > 0 && url != nil) || (urlField.text.length == 0))
             && (textView.text.length > 0);
+}
+
+#pragma mark - HKAPIDelegate
+
+- (void)APICallComplete {
+    [self sendComplete];
+}
+
+- (void)APICallFailed:(NSError*)error {
+    [self sendFailed];
 }
 
 @end

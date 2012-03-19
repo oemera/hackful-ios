@@ -12,6 +12,9 @@
 #import "HKListDelegate.h"
 #import "SideSwipeTableViewController.h"
 #import "SideSwipeTableViewCell.h"
+#import "HackfulLoginController.h"
+#import "ComposeController.h"
+#import "HKAPI.h"
 
 @class LoadingIndicatorView;
 @class PlacardButton;
@@ -19,7 +22,8 @@
 @class HKPost;
 
 @interface PostController : SideSwipeTableViewController <UITableViewDelegate, 
-UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate, SideSwipeTableViewCellDelegate> {
+UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate, SideSwipeTableViewCellDelegate, 
+LoginControllerDelegate, ComposeControllerDelegate, HKAPIDelegate> {
     PlacardButton *retryButton;
     LoadingIndicatorView *indicator;
     //UITableView *tableView;

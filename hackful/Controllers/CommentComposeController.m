@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "HKAPI.h"
 #import "CommentComposeController.h"
 #import "AFNetworking.h"
 #import "PlaceholderTextView.h"
@@ -53,40 +52,22 @@
         NSLog(@"is not able to submit");
         [self sendFailed];
     } else {
-        NSNumber *objectId = [NSNumber numberWithInteger:self.entry.objectId];
-        NSString *commentableType = [self.entry isKindOfClass:[HKPost class]] ? @"Post" : @"Comment";
-        
-        NSURL *url = [NSURL URLWithString:kHKBaseAPIURL];
-        AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-        NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                                HKSession.currentSession.authenticationToken, @"auth_token",
-                                textView.text, @"comment[text]",
-                                objectId, @"comment[commentable_id]",
-                                commentableType, @"comment[commentable_type]", nil];
-        NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" 
-                                                                path:kHKCommentCreateResourcePath
-                                                          parameters:params];
-        
-        NSLog(@"text: %@ commentable_id: %@ commentable_type: %@", textView.text, objectId, commentableType);
-        
-        AFJSONRequestOperation *operation;
-        operation =  [AFJSONRequestOperation 
-                      JSONRequestOperationWithRequest:request
-                      success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
-                          [self sendComplete];
-                      }
-                      failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
-                          NSLog(@"Couldn't create post with params: %@", params);
-                          NSLog(@"error: %@", error);
-                          // TODO: show HUD with error message
-                          //[self sendFailed];
-                      }];
-        [operation start];
+        [HKAPI createCommentWithText:textView.text forParent:self.entry delegate:self];
     }
 }
 
 - (BOOL)ableToSubmit {
     return (textView.text.length > 0);
+}
+
+#pragma mark - HKAPIDelegate
+
+- (void)APICallComplete {
+    [self sendComplete];
+}
+
+- (void)APICallFailed:(NSError*)error {
+    [self sendFailed];
 }
 
 @end

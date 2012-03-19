@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginController.h"
+#import "HKAPI.h"
 
-@interface HackfulLoginController : LoginController {
+@interface HackfulLoginController : LoginController <HKAPIDelegate> {
 }
 
 @end

@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "HKList.h"
 #import "HKListDelegate.h"
+#import "HKAPI.h"
 
 @class HKPost;
 
-@interface HKCommentList : HKList {
+@interface HKCommentList : HKList <HKAPIDelegate> {
     BOOL isLoading;
     id<HKListDelegate> delegate;
     HKPost *post;

@@ -7,10 +7,11 @@
 //
 
 #import "ComposeController.h"
+#import "HKAPI.h"
 
 @class HKEntry;
 
-@interface CommentComposeController : ComposeController {
+@interface CommentComposeController : ComposeController <HKAPIDelegate> {
     UITextField *titleField;
 }
 

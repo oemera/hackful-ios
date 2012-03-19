@@ -17,7 +17,7 @@ static UIImage *commentImage = nil;
     CGRect commentButtonActiveArea;
 }
 
-- (void)touchUpInsideComment;
+- (void)commentButtonPressed;
 
 + (NSString*)createPointsAndDateLabelWith:(int)votes and:(NSString*)date;
 + (UIFont *)titleFont;
@@ -172,7 +172,7 @@ static UIImage *commentImage = nil;
     UITouch *touch =[touches anyObject]; 
     CGPoint startPoint = [touch locationInView:self.contentView];
     if(CGRectContainsPoint(commentButtonActiveArea, startPoint)) {
-        [self touchUpInsideComment];
+        [self commentButtonPressed];
     } else {
         [super touchesBegan:touches withEvent:event];
     }
@@ -180,9 +180,9 @@ static UIImage *commentImage = nil;
 
 #pragma mark - actions
 
-- (void)touchUpInsideComment {
-    if ([self.delegate respondsToSelector:@selector(touchUpInsideCommentButtonForPost:)]) {
-        [self.delegate touchUpInsideCommentButtonForPost:self.post];
+- (void)commentButtonPressed {
+    if ([self.delegate respondsToSelector:@selector(commentButtonPressedForPost:)]) {
+        [self.delegate commentButtonPressedForPost:self.post];
     }
 }
 

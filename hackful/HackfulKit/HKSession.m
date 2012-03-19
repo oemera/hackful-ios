@@ -16,6 +16,15 @@ static HKSession *current = nil;
 @synthesize authenticationToken = _authenticationToken;
 @synthesize user = _user;
 
+- (id)initWithUser:(HKUser *)user_ token:(NSString *)token_ {
+    if ((self = [super init])) {
+        [self setUser:user_];
+        [self setAuthenticationToken:token_];
+    }
+    
+    return self;
+}
+
 + (BOOL)isAnonymous {
     return current == nil ? YES : NO;
 }
@@ -59,13 +68,14 @@ static HKSession *current = nil;
     }
 }
 
-- (id)initWithUser:(HKUser *)user_ token:(NSString *)token_ {
-    if ((self = [super init])) {
-        [self setUser:user_];
-        [self setAuthenticationToken:token_];
-    }
++ (HKSession *)sessionFromJSON:(id)json {
+    NSInteger userId = [[json objectForKey:@"id"] intValue];
+    NSString *username = [json objectForKey:@"name"];
+    NSString *email = [json objectForKey:@"email"];
+    NSString *authToken = [json objectForKey:@"auth_token"];
+    HKUser *user = [[HKUser alloc] initWithId:userId username:username andEmail:email];
     
-    return self;
+    return [[HKSession alloc] initWithUser:user token:authToken];
 }
 
 @end

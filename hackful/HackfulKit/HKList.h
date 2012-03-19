@@ -8,12 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HKList : NSObject{
-    NSMutableArray *_mutableEntries;
-}
+@interface HKList : NSObject
 
-@property (nonatomic, strong) NSMutableArray *mutableEntries;
-
-- (NSArray *)entries;
+@property (nonatomic, strong) NSArray *entries;
 
 @end

@@ -26,6 +26,8 @@
     [super loadView];
     
     toolbar = [[UIToolbar alloc] init];
+    UIColor *color = [UIColor colorWithRed:52.0/255.0 green:80.0/255.0 blue:101.0/255.0 alpha:1.0f];
+    [toolbar setTintColor:color];
     [toolbar setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
     
     [toolbar sizeToFit];

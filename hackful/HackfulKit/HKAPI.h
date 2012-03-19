@@ -1,8 +1,8 @@
 //
-//  HKAPI.h
+//  HKAPI2.h
 //  hackful
 //
-//  Created by Ömer Avci on 18.03.12.
+//  Created by Ömer Avci on 19.03.12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -30,3 +30,46 @@
 #define kHKCommentCreateResourcePath    @"/api/v1/comment"
 #define kHKCommentUpvoteResourcePath    @"/api/v1/comment/%d/upvote"
 #define kHKCommentsForPostResourcePath  @"/api/v1/comments/post/%d"
+
+typedef enum {
+    kHKEntryTypePost,
+    kHKEntryTypeComment
+} HKEntryType;
+
+#import <Foundation/Foundation.h>
+#import "HKEntry.h"
+
+@protocol HKAPIDelegate;
+
+@interface HKAPI : NSObject
+
++ (void)authenticateUserWithName:(NSString*)username 
+                        password:(NSString*)password 
+                        delegate:(id<HKAPIDelegate>)delegate;
+
++ (void)upvoteEntry:(HKEntry*)entry 
+           delegate:(id<HKAPIDelegate>)delegate;
+
++ (void)createCommentWithText:(NSString*)text 
+                    forParent:(HKEntry*)parent 
+                  delegate:(id<HKAPIDelegate>)delegate;
+
++ (void)createPostWithTitle:(NSString*)title 
+                        URL:(NSString*)url 
+                       text:(NSString*)text 
+                   delegate:(id<HKAPIDelegate>)delegate;
+
++ (void)loadEntriesWithResourcePath:(NSString*)resourcePath 
+                               type:(HKEntryType)entryType
+                           delegate:(id<HKAPIDelegate>)delegate;
+
+@end
+
+@protocol HKAPIDelegate <NSObject>
+
+@optional
+- (void)APICallComplete;
+- (void)APICallCompleteWithList:(NSArray*)entries;
+- (void)APICallFailed:(NSError*)error;
+- (void)APICallNotLoggedInError;
+@end

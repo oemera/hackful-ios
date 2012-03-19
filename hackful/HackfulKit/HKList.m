@@ -10,10 +10,6 @@
 
 @implementation HKList
 
-@synthesize mutableEntries = _mutableEntries;
-
-- (NSArray *)entries {
-    return [self.mutableEntries copy];
-}
+@synthesize entries = _entries;
 
 @end
