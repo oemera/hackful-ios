@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @class HKPost;
+@protocol TableHeaderViewDelegate;
 
 @interface TableHeaderView : UIControl {
     HKPost *post;
     UIView *textView;
 }
+
+@property (nonatomic, assign) id<TableHeaderViewDelegate> delegate;
 
 - (id)initWithPost:(HKPost*)post_ andWidth:(int)width_;
 - (BOOL)hasURL;
@@ -25,9 +28,9 @@
 
 @end
 
-@protocol HeaderViewDelegate<NSObject>
+@protocol TableHeaderViewDelegate<NSObject>
 @optional
 
-- (void)detailsHeaderView:(TableHeaderView *)header selectedURL:(NSURL *)url;
+- (void)tableHeaderView:(TableHeaderView *)header selectedURL:(NSURL *)url;
 
 @end

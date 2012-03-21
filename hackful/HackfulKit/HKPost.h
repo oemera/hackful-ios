@@ -30,6 +30,8 @@
                   path:(NSString*)path
                   andUser:(HKUser*)user;
 
+- (NSURL*)URLwithLinkOrdPath;
+
 + (HKPost*)postFromJSON:(id)json;
 
 @end

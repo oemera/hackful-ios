@@ -7,6 +7,7 @@
 //
 
 #import "HKPost.h"
+#import "HKAPI.h"
 #import "NSDate+RailsDate.h"
 
 @implementation HKPost
@@ -42,6 +43,16 @@
     }
     
     return self;
+}
+
+- (NSURL*)URLwithLinkOrdPath {
+    NSURL *url;
+    if ([self.link isEqualToString:@""]) {
+        url = [NSURL URLWithString:[kHKBaseAPIURL stringByAppendingString:self.path]];
+    } else {
+        url = [NSURL URLWithString:self.link];
+    }
+    return url;
 }
 
 + (HKPost*)postFromJSON:(id)json {

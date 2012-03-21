@@ -191,7 +191,6 @@
 #pragma mark - Button touch up inside action
 
 - (void)touchUpInsideAction:(UIButton*)button {
-    
     NSIndexPath* indexPath = [tableView indexPathForCell:sideSwipeCell];
     NSUInteger index = [buttons indexOfObject:button];
     NSDictionary* buttonInfo = [buttonData objectAtIndex:index];
@@ -214,13 +213,7 @@
         }
     } else if ([buttonTitle isEqualToString:@"Retweet"]) {
         TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
-        NSURL *url;
-        if ([post.link isEqualToString:@""]) {
-            url = [NSURL URLWithString:[kHKBaseAPIURL stringByAppendingString:post.path]];
-        } else {
-            url = [NSURL URLWithString:post.link];
-        }
-        [twitter addURL:url];
+        [twitter addURL:[post URLwithLinkOrdPath]];
         [twitter setInitialText:[NSString stringWithFormat:@"%@ #HackfulEurope", post.title]];
         
         // Show the controller

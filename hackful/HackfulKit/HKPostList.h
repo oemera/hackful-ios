@@ -13,7 +13,6 @@
 
 @interface HKPostList : HKList <HKAPIDelegate> {
     BOOL isLoading;
-    id<HKListDelegate> delegate;
     NSString *resourcePath;
 }
 

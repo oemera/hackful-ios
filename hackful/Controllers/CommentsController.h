@@ -14,13 +14,14 @@
 #import "LoginController.h"
 #import "ComposeController.h"
 #import "HKAPI.h"
+#import "TableHeaderView.h"
 
 @class HKPost;
 @class TableHeaderView;
 
 @interface CommentsController : SideSwipeTableViewController <UITableViewDelegate, 
 UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate, LoginControllerDelegate, 
-ComposeControllerDelegate, HKAPIDelegate> {
+ComposeControllerDelegate, HKAPIDelegate, TableHeaderViewDelegate> {
     
     UILabel *emptyLabel;
     PullToRefreshView *pullToRefreshView;
@@ -28,9 +29,9 @@ ComposeControllerDelegate, HKAPIDelegate> {
     NSDate *lastUpdated;
     UIBarButtonItem *composeItem;
     
-    UIView *detailsHeaderContainer;
-    TableHeaderView *detailsHeaderView;
     UIView *tableHeaderContainer;
+    TableHeaderView *tableHeaderView;
+    UIView *tableHeaderAndShadowContainer;
     CGFloat suggestedHeaderHeight;
     CGFloat maximumHeaderHeight;
     

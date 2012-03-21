@@ -15,11 +15,11 @@
 #import "HKEntry.h"
 #import "HKSession.h"
 #import "CommentTableCell.h"
-#import "TableHeaderView.h"
 #import "SideSwipeTableViewCell.h"
 #import "HackfulLoginController.h"
 #import "NavigationController.h"
 #import "CommentComposeController.h"
+#import "WebViewController.h"
 
 #define BUTTON_LEFT_MARGIN 35.5
 #define BUTTON_SPACING 32.0
@@ -27,7 +27,6 @@
 @interface CommentsController ()
 - (void)composePressed;
 + (int)countCommentRecursively:(NSArray*)comments;
-+ (void)upvoteEntry:(HKEntry*)entry;
 @end
 
 @implementation CommentsController
@@ -128,6 +127,15 @@
     }
 }
 
+#pragma mark - TableHeaderViewDelegate
+
+- (void)tableHeaderView:(TableHeaderView *)header selectedURL:(NSURL *)url {
+    NSLog(@"Header touched commentscontroller");
+    
+    WebViewController *webViewController = [[WebViewController alloc] initWithURL:url];
+    [self.navigationController pushViewController:webViewController animated:YES];
+}
+
 #pragma mark - ComposeControllerDelegate
 
 - (void)composeControllerDidSubmit:(ComposeController *)controller {
@@ -193,21 +201,22 @@
     // Only show it if the source is at least partially loaded.
     if (self.post.user == nil) return;
     
-    detailsHeaderContainer = nil;
     tableHeaderContainer = nil;
-    detailsHeaderView = nil;
+    tableHeaderAndShadowContainer = nil;
+    tableHeaderView = nil;
     
-    detailsHeaderView = [[TableHeaderView alloc] initWithPost:self.post andWidth:self.view.bounds.size.width];
-    [detailsHeaderView setClipsToBounds:YES];
-    [detailsHeaderView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin];
+    tableHeaderView = [[TableHeaderView alloc] initWithPost:self.post andWidth:self.view.bounds.size.width];
+    tableHeaderView.delegate = self;
+    [tableHeaderView setClipsToBounds:YES];
+    [tableHeaderView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin];
     
-    detailsHeaderContainer = [[UIView alloc] initWithFrame:[detailsHeaderView bounds]];
-    [detailsHeaderContainer addSubview:detailsHeaderView];
-    [detailsHeaderContainer setClipsToBounds:YES];
-    [detailsHeaderContainer setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin];
-    [[detailsHeaderContainer layer] setContentsGravity:kCAGravityTopLeft];
+    tableHeaderContainer = [[UIView alloc] initWithFrame:[tableHeaderView bounds]];
+    [tableHeaderContainer addSubview:tableHeaderView];
+    [tableHeaderContainer setClipsToBounds:YES];
+    [tableHeaderContainer setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin];
+    [[tableHeaderContainer layer] setContentsGravity:kCAGravityTopLeft];
     
-    UIView *shadow = [[UIView alloc] initWithFrame:CGRectMake(-50.0f, [detailsHeaderView bounds].size.height, [[self view] bounds].size.width + 100.0f, 1.0f)];
+    UIView *shadow = [[UIView alloc] initWithFrame:CGRectMake(-50.0f, [tableHeaderView bounds].size.height, [[self view] bounds].size.width + 100.0f, 1.0f)];
     CALayer *layer = [shadow layer];
     [layer setShadowOffset:CGSizeMake(0, -2.0f)];
     [layer setShadowRadius:5.0f];
@@ -217,17 +226,17 @@
     [shadow setClipsToBounds:NO];
     [shadow setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     
-    tableHeaderContainer = [[UIView alloc] initWithFrame:[detailsHeaderView bounds]];
-    [tableHeaderContainer setBackgroundColor:[UIColor clearColor]];
-    [tableHeaderContainer addSubview:detailsHeaderContainer];
-    [tableHeaderContainer addSubview:shadow];
-    [tableHeaderContainer setClipsToBounds:NO];
+    tableHeaderAndShadowContainer = [[UIView alloc] initWithFrame:[tableHeaderView bounds]];
+    [tableHeaderAndShadowContainer setBackgroundColor:[UIColor clearColor]];
+    [tableHeaderAndShadowContainer addSubview:tableHeaderContainer];
+    [tableHeaderAndShadowContainer addSubview:shadow];
+    [tableHeaderAndShadowContainer setClipsToBounds:NO];
     
     //UIView *test = [[UIView alloc] initWithFrame:CGRectMake(0,70,320,44)];
     //[test setBackgroundColor:[UIColor redColor]];
-    [tableView setTableHeaderView:tableHeaderContainer];
+    [tableView setTableHeaderView:tableHeaderAndShadowContainer];
     
-    suggestedHeaderHeight = [detailsHeaderView bounds].size.height;
+    suggestedHeaderHeight = [tableHeaderAndShadowContainer bounds].size.height;
     maximumHeaderHeight = [tableView bounds].size.height - 64.0f;
     
     // necessary since the core text view can steal this

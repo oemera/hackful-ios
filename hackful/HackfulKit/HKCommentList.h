@@ -15,7 +15,6 @@
 
 @interface HKCommentList : HKList <HKAPIDelegate> {
     BOOL isLoading;
-    id<HKListDelegate> delegate;
     HKPost *post;
     NSString *resourcePath;
 }

@@ -12,12 +12,14 @@
 
 @implementation TableHeaderView
 
-- (id)initWithPost:(HKPost *)post_ andWidth:(int)width_ {
+@synthesize delegate = _delegate;
+
+- (id)initWithPost:(HKPost*)post_ andWidth:(int)width_ {
     self = [super init];
     if (self) {
         post = post_;
         
-        //[self addTarget:self action:@selector(viewPressed:withEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [self addTarget:self action:@selector(viewPressed:withEvent:) forControlEvents:UIControlEventTouchUpInside];
         
         textView = [[UIView alloc] init];
         [self addSubview:textView];
@@ -31,6 +33,30 @@
     }
     
     return self;
+}
+
+- (void)viewPressed:(TableHeaderView*)view withEvent:(UIEvent*)event {
+    NSLog(@"viewPressed TableHeader");
+    if (![self hasURL]) return;
+    
+    if ([self.delegate respondsToSelector:@selector(tableHeaderView:selectedURL:)]) {
+        [self.delegate tableHeaderView:self selectedURL:[post URLwithLinkOrdPath]];
+    }
+}
+
+- (BOOL)hasURL {
+    return (post.link != nil && ![post.link isEqualToString:@""]);
+}
+
+- (CGFloat)suggestedHeightWithWidth:(CGFloat)width {
+    CGSize offsets = [[self class] offsets];
+    CGFloat body = [textView sizeThatFits:CGSizeMake(width - offsets.width, 0)].height;
+    CGFloat disclosure = [self hasURL] ? [[[self class] disclosureImage] size].width + offsets.width : 0.0f;
+    CGFloat title = [[post title] sizeWithFont:[[self class] titleFont] constrainedToSize:CGSizeMake(width - (offsets.width * 2) - disclosure, 400.0f) lineBreakMode:UILineBreakModeWordWrap].height;
+    CGFloat bodyArea = [[post text] length] > 0 ? offsets.height + body - 12.0f : 0;
+    CGFloat titleArea = [[post title] length] > 0 ? offsets.height + title : 0;
+    
+    return titleArea + bodyArea + 30.0f + offsets.height + (titleArea > 0 && bodyArea > 0 ? 8.0f : 0);
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -93,21 +119,6 @@
     userrect.origin.x = bounds.width / 2 + offsets.width;
     userrect.origin.y = bounds.height - offsets.height - 2.0f - userrect.size.height;
     [user drawInRect:userrect withFont:[[self class] subtleFont] lineBreakMode:UILineBreakModeHeadTruncation alignment:UITextAlignmentRight];
-}
-
-- (BOOL)hasURL {
-    return (post.link != nil && ![post.link isEqualToString:@""]);
-}
-                             
-- (CGFloat)suggestedHeightWithWidth:(CGFloat)width {
-    CGSize offsets = [[self class] offsets];
-    CGFloat body = [textView sizeThatFits:CGSizeMake(width - offsets.width, 0)].height;
-    CGFloat disclosure = [self hasURL] ? [[[self class] disclosureImage] size].width + offsets.width : 0.0f;
-    CGFloat title = [[post title] sizeWithFont:[[self class] titleFont] constrainedToSize:CGSizeMake(width - (offsets.width * 2) - disclosure, 400.0f) lineBreakMode:UILineBreakModeWordWrap].height;
-    CGFloat bodyArea = [[post text] length] > 0 ? offsets.height + body - 12.0f : 0;
-    CGFloat titleArea = [[post title] length] > 0 ? offsets.height + title : 0;
-    
-    return titleArea + bodyArea + 30.0f + offsets.height + (titleArea > 0 && bodyArea > 0 ? 8.0f : 0);
 }
      
 #pragma mark - Style Attributes
