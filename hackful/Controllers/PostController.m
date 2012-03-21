@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <Twitter/Twitter.h>
 #import "PostController.h"
 #import "UIImage+Color.h"
 #import "LoadingIndicatorView.h"
@@ -24,7 +25,9 @@
 #define BUTTON_LEFT_MARGIN 35.5
 #define BUTTON_SPACING 32.0
 
-@interface PostController()
+@interface PostController() {
+    void (^performAfterLogin)(void);
+}
 - (void) setupSideSwipeView;
 @end
 
@@ -167,6 +170,7 @@
 }
 
 - (void)loginControllerDidLogin:(LoginController *)controller {
+    performAfterLogin();
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -209,12 +213,29 @@
             [self showLoginController];
         }
     } else if ([buttonTitle isEqualToString:@"Retweet"]) {
-        // TODO: Retweet implementation as action sheet
+        TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
+        [twitter addURL:[NSURL URLWithString:post.link]];
+        [twitter setInitialText:[NSString stringWithFormat:@"%@ #HackfulEurope", post.title]];
+        
+        // Show the controller
+        [self presentModalViewController:twitter animated:YES];
+        
+        // Called when the tweet dialog has been closed
+        twitter.completionHandler = ^(TWTweetComposeViewControllerResult result) {
+            if (result == TWTweetComposeViewControllerResultCancelled) {
+                // TODO: show HUD Error
+            }
+            [self dismissModalViewControllerAnimated:YES];
+        };
     } else if ([buttonTitle isEqualToString:@"Upvote"]) {
         if (![HKSession isAnonymous]) {
             [HKAPI upvoteEntry:post delegate:self];
         } else {
             [self showLoginController];
+            // TODO: perform upvote after login
+            performAfterLogin = ^ {
+                NSLog(@"After login perform!");
+            };
         }
     } else if ([buttonTitle isEqualToString:@"ReadLater"]) {
         // TODO: ReadLater implementation as action sheet

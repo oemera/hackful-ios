@@ -13,6 +13,7 @@
 
 @synthesize link = _link;
 @synthesize title = _title;
+@synthesize path = _path;
 @synthesize commentCount = _commentCount;
 @synthesize comments = _comments;
 
@@ -22,17 +23,21 @@
           commentCount:(NSInteger)commentCount
                 posted:(NSDate*)posted 
                  votes:(NSInteger)votes
-                  text:(NSString*)text 
+                  text:(NSString*)text
+                 voted:(BOOL)voted
+                  path:(NSString*)path
                   andUser:(HKUser*)user {
     
     self = [super initWithObjectId:objectId 
                             posted:posted 
                              votes:votes 
                               text:text 
+                             voted:voted
                            andUser:user];
     if (self) {
         _link = link;
         _title = title;
+        _path = path;
         _commentCount = commentCount;
     }
     
@@ -46,9 +51,13 @@
     NSString *link = [json objectForKey:@"link"];
     NSString *text = [json objectForKey:@"text"];
     NSString *title = [json objectForKey:@"title"];
+    NSString *path = [json objectForKey:@"path"];
     NSInteger upvotes = [[json objectForKey:@"up_votes"] intValue];
+    BOOL voted = [[json objectForKey:@"voted"] boolValue];
     NSDate *posted = [NSDate dateForRailsDateString:createdAt];
     HKUser *user = [HKUser userFromJSON:[json objectForKey:@"user"]];
+    
+    NSLog(@"post path: %@", path);
     
     HKPost *post = [[HKPost alloc] initWithObjectId:objectId 
                                                link:link 
@@ -56,7 +65,9 @@
                                        commentCount:commentCount 
                                              posted:posted 
                                               votes:upvotes 
-                                               text:text 
+                                               text:text
+                                              voted:voted
+                                               path:path
                                             andUser:user];
     return post;
 }

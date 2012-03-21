@@ -133,6 +133,7 @@
 		F0E5DD3514E7033600F60D43 /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E5DD3414E7033600F60D43 /* PostController.m */; };
 		F0E5DD4714E7118600F60D43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DD4614E7118600F60D43 /* QuartzCore.framework */; };
 		F0E8B6EF150099E100488EFF /* HKPostList.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E8B6EE150099E100488EFF /* HKPostList.m */; };
+		F0F0A13815184952006EC3D7 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F0A13715184952006EC3D7 /* Twitter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,7 +226,7 @@
 		F0C5BB26151286DD00F14F5E /* comment-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-arrow.png"; sourceTree = "<group>"; };
 		F0CC6C3D151061F2000FDE89 /* TableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableHeaderView.h; path = Views/TableHeaderView.h; sourceTree = "<group>"; };
 		F0CC6C3E151061F2000FDE89 /* TableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableHeaderView.m; path = Views/TableHeaderView.m; sourceTree = "<group>"; };
-		F0D4AB381517C256003B9774 /* HKAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; name = HKAPI.h; path = HackfulKit/HKAPI.h; sourceTree = "<group>"; };
+		F0D4AB381517C256003B9774 /* HKAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKAPI.h; path = HackfulKit/HKAPI.h; sourceTree = "<group>"; };
 		F0D4AB391517C256003B9774 /* HKAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKAPI.m; path = HackfulKit/HKAPI.m; sourceTree = "<group>"; };
 		F0E20078150419C600F847A2 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		F0E20079150419C600F847A2 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
@@ -323,6 +324,7 @@
 		F0E8B6EB150095A200488EFF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		F0E8B6ED150099E100488EFF /* HKPostList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKPostList.h; path = HackfulKit/HKPostList.h; sourceTree = "<group>"; };
 		F0E8B6EE150099E100488EFF /* HKPostList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKPostList.m; path = HackfulKit/HKPostList.m; sourceTree = "<group>"; };
+		F0F0A13715184952006EC3D7 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +332,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0F0A13815184952006EC3D7 /* Twitter.framework in Frameworks */,
 				F0E5DC4E14E6FA2800F60D43 /* UIKit.framework in Frameworks */,
 				F0E5DC5014E6FA2800F60D43 /* Foundation.framework in Frameworks */,
 				F0E5DD4714E7118600F60D43 /* QuartzCore.framework in Frameworks */,
@@ -443,6 +446,7 @@
 		F0E5DC3E14E6FA2800F60D43 = {
 			isa = PBXGroup;
 			children = (
+				F0F0A13715184952006EC3D7 /* Twitter.framework */,
 				F0C5BB201511C08600F14F5E /* PullToRefresh */,
 				F0B9EBD1150D3D7B006CC3E7 /* AFNetworking */,
 				F0E5DC5514E6FA2800F60D43 /* hackful */,

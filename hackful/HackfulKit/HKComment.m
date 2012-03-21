@@ -28,9 +28,10 @@
     NSInteger objectId = [[json objectForKey:@"id"] intValue];
     NSString *text = [json objectForKey:@"text"];
     NSInteger votes = [[json objectForKey:@"up_votes"] intValue];
+    BOOL voted = [[json objectForKey:@"voted"] boolValue];
     HKUser *user = [HKUser userFromJSON:[json objectForKey:@"user"]];
     
-    HKComment *comment = [[HKComment alloc] initWithObjectId:objectId posted:posted votes:votes text:text andUser:user];
+    HKComment *comment = [[HKComment alloc] initWithObjectId:objectId posted:posted votes:votes text:text voted:voted andUser:user];
     comment.depth = depth;
     [comment setComments:[[self class] proccessChildren:[json objectForKey:@"children"] withDepth:(depth+1)]];
     return comment;

@@ -135,7 +135,7 @@ static AFHTTPClient* _httpClient = nil;
     NSLog(@"text: %@ commentable_id: %@ commentable_type: %@", text, objectId, commentableType);
 }
 
-+ (void)upvoteEntry:(HKEntry*)entry withDelegate:(id<HKAPIDelegate>)delegate {
++ (void)upvoteEntry:(HKEntry*)entry delegate:(id<HKAPIDelegate>)delegate {
     NSString *resourcePath = nil;
     if ([entry isKindOfClass:[HKPost class]]) {
         resourcePath = [NSString stringWithFormat:kHKPostUpvoteResourcePath, entry.objectId];
@@ -144,6 +144,7 @@ static AFHTTPClient* _httpClient = nil;
     }
     
     if (resourcePath != nil) {
+        NSLog(@"session.userId %d entry.userId %d", HKSession.currentSession.user.objectId, entry.user.objectId);
         if (HKSession.currentSession.user.objectId != entry.user.objectId) {
             NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
                                     HKSession.currentSession.authenticationToken, @"auth_token", nil];
@@ -158,7 +159,7 @@ static AFHTTPClient* _httpClient = nil;
                                     }
                                 }
                                 failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
-                                    NSLog(@"Couldn't create post with params: %@", params);
+                                    NSLog(@"Couldn't upvote entry with params: %@", params);
                                     NSLog(@"error: %@", error);
                                     if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
                                         [delegate APICallFailed:error];
