@@ -446,7 +446,6 @@
 		F0E5DC3E14E6FA2800F60D43 = {
 			isa = PBXGroup;
 			children = (
-				F0F0A13715184952006EC3D7 /* Twitter.framework */,
 				F0C5BB201511C08600F14F5E /* PullToRefresh */,
 				F0B9EBD1150D3D7B006CC3E7 /* AFNetworking */,
 				F0E5DC5514E6FA2800F60D43 /* hackful */,
@@ -469,6 +468,7 @@
 		F0E5DC4C14E6FA2800F60D43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0F0A13715184952006EC3D7 /* Twitter.framework */,
 				F0E8B6EB150095A200488EFF /* libxml2.dylib */,
 				F044F77D150285270037B7A9 /* CFNetwork.framework */,
 				F0E8B6E91500959500488EFF /* SystemConfiguration.framework */,

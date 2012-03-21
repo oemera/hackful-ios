@@ -64,11 +64,6 @@
     return [UIFont systemFontOfSize:13.0f];
 }
 
-+ (BOOL)entryShowsPoints:(HKComment *)comment {
-    // Re-enable this for everyone if comment score viewing is re-enabled.
-    return NO;//[comment submitter] == [[HNSession currentSession] user];
-}
-
 + (CGFloat)heightForBodyText:(NSString *)text withWidth:(CGFloat)width indentationLevel:(int)indentationLevel {
     CGSize size = CGSizeMake(width - 16.0f, CGFLOAT_MAX);
     size.width -= (indentationLevel * 15.0f);
@@ -87,7 +82,7 @@
 
 + (CGFloat)heightForEntry:(HKComment *)comment withWidth:(CGFloat)width showReplies:(BOOL)replies indentationLevel:(int)indentationLevel {
     CGFloat height = [self heightForBodyText:[comment text] withWidth:width indentationLevel:indentationLevel] + 30.0f;
-    //if ([self entryShowsPoints:comment] || (replies && [comment children] > 0)) height += 14.0f;
+    height += 14.0f;
     return height;
 }
 
@@ -106,17 +101,13 @@
     NSString *user = [[comment user] name];
     NSString *date = [NSDate stringForTimeIntervalSinceCreated:[comment posted]];
     NSString *points = [comment votes] == 1 ? @"1 point" : [NSString stringWithFormat:@"%d points", [comment votes]];
-    //NSString *comments = @"not implemented";
+    NSString *pointsAndDate = [NSString stringWithFormat:@"%@ • %@", points, date];
     NSString *body = [[self class] formatBodyText:[comment text]];
     
     if ([self isHighlighted] || [self isSelected]) [[UIColor whiteColor] set];
     
     if (!([self isHighlighted] || [self isSelected])) [[UIColor blackColor] set];
     [user drawAtPoint:CGPointMake(bounds.origin.x + offsets.width, offsets.height) withFont:[[self class] userFont]];
-    
-    if (!([self isHighlighted] || [self isSelected])) [[UIColor lightGrayColor] set];
-    CGFloat datewidth = [date sizeWithFont:[[self class] dateFont]].width;
-    [date drawAtPoint:CGPointMake(bounds.size.width - datewidth - offsets.width, offsets.height) withFont:[[self class] dateFont]];
     
     if (!([self isHighlighted] || [self isSelected])) [[UIColor blackColor] set];
     CGRect bodyrect;
@@ -128,26 +119,16 @@
     
     if (!([self isHighlighted] || [self isSelected])) [[UIColor grayColor] set];
     CGRect pointsrect;
-    pointsrect.size.height = [points sizeWithFont:[[self class] subtleFont]].height;
+    pointsrect.size.height = [pointsAndDate sizeWithFont:[[self class] subtleFont]].height;
     pointsrect.size.width = (bounds.size.width + bounds.origin.x) / 2 - offsets.width * 2;
     pointsrect.origin.x = bounds.origin.x + offsets.width;
     pointsrect.origin.y = bounds.size.height - offsets.height - pointsrect.size.height;
-    if ([[self class] entryShowsPoints:comment])
-          [points drawInRect:pointsrect withFont:[[self class] subtleFont] lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
+    [pointsAndDate drawInRect:pointsrect withFont:[[self class] subtleFont] lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
     
     if (comment.depth > 0) {
         UIImage *replyArrow = [UIImage imageNamed:@"comment-arrow.png"];
         [replyArrow drawInRect:CGRectMake(bounds.origin.x - 5, bounds.origin.y + 6, 9, 10)];
     }
-    /*if (!([self isHighlighted] || [self isSelected])) [[UIColor grayColor] set];
-    CGRect commentsrect;
-    commentsrect.size.height = [comments sizeWithFont:[[self class] subtleFont]].height;
-    commentsrect.size.width = (bounds.size.width - bounds.origin.x) / 2 - offsets.width * 2;
-    commentsrect.origin.x = 100 + bounds.size.width - (bounds.size.width - bounds.origin.x) / 2 + offsets.width;
-    commentsrect.origin.y = bounds.size.height - offsets.height - commentsrect.size.height;
-    if (showReplies)
-        [comments drawInRect:commentsrect withFont:[[self class] subtleFont] lineBreakMode:UILineBreakModeHeadTruncation alignment:UITextAlignmentRight];*/
-    
 }
 
 @end
