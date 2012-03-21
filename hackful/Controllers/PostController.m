@@ -214,7 +214,13 @@
         }
     } else if ([buttonTitle isEqualToString:@"Retweet"]) {
         TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
-        [twitter addURL:[NSURL URLWithString:post.link]];
+        NSURL *url;
+        if ([post.link isEqualToString:@""]) {
+            url = [NSURL URLWithString:[kHKBaseAPIURL stringByAppendingString:post.path]];
+        } else {
+            url = [NSURL URLWithString:post.link];
+        }
+        [twitter addURL:url];
         [twitter setInitialText:[NSString stringWithFormat:@"%@ #HackfulEurope", post.title]];
         
         // Show the controller
