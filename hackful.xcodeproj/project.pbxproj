@@ -38,6 +38,9 @@
 		F044F7DA1503E6730037B7A9 /* HKList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D81503E6720037B7A9 /* HKList.m */; };
 		F04FA6E1151D16AE00ED35D0 /* MoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04FA6E0151D16AE00ED35D0 /* MoreController.m */; };
 		F04FA6E3151D2C3100ED35D0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F04FA6E2151D2C3000ED35D0 /* MessageUI.framework */; };
+		F04FA6E7151D2E5000ED35D0 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = F04FA6E6151D2E5000ED35D0 /* Appirater.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F04FA6E8151D2F0800ED35D0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E8B6E91500959500488EFF /* SystemConfiguration.framework */; };
+		F04FA6E9151D2F1100ED35D0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F044F77D150285270037B7A9 /* CFNetwork.framework */; };
 		F078C1DA150F104E00F713F3 /* NSDate+RailsDate.m in Sources */ = {isa = PBXBuildFile; fileRef = F078C1D9150F104E00F713F3 /* NSDate+RailsDate.m */; };
 		F0B9EBCA150CBB0D006CC3E7 /* HackfulLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBC9150CBB0D006CC3E7 /* HackfulLoginController.m */; };
 		F0B9EBCD150CBC48006CC3E7 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBCC150CBC48006CC3E7 /* LoginController.m */; };
@@ -182,6 +185,8 @@
 		F04FA6DF151D16AE00ED35D0 /* MoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreController.h; path = Controllers/MoreController.h; sourceTree = "<group>"; };
 		F04FA6E0151D16AE00ED35D0 /* MoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreController.m; path = Controllers/MoreController.m; sourceTree = "<group>"; };
 		F04FA6E2151D2C3000ED35D0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		F04FA6E5151D2E5000ED35D0 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
+		F04FA6E6151D2E5000ED35D0 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appirater.m; sourceTree = "<group>"; };
 		F078C1D8150F104E00F713F3 /* NSDate+RailsDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+RailsDate.h"; path = "Categories/NSDate+RailsDate.h"; sourceTree = "<group>"; };
 		F078C1D9150F104E00F713F3 /* NSDate+RailsDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+RailsDate.m"; path = "Categories/NSDate+RailsDate.m"; sourceTree = "<group>"; };
 		F0B9EBC8150CBB0D006CC3E7 /* HackfulLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HackfulLoginController.h; path = Controllers/HackfulLoginController.h; sourceTree = "<group>"; };
@@ -318,6 +323,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F04FA6E9151D2F1100ED35D0 /* CFNetwork.framework in Frameworks */,
+				F04FA6E8151D2F0800ED35D0 /* SystemConfiguration.framework in Frameworks */,
 				F04FA6E3151D2C3100ED35D0 /* MessageUI.framework in Frameworks */,
 				F0F0A13815184952006EC3D7 /* Twitter.framework in Frameworks */,
 				F0E5DC4E14E6FA2800F60D43 /* UIKit.framework in Frameworks */,
@@ -355,6 +362,15 @@
 			);
 			name = New;
 			path = hackful/Resources/New;
+			sourceTree = "<group>";
+		};
+		F04FA6E4151D2DF900ED35D0 /* Appirater */ = {
+			isa = PBXGroup;
+			children = (
+				F04FA6E5151D2E5000ED35D0 /* Appirater.h */,
+				F04FA6E6151D2E5000ED35D0 /* Appirater.m */,
+			);
+			name = Appirater;
 			sourceTree = "<group>";
 		};
 		F0B9EBD1150D3D7B006CC3E7 /* AFNetworking */ = {
@@ -425,7 +441,7 @@
 		F0E5DC3E14E6FA2800F60D43 = {
 			isa = PBXGroup;
 			children = (
-				F04FA6E2151D2C3000ED35D0 /* MessageUI.framework */,
+				F04FA6E4151D2DF900ED35D0 /* Appirater */,
 				F0C5BB201511C08600F14F5E /* PullToRefresh */,
 				F0B9EBD1150D3D7B006CC3E7 /* AFNetworking */,
 				F0E5DC5514E6FA2800F60D43 /* hackful */,
@@ -448,8 +464,9 @@
 		F0E5DC4C14E6FA2800F60D43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F0F0A13715184952006EC3D7 /* Twitter.framework */,
 				F0E8B6EB150095A200488EFF /* libxml2.dylib */,
+				F04FA6E2151D2C3000ED35D0 /* MessageUI.framework */,
+				F0F0A13715184952006EC3D7 /* Twitter.framework */,
 				F044F77D150285270037B7A9 /* CFNetwork.framework */,
 				F0E8B6E91500959500488EFF /* SystemConfiguration.framework */,
 				F0E8B6E71500958A00488EFF /* MobileCoreServices.framework */,
@@ -862,6 +879,7 @@
 				F0BC9B9B15166EA300E1348A /* CommentComposeController.m in Sources */,
 				F0D4AB3A1517C256003B9774 /* HKAPI.m in Sources */,
 				F04FA6E1151D16AE00ED35D0 /* MoreController.m in Sources */,
+				F04FA6E7151D2E5000ED35D0 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
