@@ -16,8 +16,6 @@
 
 - (id)init {
     if ((self = [super init])) {
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-            [self setModalPresentationStyle:UIModalPresentationFormSheet];
     }
     
     return self;
@@ -270,7 +268,5 @@
         return nil;
     }
 }
-
-//AUTOROTATION_FOR_PAD_ONLY
 
 @end

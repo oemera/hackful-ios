@@ -21,7 +21,8 @@
     [topLabel setTextColor:[UIColor whiteColor]];
     [topLabel setShadowColor:[UIColor blackColor]];
     [bottomLabel setText:@"Your info is only shared with Hackful Europe."];
-    [bottomLabel setTextColor:[UIColor whiteColor]];
+    UIColor *color = [UIColor colorWithRed:76.0/255.0 green:86.0/255.0 blue:108.0/255.0 alpha:1.0f];
+    [bottomLabel setTextColor:color];
     usernameField.text = [HKSession emailFromPreviousSession];
 }
 
@@ -30,8 +31,6 @@
 }
 
 - (void)sessionDidRecieveToken:(HKSession *)session {
-    [HKSession setCurrentSession:session];
-    
     [self finish];
     [self succeed];
 }
@@ -43,8 +42,9 @@
 
 - (NSArray *)gradientColors {
     NSMutableArray *array = [NSMutableArray array];
-    [array addObject:(id) [[UIColor colorWithRed:1.0f green:0.6f blue:0.2f alpha:1.0f] CGColor]];
-    [array addObject:(id) [[UIColor colorWithRed:0.4f green:0.1f blue:0.0f alpha:1.0f] CGColor]];
+    UIColor *color = [UIColor colorWithRed:174.0/255.0 green:185.0/255.0 blue:194.0/255.0 alpha:1.0f];
+    [array addObject:(id) [color CGColor]];
+    [array addObject:(id) [color CGColor]];
     return array;
 }
 
@@ -59,11 +59,15 @@
 #pragma mark - HKAPIDelegate
 
 - (void)APICallComplete {
-    [self dismissModalViewControllerAnimated:YES];
+    [self finish];
+    [self succeed];
+    //[self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)APICallFailed:(NSError*)error {
-    [self dismissModalViewControllerAnimated:YES];
+    [self finish];
+    [self fail];
+    //[self dismissModalViewControllerAnimated:YES];
 }
 
 @end

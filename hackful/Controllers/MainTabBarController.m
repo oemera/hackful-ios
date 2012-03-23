@@ -18,6 +18,7 @@
 #import "NavigationController.h"
 #import "HKSession.h"
 #import "HKUser.h"
+#import "MoreController.h"
 
 @implementation MainTabBarController
 
@@ -38,7 +39,8 @@
         [ask setTitle:@"Ask Hackful"];
         [ask setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Ask" image:[UIImage imageNamed:@"person.png"] tag:0]];
         
-        RootViewController *more = [[RootViewController alloc] init];
+        //RootViewController *more = [[RootViewController alloc] init];
+        MoreController *more = [[MoreController alloc] init];
         [more setTitle:@"More"];
         [more setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:0]];
         
