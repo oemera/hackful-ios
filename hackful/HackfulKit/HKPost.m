@@ -68,8 +68,6 @@
     NSDate *posted = [NSDate dateForRailsDateString:createdAt];
     HKUser *user = [HKUser userFromJSON:[json objectForKey:@"user"]];
     
-    NSLog(@"post path: %@", path);
-    
     HKPost *post = [[HKPost alloc] initWithObjectId:objectId 
                                                link:link 
                                               title:title 

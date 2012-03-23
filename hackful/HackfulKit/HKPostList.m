@@ -41,7 +41,6 @@
     self.entries = entries;
     isLoading = NO;
     if ([self.delegate respondsToSelector:@selector(listFinishedLoading:)]) {
-        NSLog(@"respondsToSelector entryListFinishedLoading");
         [self.delegate listFinishedLoading:self];
     }
 }

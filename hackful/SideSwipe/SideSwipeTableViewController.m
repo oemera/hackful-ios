@@ -7,6 +7,7 @@
 //
 
 #import "SideSwipeTableViewController.h"
+#import "UIImage+Color.h"
 
 // By setting this to YES, you'll use gesture recognizers under 4.x and use the table's swipe to delete under 3.x
 // By setting it to NO, you'll be using the table's swipe to delete under both 3.x and 4.x. This is what version 3 of the Twitter app does
@@ -24,6 +25,7 @@
 - (void) addSwipeViewTo:(UITableViewCell*)cell direction:(UISwipeGestureRecognizerDirection)direction;
 - (void) setupGestureRecognizers;
 - (void) swipe:(UISwipeGestureRecognizer *)recognizer direction:(UISwipeGestureRecognizerDirection)direction;
+- (void) swipeWillAddCellForRowAtIndexPath:(NSIndexPath*)indexPath;
 @end
 
 @implementation SideSwipeTableViewController
@@ -77,6 +79,7 @@
 // Handle a left or right swipe
 - (void)swipe:(UISwipeGestureRecognizer *)recognizer direction:(UISwipeGestureRecognizerDirection)direction
 {
+    NSLog(@"Swipe happened");
   if (recognizer && recognizer.state == UIGestureRecognizerStateEnded)
   {
     // Get the table view cell where the swipe occured
@@ -91,6 +94,8 @@
       return;
     }
     
+    [self swipeWillAddCellForRowAtIndexPath:indexPath];
+      
     // Make sure we are starting out with the side swipe view and cell in the proper location
     [self removeSideSwipeView:NO];
     
@@ -99,6 +104,10 @@
     if (cell!= sideSwipeCell && !animatingSideSwipe)
       [self addSwipeViewTo:cell direction:direction];
   }
+}
+
+- (void)swipeWillAddCellForRowAtIndexPath:(NSIndexPath*)indexPath {
+    // Should be implemented by inheriting class
 }
 
 #pragma mark Side Swiping under iPhone 3.x
@@ -303,5 +312,26 @@
   self.sideSwipeView = nil;
 }
 
+#pragma mark - Button Utils
+
+- (void)activateButton:(UIButton *)button withButtonInfo:(NSDictionary *)buttonInfo {
+    UIImage* buttonImage = [UIImage imageNamed:[buttonInfo objectForKey:@"image"]];
+    UIImage* grayImage = [UIImage imageFilledWith:[UIColor colorWithWhite:0.9 alpha:1.0] using:buttonImage];
+    [button setImage:grayImage forState:UIControlStateNormal];
+    
+    // Add a touch up inside action
+    [button addTarget:self action:@selector(touchUpInsideAction:) forControlEvents:UIControlEventTouchUpInside];
+    [button setEnabled:YES];
+}
+
+- (void)deactivateButton:(UIButton *)button withButtonInfo:(NSDictionary *)buttonInfo {
+    UIImage* buttonImage = [UIImage imageNamed:[buttonInfo objectForKey:@"image"]];
+    UIImage* grayImage = [UIImage imageFilledWith:[UIColor colorWithWhite:0.9 alpha:0.7] using:buttonImage];
+    [button setImage:grayImage forState:UIControlStateNormal];
+    
+    // remove a touch up inside action
+    [button removeTarget:self action:@selector(touchUpInsideAction:) forControlEvents:UIControlEventTouchUpInside];
+    [button setEnabled:NO];
+}
 
 @end

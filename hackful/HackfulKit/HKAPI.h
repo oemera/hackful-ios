@@ -68,8 +68,10 @@ typedef enum {
 @protocol HKAPIDelegate <NSObject>
 
 @optional
+- (void)APICallUpvoteEntryWasSuccessful;
 - (void)APICallComplete;
 - (void)APICallCompleteWithList:(NSArray*)entries;
+- (void)APICallUpvoteEntryFailed:(NSError*)error;
 - (void)APICallFailed:(NSError*)error;
 - (void)APICallNotLoggedInError;
 @end

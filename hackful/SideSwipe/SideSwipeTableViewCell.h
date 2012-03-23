@@ -12,7 +12,6 @@
 
 @interface SideSwipeTableViewCell : ABTableViewCell {
     BOOL supressDeleteButton;
-    id<SideSwipeTableViewCellDelegate> delegate;
 }
 
 @property (nonatomic) BOOL supressDeleteButton;

@@ -532,6 +532,8 @@
 		F0E5DCE014E6FF8600F60D43 /* HackfulKit */ = {
 			isa = PBXGroup;
 			children = (
+				F0D4AB381517C256003B9774 /* HKAPI.h */,
+				F0D4AB391517C256003B9774 /* HKAPI.m */,
 				F044F78E15028DFD0037B7A9 /* HKSession.h */,
 				F044F78F15028DFD0037B7A9 /* HKSession.m */,
 				F044F77F150288FE0037B7A9 /* HKUser.h */,
@@ -555,8 +557,6 @@
 				F0E8B6EE150099E100488EFF /* HKPostList.m */,
 				F044F7C9150391EF0037B7A9 /* HKCommentList.h */,
 				F044F7CA150391EF0037B7A9 /* HKCommentList.m */,
-				F0D4AB381517C256003B9774 /* HKAPI.h */,
-				F0D4AB391517C256003B9774 /* HKAPI.m */,
 			);
 			name = HackfulKit;
 			sourceTree = "<group>";

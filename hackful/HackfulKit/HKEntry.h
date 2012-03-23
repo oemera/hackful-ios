@@ -15,7 +15,7 @@
 @property (nonatomic, strong, readonly) NSDate* posted;
 @property (nonatomic, readonly) NSInteger votes;
 @property (nonatomic, strong, readonly) NSString* text;
-@property (nonatomic, readonly) BOOL voted;
+@property (nonatomic) BOOL voted;
 @property (nonatomic, strong, readonly) HKUser* user;
 
 - (id)initWithObjectId:(NSInteger)objectId

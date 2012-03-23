@@ -278,6 +278,7 @@
             [HKAPI upvoteEntry:comment delegate:self];
         } else {
             [self showLoginController];
+            // TODO: perform upvote after login
         }
     } else if ([buttonTitle isEqualToString:@"SendTo"]) {
         // TODO: Send to implementation as action sheet
@@ -347,6 +348,18 @@
         // Move the left edge in prepartion for the next button
         leftEdge = leftEdge + buttonImage.size.width + BUTTON_SPACING;
     }
+}
+
+- (void)swipeWillAddCellForRowAtIndexPath:(NSIndexPath*)indexPath {
+    HKComment *comment = [comments objectAtIndex:indexPath.row];
+    NSLog(@"logged in? %@", (HKSession.currentSession.user.name));
+    NSLog(@"voted? %@", (comment.voted ? @"YES" : @"NO"));
+    
+    NSDictionary* buttonInfo = [buttonData objectAtIndex:1];
+    UIButton* button         = [buttons objectAtIndex:1];
+    
+    if (comment.voted) [self deactivateButton:button withButtonInfo:buttonInfo];
+    else               [self activateButton:button withButtonInfo:buttonInfo];
 }
 
 #pragma mark - Comment Utils

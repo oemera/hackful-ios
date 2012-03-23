@@ -18,12 +18,20 @@ static AFHTTPClient* _httpClient = nil;
 @interface HKAPI ()
 + (NSURL*)baseURL;
 + (AFHTTPClient*)httpClient;
+
 + (void)JSONRequestWithMethod:(NSString*)method
                  resourcePath:(NSString*)resourcePath
                        params:(NSDictionary*)params
                      delegate:(id<HKAPIDelegate>)delegate
                       success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success 
                       failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure;
+
++ (void)authorizedJSONRequestWithMethod:(NSString*)method
+                           resourcePath:(NSString*)resourcePath
+                                 params:(NSDictionary*)params
+                               delegate:(id<HKAPIDelegate>)delegate
+                                success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success 
+                                failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure;
 @end
 
 @implementation HKAPI
@@ -65,10 +73,10 @@ static AFHTTPClient* _httpClient = nil;
                         failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
                             // TODO: show HUD with error message
                             NSLog(@"Couldn't login user");
-                            
+                        
                             HKSession.currentSession = nil;
-                            if ([delegate respondsToSelector:@selector(APICallComplete)]) {
-                                [delegate APICallComplete];
+                            if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
+                                [delegate APICallFailed:error];
                             }
                         }];
 }
@@ -84,22 +92,22 @@ static AFHTTPClient* _httpClient = nil;
                             title, @"post[title]", 
                             text, @"post[text]", nil];
     
-    [self JSONRequestWithMethod:@"POST" 
-                   resourcePath:kHKPostCreateResourcePath 
-                         params:params 
-                       delegate:delegate 
-                        success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
-                            if ([delegate respondsToSelector:@selector(APICallComplete)]) {
-                                [delegate APICallComplete];
-                            }
-                        }
-                        failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
-                            NSLog(@"Couldn't create post with params: %@", params);
-                            NSLog(@"error: %@", error);
-                            if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
-                                [delegate APICallFailed:error];
-                            }
-                        }];
+    [self authorizedJSONRequestWithMethod:@"POST" 
+                             resourcePath:kHKPostCreateResourcePath 
+                                   params:params 
+                                 delegate:delegate 
+                                  success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
+                                      if ([delegate respondsToSelector:@selector(APICallComplete)]) {
+                                          [delegate APICallComplete];
+                                      }
+                                  }
+                                  failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
+                                      NSLog(@"Couldn't create post with params: %@", params);
+                                      NSLog(@"error: %@", error);
+                                      if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
+                                          [delegate APICallFailed:error];
+                                      }
+                                  }];
      
 }
 
@@ -115,22 +123,22 @@ static AFHTTPClient* _httpClient = nil;
                             objectId, @"comment[commentable_id]",
                             commentableType, @"comment[commentable_type]", nil];
     
-    [self JSONRequestWithMethod:@"POST" 
-                   resourcePath:kHKCommentCreateResourcePath 
-                         params:params
-                       delegate:delegate 
-                        success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
-                            if ([delegate respondsToSelector:@selector(APICallComplete)]) {
-                                [delegate APICallComplete];
-                            }
-                        }
-                        failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
-                            NSLog(@"Couldn't create post with params: %@", params);
-                            NSLog(@"error: %@", error);
-                            if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
-                                [delegate APICallFailed:error];
-                            }
-                        }];
+    [self authorizedJSONRequestWithMethod:@"POST" 
+                             resourcePath:kHKCommentCreateResourcePath 
+                                   params:params
+                                 delegate:delegate 
+                                  success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
+                                      if ([delegate respondsToSelector:@selector(APICallComplete)]) {
+                                          [delegate APICallComplete];
+                                      }
+                                  }
+                                  failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
+                                      NSLog(@"Couldn't create post with params: %@", params);
+                                      NSLog(@"error: %@", error);
+                                      if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
+                                          [delegate APICallFailed:error];
+                                      }
+                                  }];
     
     NSLog(@"text: %@ commentable_id: %@ commentable_type: %@", text, objectId, commentableType);
 }
@@ -148,23 +156,24 @@ static AFHTTPClient* _httpClient = nil;
         if (HKSession.currentSession.user.objectId != entry.user.objectId) {
             NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
                                     HKSession.currentSession.authenticationToken, @"auth_token", nil];
-            [self JSONRequestWithMethod:@"PUT"
-                           resourcePath:resourcePath
-                                 params:params
-                                delegate:delegate 
-                                success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
-                                    NSLog(@"sendComplete");
-                                    if ([delegate respondsToSelector:@selector(APICallComplete)]) {
-                                        [delegate APICallComplete];
-                                    }
-                                }
-                                failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
-                                    NSLog(@"Couldn't upvote entry with params: %@", params);
-                                    NSLog(@"error: %@", error);
-                                    if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
-                                        [delegate APICallFailed:error];
-                                    }
-                                }];
+            [self authorizedJSONRequestWithMethod:@"PUT"
+                                     resourcePath:resourcePath
+                                           params:params
+                                         delegate:delegate 
+                                          success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
+                                              NSLog(@"APICallUpvoteEntryWasSuccessful");
+                                              entry.voted = YES;
+                                              if ([delegate respondsToSelector:@selector(APICallUpvoteEntryWasSuccessful)]) {
+                                                  [delegate APICallUpvoteEntryWasSuccessful];
+                                              }
+                                          }
+                                          failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
+                                              NSLog(@"Couldn't upvote entry with params: %@", params);
+                                              NSLog(@"error: %@", error);
+                                              if ([delegate respondsToSelector:@selector(APICallUpvoteEntryFailed:)]) {
+                                                  [delegate APICallUpvoteEntryFailed:error];
+                                              }
+                                          }];
         }
     }
 }
@@ -173,9 +182,15 @@ static AFHTTPClient* _httpClient = nil;
                                type:(HKEntryType)entryType
                            delegate:(id<HKAPIDelegate>)delegate {
     
+    NSDictionary* params = nil;
+    if (HKSession.currentSession.authenticationToken != nil) {
+        params = [NSDictionary dictionaryWithObjectsAndKeys:
+                  HKSession.currentSession.authenticationToken, @"auth_token", nil];
+    }
+    
     [self JSONRequestWithMethod:@"GET" 
                    resourcePath:resourcePath 
-                         params:nil 
+                         params:params
                        delegate:delegate 
                         success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
                             NSMutableArray *entries = [[NSMutableArray alloc] init];
@@ -213,18 +228,28 @@ static AFHTTPClient* _httpClient = nil;
                       success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success 
                       failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure {
     
+    NSMutableURLRequest *request = [self.httpClient requestWithMethod:method path:resourcePath parameters:params];
+    AFJSONRequestOperation *operation;
+    operation =  [AFJSONRequestOperation 
+                  JSONRequestOperationWithRequest:request
+                  success:success
+                  failure:failure];
+    [operation start];
+}
+
++ (void)authorizedJSONRequestWithMethod:(NSString*)method
+                           resourcePath:(NSString*)resourcePath
+                                 params:(NSDictionary*)params
+                               delegate:(id<HKAPIDelegate>)delegate
+                                success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success 
+                                failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure {
+    
     if ([HKSession isAnonymous]) {
         if ([delegate respondsToSelector:@selector(APICallNotLoggedInError)]) {
             [delegate APICallNotLoggedInError];
         }
     } else {
-        NSMutableURLRequest *request = [self.httpClient requestWithMethod:method path:resourcePath parameters:params];
-        AFJSONRequestOperation *operation;
-        operation =  [AFJSONRequestOperation 
-                      JSONRequestOperationWithRequest:request
-                      success:success
-                      failure:failure];
-        [operation start];
+        [self JSONRequestWithMethod:method resourcePath:resourcePath params:params delegate:delegate success:success failure:failure];
     }
 }
 

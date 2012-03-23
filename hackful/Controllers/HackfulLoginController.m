@@ -22,6 +22,7 @@
     [topLabel setShadowColor:[UIColor blackColor]];
     [bottomLabel setText:@"Your info is only shared with Hackful Europe."];
     [bottomLabel setTextColor:[UIColor whiteColor]];
+    usernameField.text = [HKSession emailFromPreviousSession];
 }
 
 - (BOOL)requiresPassword {

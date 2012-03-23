@@ -29,6 +29,7 @@
     void (^performAfterLogin)(void);
 }
 - (void) setupSideSwipeView;
+- (void) swipeWillAddCellForRowAtIndexPath:(NSIndexPath*)indexPath;
 @end
 
 @implementation PostController
@@ -177,7 +178,7 @@
 #pragma mark - HKAPIDelegate
 
 - (void)APICallComplete {
-
+    
 }
 
 - (void)APICallFailed:(NSError*)error {
@@ -313,6 +314,18 @@
         // Move the left edge in prepartion for the next button
         leftEdge = leftEdge + buttonImage.size.width + BUTTON_SPACING;
     }
+}
+
+- (void)swipeWillAddCellForRowAtIndexPath:(NSIndexPath*)indexPath {
+    HKPost *post = [entries objectAtIndex:indexPath.row];
+    NSLog(@"logged in? %@", (HKSession.currentSession.user.name));
+    NSLog(@"voted? %@", (post.voted ? @"YES" : @"NO"));
+    
+    NSDictionary* buttonInfo =  [buttonData objectAtIndex:2];
+    UIButton* button = [buttons objectAtIndex:2];
+    
+    if (post.voted) [self deactivateButton:button withButtonInfo:buttonInfo];
+    else            [self activateButton:button withButtonInfo:buttonInfo];
 }
 
 @end

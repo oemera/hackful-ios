@@ -23,4 +23,7 @@
 - (void) removeSideSwipeView:(BOOL)animated;
 - (BOOL) gestureRecognizersSupported;
 
+- (void)activateButton:(UIButton *)button withButtonInfo:(NSDictionary *)buttonInfo;
+- (void)deactivateButton:(UIButton *)button withButtonInfo:(NSDictionary *)buttonInfo;
+
 @end

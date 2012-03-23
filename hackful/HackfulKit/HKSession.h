@@ -17,6 +17,7 @@
 - (id)initWithUser:(HKUser *)user_ token:(NSString *)token_;
 
 + (BOOL)isAnonymous;
++ (NSString*)emailFromPreviousSession;
 + (HKSession *)currentSession;
 + (void)setCurrentSession:(HKSession *)session;
 + (void)initialize;
