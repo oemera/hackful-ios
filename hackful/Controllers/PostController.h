@@ -23,7 +23,7 @@
 
 @interface PostController : SideSwipeTableViewController <UITableViewDelegate, 
 UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate, SideSwipeTableViewCellDelegate, 
-LoginControllerDelegate, ComposeControllerDelegate, HKAPIDelegate> {
+LoginControllerDelegate, ComposeControllerDelegate, HKAPIDelegate, UIActionSheetDelegate> {
     PlacardButton *retryButton;
     LoadingIndicatorView *indicator;
     //UITableView *tableView;
@@ -35,6 +35,7 @@ LoginControllerDelegate, ComposeControllerDelegate, HKAPIDelegate> {
     UIBarButtonItem *composeItem;
     NSArray* buttonData;
     NSMutableArray* buttons;
+    HKPost *currentPost;
 }
 
 @property (nonatomic, strong) HKPostList *postList;

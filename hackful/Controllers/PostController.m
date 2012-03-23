@@ -73,7 +73,7 @@
                   [NSDictionary dictionaryWithObjectsAndKeys:@"Reply", @"title", @"reply.png", @"image", nil],
                   [NSDictionary dictionaryWithObjectsAndKeys:@"Retweet", @"title", @"retweet-outline-button-item.png", @"image", nil],
                   [NSDictionary dictionaryWithObjectsAndKeys:@"Upvote", @"title", @"up_arrow.png", @"image", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"ReadLater", @"title", @"58-bookmark.png", @"image", nil],
+                  //[NSDictionary dictionaryWithObjectsAndKeys:@"ReadLater", @"title", @"58-bookmark.png", @"image", nil],
                   [NSDictionary dictionaryWithObjectsAndKeys:@"SendTo", @"title", @"action.png", @"image", nil], nil];
     
     buttons = [[NSMutableArray alloc] initWithCapacity:buttonData.count];
@@ -189,13 +189,33 @@
 
 }
 
+#pragma mark - ActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == [actionSheet cancelButtonIndex]) return;
+    
+    if (buttonIndex == 0) {
+        [[UIApplication sharedApplication] openURL:[currentPost URLwithLinkOrdPath]];
+    } else if (buttonIndex == 1) {
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        [pasteboard setURL:[currentPost URLwithLinkOrdPath]];
+        [pasteboard setString:[[currentPost URLwithLinkOrdPath] absoluteString]];
+        
+        /*ProgressHUD *copied = [[ProgressHUD alloc] init];
+        [copied setState:kProgressHUDStateCompleted];
+        [copied setText:@"Copied!"];
+        [copied showInWindow:[[self view] window]];
+        [copied dismissAfterDelay:0.8f animated:YES];*/
+    }
+}
+
 #pragma mark - Button touch up inside action
 
 - (void)touchUpInsideAction:(UIButton*)button {
     NSIndexPath* indexPath = [tableView indexPathForCell:sideSwipeCell];
     NSUInteger index = [buttons indexOfObject:button];
     NSDictionary* buttonInfo = [buttonData objectAtIndex:index];
-    HKPost *post = [entries objectAtIndex:indexPath.row];
+    currentPost = [entries objectAtIndex:indexPath.row];
     NSString *buttonTitle = [buttonInfo objectForKey:@"title"];
     
     if ([buttonTitle isEqualToString:@"Reply"]) {
@@ -204,7 +224,7 @@
             NSLog(@"session: %@ %@", session.user.name, session.authenticationToken);
             
             NavigationController *navigation = [[NavigationController alloc] init];
-            ComposeController *compose = [[CommentComposeController alloc] initWithEntry:post];
+            ComposeController *compose = [[CommentComposeController alloc] initWithEntry:currentPost];
             compose.delegate = self;
             
             [navigation setViewControllers:[NSArray arrayWithObject:compose]];
@@ -214,8 +234,8 @@
         }
     } else if ([buttonTitle isEqualToString:@"Retweet"]) {
         TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
-        [twitter addURL:[post URLwithLinkOrdPath]];
-        [twitter setInitialText:[NSString stringWithFormat:@"%@ #HackfulEurope", post.title]];
+        [twitter addURL:[currentPost URLwithLinkOrdPath]];
+        [twitter setInitialText:[NSString stringWithFormat:@"%@ #HackfulEurope", currentPost.title]];
         
         // Show the controller
         [self presentModalViewController:twitter animated:YES];
@@ -229,7 +249,7 @@
         };
     } else if ([buttonTitle isEqualToString:@"Upvote"]) {
         if (![HKSession isAnonymous]) {
-            [HKAPI upvoteEntry:post delegate:self];
+            [HKAPI upvoteEntry:currentPost delegate:self];
         } else {
             [self showLoginController];
             // TODO: perform upvote after login
@@ -240,7 +260,18 @@
     } else if ([buttonTitle isEqualToString:@"ReadLater"]) {
         // TODO: ReadLater implementation as action sheet
     } else if ([buttonTitle isEqualToString:@"SendTo"]) {
-        // TODO: Send to implementation as action sheet
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:currentPost.title
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                             destructiveButtonTitle:nil
+                                                  otherButtonTitles:nil];
+        
+        [sheet addButtonWithTitle:@"Open with Safari"];
+        [sheet addButtonWithTitle:@"Copy Link"];
+        [sheet addButtonWithTitle:@"Cancel"];
+        [sheet setCancelButtonIndex:([sheet numberOfButtons] - 1)];
+        
+        [sheet showInView:[[self view] window]];
     }
     
     [self removeSideSwipeView:YES];
