@@ -163,6 +163,12 @@
     [tableView reloadData];
 }
 
+- (void)listFinishedLoading:(HKList *)list withError:(NSError*)error {
+    NSLog(@"listFinishedLoading withError");
+    [pullToRefreshView finishedLoading];
+    [pullToRefreshView setState:PullToRefreshViewStateNormal];
+}
+
 #pragma mark - PullToRefreshView
 
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view {
@@ -243,6 +249,15 @@
     [tableView setScrollsToTop:YES];
 }
 
+#pragma mark - HKAPIDelegate
+
+- (void)APICallComplete {
+    
+}
+
+- (void)APICallFailed:(NSError*)error {
+    
+}
 
 #pragma mark - UITableViewDelegate
 

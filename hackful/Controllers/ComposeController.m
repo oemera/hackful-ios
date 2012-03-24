@@ -8,6 +8,7 @@
 
 #import "ComposeController.h"
 #import "PlaceholderTextView.h"
+#import "SVProgressHUD.h"
 
 @implementation ComposeController
 @synthesize delegate = _delegate;
@@ -62,11 +63,7 @@
 - (void)sendFailed {
     [[self navigationItem] setRightBarButtonItem:completeItem];
     
-    UIAlertView *alert = [[UIAlertView alloc] init];
-    [alert setTitle:@"Error Posting"];
-    [alert setMessage:@"Unable to post. Ensure you have a data connection and can perform this post."];
-    [alert addButtonWithTitle:@"Continue"];
-    [alert show];
+    [SVProgressHUD showErrorWithStatus:@"Error Posting" duration:1.2];
 }
 
 - (void)performSubmission {

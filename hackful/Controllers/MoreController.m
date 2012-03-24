@@ -134,6 +134,7 @@
                 [self presentModalViewController:composeController animated:YES];
             } else {
                 [SVProgressHUD showErrorWithStatus:@"Can't send mails!" duration:1.2];
+                [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
             }
             return;
         } else if ([indexPath row] == 1) {
@@ -170,12 +171,13 @@
 #pragma mark - LoginControllerDelegate
 
 - (void)loginControllerDidLogin:(LoginController *)controller {
-    [tableView reloadData];
     [self dismissModalViewControllerAnimated:YES];
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)loginControllerDidCancel:(LoginController *)controller {
     [self dismissModalViewControllerAnimated:YES];
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
 #pragma mark - MailDelegate

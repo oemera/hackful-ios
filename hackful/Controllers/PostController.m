@@ -98,6 +98,12 @@
     [tableView reloadData];
 }
 
+- (void)listFinishedLoading:(HKList *)list withError:(NSError*)error {
+    NSLog(@"listFinishedLoading withError");
+    [pullToRefreshView finishedLoading];
+    [pullToRefreshView setState:PullToRefreshViewStateNormal];
+}
+
 #pragma mark - PullToRefreshView
 
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view {
@@ -182,11 +188,6 @@
 }
 
 - (void)APICallFailed:(NSError*)error {
-
-}
-
-- (void)APICallNotLoggedInError {
-
 }
 
 #pragma mark - ActionSheetDelegate

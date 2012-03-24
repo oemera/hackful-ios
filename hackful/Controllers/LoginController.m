@@ -10,6 +10,7 @@
 
 #import "LoginController.h"
 #import "LoadingIndicatorView.h"
+#import "SVProgressHUD.h"
 
 @implementation LoginController
 @synthesize delegate = _delegate;
@@ -158,14 +159,7 @@
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 }
 
-- (void)fail {	
-    UIAlertView *alert = [[UIAlertView alloc] init];
-    [alert setTitle:@"Unable to Authenticate"];
-    [alert setMessage:@"Unable to authenticate. Make sure your username and password are correct."];
-    [alert addButtonWithTitle:@"Continue"];
-    [alert setCancelButtonIndex:0];
-    [alert show];    	
-	
+- (void)fail {
 	isAuthenticating = NO;
 	[tableView reloadData];
     [passwordField becomeFirstResponder];

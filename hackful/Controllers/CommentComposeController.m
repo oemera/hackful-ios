@@ -47,12 +47,10 @@
 }
 
 - (void)performSubmission {
-    NSLog(@"performCreateComment");
-    if (![self ableToSubmit]) {
-        NSLog(@"is not able to submit");
-        [self sendFailed];
-    } else {
+    if ([self ableToSubmit]) {
         [HKAPI createCommentWithText:textView.text forParent:self.entry delegate:self];
+    } else {
+        [self sendFailed];
     }
 }
 
