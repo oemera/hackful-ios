@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F01F46B91514579C0027785E /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = F01F46B81514579C0027785E /* UIImage+Color.m */; };
+		F0225748151DF47800E3C5A2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F0225746151DF47800E3C5A2 /* Default.png */; };
+		F0225749151DF47800E3C5A2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0225747151DF47800E3C5A2 /* Default@2x.png */; };
 		F04333A01506B7B100C676F0 /* 08-chat.png in Resources */ = {isa = PBXBuildFile; fileRef = F04333951506B7B100C676F0 /* 08-chat.png */; };
 		F04333A11506B7B100C676F0 /* 08-chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F04333961506B7B100C676F0 /* 08-chat@2x.png */; };
 		F04333AE1506BE0300C676F0 /* comments.png in Resources */ = {isa = PBXBuildFile; fileRef = F04333AB1506BE0200C676F0 /* comments.png */; };
@@ -138,6 +140,8 @@
 /* Begin PBXFileReference section */
 		F01F46B71514579C0027785E /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Color.h"; path = "Categories/UIImage+Color.h"; sourceTree = "<group>"; };
 		F01F46B81514579C0027785E /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Color.m"; path = "Categories/UIImage+Color.m"; sourceTree = "<group>"; };
+		F0225746151DF47800E3C5A2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		F0225747151DF47800E3C5A2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F04333951506B7B100C676F0 /* 08-chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-chat.png"; sourceTree = "<group>"; };
 		F04333961506B7B100C676F0 /* 08-chat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-chat@2x.png"; sourceTree = "<group>"; };
 		F04333AB1506BE0200C676F0 /* comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comments.png; sourceTree = "<group>"; };
@@ -595,6 +599,8 @@
 		F0E5DCE414E7009900F60D43 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F0225746151DF47800E3C5A2 /* Default.png */,
+				F0225747151DF47800E3C5A2 /* Default@2x.png */,
 				F07F9D34151DC19900F136B2 /* Icon.png */,
 				F07F9D35151DC19900F136B2 /* Icon@2x.png */,
 				F04333941506B7B100C676F0 /* New */,
@@ -782,6 +788,8 @@
 				F07F9D1D151DAA7500F136B2 /* SVWebViewController.bundle in Resources */,
 				F07F9D36151DC19900F136B2 /* Icon.png in Resources */,
 				F07F9D37151DC19900F136B2 /* Icon@2x.png in Resources */,
+				F0225748151DF47800E3C5A2 /* Default.png in Resources */,
+				F0225749151DF47800E3C5A2 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
