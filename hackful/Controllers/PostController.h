@@ -16,18 +16,13 @@
 #import "ComposeController.h"
 #import "HKAPI.h"
 
-@class LoadingIndicatorView;
-@class PlacardButton;
 @class LoadMoreButton;
 @class HKPost;
 
 @interface PostController : SideSwipeTableViewController <UITableViewDelegate, 
 UITableViewDataSource, PullToRefreshViewDelegate, HKListDelegate, SideSwipeTableViewCellDelegate, 
 LoginControllerDelegate, ComposeControllerDelegate, HKAPIDelegate, UIActionSheetDelegate> {
-    PlacardButton *retryButton;
-    LoadingIndicatorView *indicator;
-    //UITableView *tableView;
-    UILabel *emptyLabel;
+    //UILabel *emptyLabel;
     LoadMoreButton *moreButton;
     PullToRefreshView *pullToRefreshView;
     NSArray *entries;

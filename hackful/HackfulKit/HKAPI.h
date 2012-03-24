@@ -47,6 +47,8 @@ typedef enum {
                         password:(NSString*)password 
                         delegate:(id<HKAPIDelegate>)delegate;
 
++ (void)logoutCurrentSessionWithDelegate:(id<HKAPIDelegate>)delegate;
+
 + (void)upvoteEntry:(HKEntry*)entry 
            delegate:(id<HKAPIDelegate>)delegate;
 

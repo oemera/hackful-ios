@@ -6,19 +6,17 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "HKAPI.h"
 #import "MainTabBarController.h"
 #import "PostController.h"
 #import "CommentsController.h"
-#import "ComposeController.h"
 #import "SubmissionComposeController.h"
-#import "HKPostList.h"
-#import "RootViewController.h"
 #import "HackfulLoginController.h"
 #import "NavigationController.h"
+#import "MoreController.h"
+#import "HKAPI.h"
+#import "HKPostList.h"
 #import "HKSession.h"
 #import "HKUser.h"
-#import "MoreController.h"
 
 @implementation MainTabBarController
 
@@ -39,7 +37,6 @@
         [ask setTitle:@"Ask Hackful"];
         [ask setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Ask" image:[UIImage imageNamed:@"person.png"] tag:0]];
         
-        //RootViewController *more = [[RootViewController alloc] init];
         MoreController *more = [[MoreController alloc] init];
         [more setTitle:@"More"];
         [more setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:0]];
@@ -68,33 +65,15 @@
 
 - (void)composePressed {
     NSLog(@"composePressed");
-    //HKSession* session = [HKSession currentSession];
     if (![HKSession isAnonymous]) {
-        // TODO: show comment viewcontroller 
-        NSLog(@"show comment viewcontroller");
-        HKSession *session = [HKSession currentSession];
-        NSLog(@"session: %@ %@", session.user.name, session.authenticationToken);
-        
-        
-        id topViewController = [self.navigationController topViewController];
-        NSLog(@"topViewController class %@", [topViewController class]);
-        if ([topViewController isKindOfClass:[PostController class]]) {
-            NSLog(@"Should show post submit viewcontroller");
-        } else if ([topViewController isKindOfClass:[CommentsController class]]) {
-            NSLog(@"Should show comment submit viewcontroller");
-        } else {
-            NSLog(@"Backup: Should show post submit viewcontroller");
-        }
-        
         NavigationController *navigation = [[NavigationController alloc] init];
-        ComposeController *compose = [[SubmissionComposeController alloc] init];
+        SubmissionComposeController *compose = [[SubmissionComposeController alloc] init];
         
         [navigation setViewControllers:[NSArray arrayWithObject:compose]];
         [self presentModalViewController:navigation animated:YES];
     } else {
         [self showLoginController];
     }
-    
 }
 
 - (void)loadView {

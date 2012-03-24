@@ -17,6 +17,7 @@
 #import "WebViewController.h"
 #import "NavigationController.h"
 #import "HackfulLoginController.h"
+#import "SVProgressHUD.h"
 #import "HKSession.h"
 
 
@@ -125,15 +126,14 @@
     
     if ([indexPath section] == 1) {
         if ([indexPath row] == 0) {
-            // TODO: Start mail client with email address
             if ([MFMailComposeViewController canSendMail]) {
                 MFMailComposeViewController *composeController = [[MFMailComposeViewController alloc] init];
                 [composeController setMailComposeDelegate:self];
-                [composeController setToRecipients:[NSArray arrayWithObject:@"oemer.a@me.com"]];
+                [composeController setToRecipients:[NSArray arrayWithObject:kEmailAddress]];
                 
                 [self presentModalViewController:composeController animated:YES];
             } else {
-                // TODO: show error
+                [SVProgressHUD showErrorWithStatus:@"Can't send mails!" duration:1.2];
             }
             return;
         } else if ([indexPath row] == 1) {
@@ -151,7 +151,8 @@
         if ([indexPath row] == 0) {
             if (![HKSession isAnonymous]) {
                 // Logout
-                [HKSession setCurrentSession:nil];
+                [HKAPI logoutCurrentSessionWithDelegate:self];
+                [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
             } else {
                 // Login
                 HackfulLoginController *loginController = [[HackfulLoginController alloc] init];
@@ -169,6 +170,7 @@
 #pragma mark - LoginControllerDelegate
 
 - (void)loginControllerDidLogin:(LoginController *)controller {
+    [tableView reloadData];
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -180,6 +182,12 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - HKAPIDelegate
+
+- (void)APICallFailed:(NSError*)error {
+    [SVProgressHUD showErrorWithStatus:@"Couldn't logout!" duration:1.2];
 }
 
 @end

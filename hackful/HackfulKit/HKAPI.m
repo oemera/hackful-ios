@@ -74,7 +74,30 @@ static AFHTTPClient* _httpClient = nil;
                             // TODO: show HUD with error message
                             NSLog(@"Couldn't login user");
                         
+                            if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
+                                [delegate APICallFailed:error];
+                            }
+                        }];
+}
+
++ (void)logoutCurrentSessionWithDelegate:(id<HKAPIDelegate>)delegate {
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            HKSession.currentSession.authenticationToken, @"auth_token", nil];
+    
+    [self JSONRequestWithMethod:@"DELETE" 
+                   resourcePath:kHKSessionLogoutResourcePath 
+                         params:params 
+                       delegate:delegate 
+                        success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
                             HKSession.currentSession = nil;
+                            if ([delegate respondsToSelector:@selector(APICallComplete)]) {
+                                [delegate APICallComplete];
+                            }
+                        }
+                        failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
+                            // TODO: show HUD with error message
+                            NSLog(@"Couldn't logout user");
+                            
                             if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
                                 [delegate APICallFailed:error];
                             }

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import "HKAPI.h"
 #import "LoginController.h"
 
 @interface MoreController : UIViewController <UITableViewDelegate, UITableViewDataSource, LoginControllerDelegate, 
-MFMailComposeViewControllerDelegate> {
+MFMailComposeViewControllerDelegate, HKAPIDelegate> {
     UITableView *tableView;
 }
 

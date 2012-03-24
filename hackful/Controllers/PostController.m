@@ -7,20 +7,20 @@
 //
 
 #import <Twitter/Twitter.h>
+
 #import "PostController.h"
 #import "UIImage+Color.h"
-#import "LoadingIndicatorView.h"
-#import "PlacardButton.h"
-#import "HKSession.h"
-#import "HKPostList.h"
-#import "HKEntry.h"
-#import "HKPost.h"
-#import "HKComment.h"
 #import "NavigationController.h"
 #import "CommentsController.h"
 #import "SideSwipeTableViewCell.h"
 #import "WebViewController.h"
 #import "CommentComposeController.h"
+#import "HKSession.h"
+#import "HKPostList.h"
+#import "HKEntry.h"
+#import "HKPost.h"
+#import "HKComment.h"
+#import "SVProgressHUD.h"
 
 #define BUTTON_LEFT_MARGIN 35.5
 #define BUTTON_SPACING 32.0
@@ -201,11 +201,7 @@
         [pasteboard setURL:[currentPost URLwithLinkOrdPath]];
         [pasteboard setString:[[currentPost URLwithLinkOrdPath] absoluteString]];
         
-        /*ProgressHUD *copied = [[ProgressHUD alloc] init];
-        [copied setState:kProgressHUDStateCompleted];
-        [copied setText:@"Copied!"];
-        [copied showInWindow:[[self view] window]];
-        [copied dismissAfterDelay:0.8f animated:YES];*/
+        [SVProgressHUD showSuccessWithStatus:@"Copied!" duration:1.2];
     }
 }
 
@@ -243,7 +239,7 @@
         // Called when the tweet dialog has been closed
         twitter.completionHandler = ^(TWTweetComposeViewControllerResult result) {
             if (result == TWTweetComposeViewControllerResultCancelled) {
-                // TODO: show HUD Error
+                [SVProgressHUD showErrorWithStatus:@"Couldn't send Tweet!" duration:1.2];
             }
             [self dismissModalViewControllerAnimated:YES];
         };
@@ -349,8 +345,6 @@
 
 - (void)swipeWillAddCellForRowAtIndexPath:(NSIndexPath*)indexPath {
     HKPost *post = [entries objectAtIndex:indexPath.row];
-    NSLog(@"logged in? %@", (HKSession.currentSession.user.name));
-    NSLog(@"voted? %@", (post.voted ? @"YES" : @"NO"));
     
     NSDictionary* buttonInfo =  [buttonData objectAtIndex:2];
     UIButton* button = [buttons objectAtIndex:2];

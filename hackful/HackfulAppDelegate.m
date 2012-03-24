@@ -9,7 +9,6 @@
 #import "HackfulAppDelegate.h"
 #import "NavigationController.h"
 #import "MainTabBarController.h"
-#import "RootViewController.h"
 #import "Appirater.h"
 
 @implementation HackfulAppDelegate
