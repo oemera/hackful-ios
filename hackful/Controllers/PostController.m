@@ -13,7 +13,7 @@
 #import "NavigationController.h"
 #import "CommentsController.h"
 #import "SideSwipeTableViewCell.h"
-#import "WebViewController.h"
+#import "SVWebViewController.h"
 #import "CommentComposeController.h"
 #import "HKSession.h"
 #import "HKPostList.h"
@@ -153,7 +153,7 @@
         [self.navigationController pushViewController:commentsController animated:YES];
     } else {
         NSURL *url = [NSURL URLWithString:post.link];
-        WebViewController *webViewController = [[WebViewController alloc] initWithURL:url];
+        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:url];
         [self.navigationController pushViewController:webViewController animated:YES];
     }
 }

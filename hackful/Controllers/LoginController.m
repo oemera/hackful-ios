@@ -185,8 +185,6 @@
 }
 
 - (void)_authenticate {
-    //[[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    //[[self navigationItem] setRightBarButtonItem:loadingItem];
     [self authenticate];
 }
 

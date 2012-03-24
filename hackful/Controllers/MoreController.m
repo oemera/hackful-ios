@@ -14,7 +14,7 @@
 #define kGithubPage         @"http://github.com/Oemera/hackful-ios"
 
 #import "MoreController.h"
-#import "WebViewController.h"
+#import "SVWebViewController.h"
 #import "NavigationController.h"
 #import "HackfulLoginController.h"
 #import "SVProgressHUD.h"
@@ -115,7 +115,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 0) {
-        return [NSString stringWithFormat:@"Hackful for iOS version %@\n\nDeveloped by Ömer Avci\n\nIf you have feature requests or just want to say thank you, feel free to contact me.\n\n", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
+        return [NSString stringWithFormat:@"Hackful for iOS version %@\nDeveloped by Ömer Avci\n\nIf you have feature requests or just want to say thank you, feel free to contact me.\n\n", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
     }
     
     return nil;
@@ -138,15 +138,15 @@
             }
             return;
         } else if ([indexPath row] == 1) {
-            controller = [[WebViewController alloc] initWithURL:[NSURL URLWithString:@"https://twitter.com/obviouscaptain"]];
+            controller = [[SVWebViewController alloc] initWithURL:[NSURL URLWithString:@"https://twitter.com/obviouscaptain"]];
         } else if ([indexPath row] == 2) {
-            controller = [[WebViewController alloc] initWithURL:[NSURL URLWithString:@"http://dailyoemer.com"]];
+            controller = [[SVWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://dailyoemer.com"]];
         }
     } else if ([indexPath section] == 2) {
         if ([indexPath row] == 0) {
-            controller = [[WebViewController alloc] initWithURL:[NSURL URLWithString:kHackfulHomepage]];
+            controller = [[SVWebViewController alloc] initWithURL:[NSURL URLWithString:kHackfulHomepage]];
         } else if ([indexPath row] == 1) {
-            controller = [[WebViewController alloc] initWithURL:[NSURL URLWithString:kGithubPage]];
+            controller = [[SVWebViewController alloc] initWithURL:[NSURL URLWithString:kGithubPage]];
         }
     } else if ([indexPath section] == 3) {
         if ([indexPath row] == 0) {

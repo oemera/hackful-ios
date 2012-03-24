@@ -44,6 +44,9 @@
 		F04FA6FA151D8E7200ED35D0 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F04FA6F7151D8E7200ED35D0 /* SVProgressHUD.bundle */; };
 		F04FA6FB151D8E7200ED35D0 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F04FA6F9151D8E7200ED35D0 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F078C1DA150F104E00F713F3 /* NSDate+RailsDate.m in Sources */ = {isa = PBXBuildFile; fileRef = F078C1D9150F104E00F713F3 /* NSDate+RailsDate.m */; };
+		F07F9D1C151DAA7500F136B2 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F9D18151DAA7500F136B2 /* SVModalWebViewController.m */; };
+		F07F9D1D151DAA7500F136B2 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F07F9D19151DAA7500F136B2 /* SVWebViewController.bundle */; };
+		F07F9D1E151DAA7500F136B2 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F9D1B151DAA7500F136B2 /* SVWebViewController.m */; };
 		F0B9EBCA150CBB0D006CC3E7 /* HackfulLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBC9150CBB0D006CC3E7 /* HackfulLoginController.m */; };
 		F0B9EBCD150CBC48006CC3E7 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBCC150CBC48006CC3E7 /* LoginController.m */; };
 		F0B9EBE7150D3D7B006CC3E7 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBD3150D3D7B006CC3E7 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -75,7 +78,6 @@
 		F0E33E391514D6D600EE551C /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E33E371514D6D600EE551C /* NavigationController.m */; };
 		F0E33E3C1514D6F600EE551C /* PullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E33E3B1514D6F600EE551C /* PullToRefreshView.m */; };
 		F0E33E411514D71B00EE551C /* LoadingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E33E3E1514D71B00EE551C /* LoadingIndicatorView.m */; };
-		F0E33E451514E13700EE551C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E33E441514E13700EE551C /* WebViewController.m */; };
 		F0E5DC4E14E6FA2800F60D43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC4D14E6FA2800F60D43 /* UIKit.framework */; };
 		F0E5DC5014E6FA2800F60D43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC4F14E6FA2800F60D43 /* Foundation.framework */; };
 		F0E5DC5214E6FA2800F60D43 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E5DC5114E6FA2800F60D43 /* CoreGraphics.framework */; };
@@ -180,6 +182,11 @@
 		F04FA6F9151D8E7200ED35D0 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		F078C1D8150F104E00F713F3 /* NSDate+RailsDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+RailsDate.h"; path = "Categories/NSDate+RailsDate.h"; sourceTree = "<group>"; };
 		F078C1D9150F104E00F713F3 /* NSDate+RailsDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+RailsDate.m"; path = "Categories/NSDate+RailsDate.m"; sourceTree = "<group>"; };
+		F07F9D17151DAA7500F136B2 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
+		F07F9D18151DAA7500F136B2 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
+		F07F9D19151DAA7500F136B2 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
+		F07F9D1A151DAA7500F136B2 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
+		F07F9D1B151DAA7500F136B2 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
 		F0B9EBC8150CBB0D006CC3E7 /* HackfulLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HackfulLoginController.h; path = Controllers/HackfulLoginController.h; sourceTree = "<group>"; };
 		F0B9EBC9150CBB0D006CC3E7 /* HackfulLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HackfulLoginController.m; path = Controllers/HackfulLoginController.m; sourceTree = "<group>"; };
 		F0B9EBCB150CBC48006CC3E7 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = Controllers/LoginController.h; sourceTree = "<group>"; };
@@ -237,8 +244,6 @@
 		F0E33E3B1514D6F600EE551C /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PullToRefreshView.m; path = PullToRefresh/PullToRefreshView.m; sourceTree = "<group>"; };
 		F0E33E3D1514D71B00EE551C /* LoadingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingIndicatorView.h; path = Views/LoadingIndicatorView.h; sourceTree = "<group>"; };
 		F0E33E3E1514D71B00EE551C /* LoadingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingIndicatorView.m; path = Views/LoadingIndicatorView.m; sourceTree = "<group>"; };
-		F0E33E431514E13700EE551C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = Controllers/WebViewController.h; sourceTree = "<group>"; };
-		F0E33E441514E13700EE551C /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = Controllers/WebViewController.m; sourceTree = "<group>"; };
 		F0E5DC4914E6FA2800F60D43 /* hackful.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackful.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0E5DC4D14E6FA2800F60D43 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F0E5DC4F14E6FA2800F60D43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -360,6 +365,18 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		F07F9D16151DAA7500F136B2 /* SVWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F07F9D17151DAA7500F136B2 /* SVModalWebViewController.h */,
+				F07F9D18151DAA7500F136B2 /* SVModalWebViewController.m */,
+				F07F9D19151DAA7500F136B2 /* SVWebViewController.bundle */,
+				F07F9D1A151DAA7500F136B2 /* SVWebViewController.h */,
+				F07F9D1B151DAA7500F136B2 /* SVWebViewController.m */,
+			);
+			path = SVWebViewController;
+			sourceTree = "<group>";
+		};
 		F0B9EBD1150D3D7B006CC3E7 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +445,7 @@
 		F0E5DC3E14E6FA2800F60D43 = {
 			isa = PBXGroup;
 			children = (
+				F07F9D16151DAA7500F136B2 /* SVWebViewController */,
 				F04FA6F6151D8E7200ED35D0 /* SVProgressHUD */,
 				F04FA6E4151D2DF900ED35D0 /* Appirater */,
 				F0C5BB201511C08600F14F5E /* PullToRefresh */,
@@ -527,8 +545,6 @@
 				F0E5DD3414E7033600F60D43 /* PostController.m */,
 				F044F7C615038F830037B7A9 /* CommentsController.h */,
 				F044F7C715038F830037B7A9 /* CommentsController.m */,
-				F0E33E431514E13700EE551C /* WebViewController.h */,
-				F0E33E441514E13700EE551C /* WebViewController.m */,
 				F0B9EBC8150CBB0D006CC3E7 /* HackfulLoginController.h */,
 				F0B9EBC9150CBB0D006CC3E7 /* HackfulLoginController.m */,
 				F0B9EBF1150DC15F006CC3E7 /* ComposeController.h */,
@@ -760,6 +776,7 @@
 				F04333B41506BE6300C676F0 /* 58-bookmark@2x.png in Resources */,
 				F0C5BB27151286DD00F14F5E /* comment-arrow.png in Resources */,
 				F04FA6FA151D8E7200ED35D0 /* SVProgressHUD.bundle in Resources */,
+				F07F9D1D151DAA7500F136B2 /* SVWebViewController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,12 +853,13 @@
 				F0E33E391514D6D600EE551C /* NavigationController.m in Sources */,
 				F0E33E3C1514D6F600EE551C /* PullToRefreshView.m in Sources */,
 				F0E33E411514D71B00EE551C /* LoadingIndicatorView.m in Sources */,
-				F0E33E451514E13700EE551C /* WebViewController.m in Sources */,
 				F0BC9B9B15166EA300E1348A /* CommentComposeController.m in Sources */,
 				F0D4AB3A1517C256003B9774 /* HKAPI.m in Sources */,
 				F04FA6E1151D16AE00ED35D0 /* MoreController.m in Sources */,
 				F04FA6E7151D2E5000ED35D0 /* Appirater.m in Sources */,
 				F04FA6FB151D8E7200ED35D0 /* SVProgressHUD.m in Sources */,
+				F07F9D1C151DAA7500F136B2 /* SVModalWebViewController.m in Sources */,
+				F07F9D1E151DAA7500F136B2 /* SVWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

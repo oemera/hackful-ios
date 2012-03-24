@@ -19,7 +19,7 @@
 #import "HackfulLoginController.h"
 #import "NavigationController.h"
 #import "CommentComposeController.h"
-#import "WebViewController.h"
+#import "SVWebViewController.h"
 
 #define BUTTON_LEFT_MARGIN 35.5
 #define BUTTON_SPACING 32.0
@@ -132,7 +132,7 @@
 - (void)tableHeaderView:(TableHeaderView *)header selectedURL:(NSURL *)url {
     NSLog(@"Header touched commentscontroller");
     
-    WebViewController *webViewController = [[WebViewController alloc] initWithURL:url];
+    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:url];
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
