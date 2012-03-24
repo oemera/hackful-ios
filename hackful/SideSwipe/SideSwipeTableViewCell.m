@@ -85,6 +85,7 @@ static UIImage *commentImage = nil;
 - (void)drawContentView:(CGRect)rect {
     CGSize bounds = [self bounds].size;
     CGSize offsets = CGSizeMake(8.0f, 4.0f);
+    CGSize commentOffsets = CGSizeMake(13.0f, 4.0f);
     
     NSString *user = [[self.post user] name];
     //NSString *site = [[NSURL URLWithString:[self.post link]] host];
@@ -92,8 +93,15 @@ static UIImage *commentImage = nil;
     NSString *date = [NSDate stringForTimeIntervalSinceCreated:[self.post posted]];
     NSString *comments = [NSString stringWithFormat:@"%d", self.post.commentCount];
     NSString *points = [SideSwipeTableViewCell createPointsAndDateLabelWith:[self.post votes] 
-                                                                         and:date];
+                                                                        and:date];
     
+    // CommentArea
+    UIImage *commentsImage = [UIImage imageFilledWith:[UIColor colorWithWhite:0.5 alpha:1.0] using:[UIImage imageNamed:@"comments.png"]];
+    CGFloat commentAreaWidth = bounds.width - (bounds.width - commentsImage.size.width - commentOffsets.width) + 15;
+    CGFloat commentAreaHeight = bounds.height;
+    CGFloat commentAreaX = bounds.width - commentAreaWidth - commentOffsets.width + 15;
+    CGFloat commentAreaY = 0;
+    commentButtonActiveArea = CGRectMake(commentAreaX, commentAreaY, commentAreaWidth, commentAreaHeight);
     
     if ([self isHighlighted] || [self isSelected]) [[UIColor whiteColor] set];
     if (!([self isHighlighted] || [self isSelected])) [[UIColor grayColor] set];
@@ -104,7 +112,7 @@ static UIImage *commentImage = nil;
     [date drawAtPoint:CGPointMake(bounds.width - datewidth - offsets.width, offsets.height) withFont:[[self class] dateFont]];*/
     
     if (!([self isHighlighted] || [self isSelected])) [[UIColor blackColor] set];
-    [title drawInRect:CGRectMake(offsets.width, offsets.height + 19.0f, bounds.width - (2 * offsets.width), bounds.height - 45.0f) 
+    [title drawInRect:CGRectMake(offsets.width, offsets.height + 19.0f, bounds.width - (2 * offsets.width) - commentButtonActiveArea.size.width, bounds.height - 45.0f) 
              withFont:[[self class] titleFont] 
         lineBreakMode:UILineBreakModeWordWrap];
     
@@ -132,9 +140,9 @@ static UIImage *commentImage = nil;
            alignment:UITextAlignmentRight];*/
     
     // BIG TODO: Refactoring! Too much copy paste code
-    CGSize commentOffsets = CGSizeMake(13.0f, 4.0f);
-    UIImage *commentsImage = [UIImage imageFilledWith:[UIColor colorWithWhite:0.5 alpha:1.0] using:[UIImage imageNamed:@"comments.png"]];
-    [commentsImage drawAtPoint:CGPointMake(bounds.width - commentsImage.size.width - commentOffsets.width, offsets.height + 11)];
+    CGFloat commentImageY = ((bounds.height - (commentsImage.size.height + 15)) / 2);
+    //offsets.height + 11
+    [commentsImage drawAtPoint:CGPointMake(bounds.width - commentsImage.size.width - commentOffsets.width, commentImageY)];
     
     if (!([self isHighlighted] || [self isSelected])) [[UIColor lightGrayColor] set];
     CGRect commentRect;
@@ -144,19 +152,13 @@ static UIImage *commentImage = nil;
     CGFloat commentsImageCenterPoint    = (commentsImage.size.width/2);
     CGFloat commentsCenterPoint         = commentsImage.size.width - commentsImageCenterPoint - (commentRect.size.width/2);
     CGFloat commentLableX               = bounds.width - commentOffsets.width - commentsImage.size.width + commentsCenterPoint;
-    CGFloat commentLableY               = bounds.height - offsets.height - 6 - commentRect.size.height;
+    //CGFloat commentLableY               = bounds.height - offsets.height - 6 - commentRect.size.height;
+    CGFloat commentLableY               = commentImageY + commentsImage.size.height + offsets.height - 2;
     commentRect.origin = CGPointMake(commentLableX, commentLableY);
     [comments drawInRect:commentRect 
                 withFont:[[self class] subtleFont] 
            lineBreakMode:UILineBreakModeHeadTruncation 
                alignment:UITextAlignmentRight];
-    
-    
-    CGFloat commentAreaWidth = bounds.width - (bounds.width - commentsImage.size.width - commentOffsets.width) + 15;
-    CGFloat commentAreaHeight = bounds.height;
-    CGFloat commentAreaX = bounds.width - commentAreaWidth - commentOffsets.width + 15;
-    CGFloat commentAreaY = 0;
-    commentButtonActiveArea = CGRectMake(commentAreaX, commentAreaY, commentAreaWidth, commentAreaHeight);
     
     /*CGContextRef context = UIGraphicsGetCurrentContext();
     CGRect rectangle = commentButtonActiveArea;

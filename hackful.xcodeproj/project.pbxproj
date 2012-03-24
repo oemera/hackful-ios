@@ -230,8 +230,6 @@
 		F0CC6C3E151061F2000FDE89 /* TableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableHeaderView.m; path = Views/TableHeaderView.m; sourceTree = "<group>"; };
 		F0D4AB381517C256003B9774 /* HKAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKAPI.h; path = HackfulKit/HKAPI.h; sourceTree = "<group>"; };
 		F0D4AB391517C256003B9774 /* HKAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKAPI.m; path = HackfulKit/HKAPI.m; sourceTree = "<group>"; };
-		F0E20078150419C600F847A2 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		F0E20079150419C600F847A2 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		F0E2007A150419C600F847A2 /* SideSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideSwipeTableViewCell.h; sourceTree = "<group>"; };
 		F0E2007B150419C600F847A2 /* SideSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideSwipeTableViewCell.m; sourceTree = "<group>"; };
 		F0E2007C150419C600F847A2 /* SideSwipeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideSwipeTableViewController.h; sourceTree = "<group>"; };
@@ -422,8 +420,6 @@
 		F0E20077150419C600F847A2 /* SideSwipe */ = {
 			isa = PBXGroup;
 			children = (
-				F0E20078150419C600F847A2 /* RootViewController.h */,
-				F0E20079150419C600F847A2 /* RootViewController.m */,
 				F0E2007A150419C600F847A2 /* SideSwipeTableViewCell.h */,
 				F0E2007B150419C600F847A2 /* SideSwipeTableViewCell.m */,
 				F0E2007C150419C600F847A2 /* SideSwipeTableViewController.h */,
