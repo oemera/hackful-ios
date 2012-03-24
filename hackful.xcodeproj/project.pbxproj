@@ -38,7 +38,6 @@
 		F044F7DA1503E6730037B7A9 /* HKList.m in Sources */ = {isa = PBXBuildFile; fileRef = F044F7D81503E6720037B7A9 /* HKList.m */; };
 		F04FA6E1151D16AE00ED35D0 /* MoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04FA6E0151D16AE00ED35D0 /* MoreController.m */; };
 		F04FA6E3151D2C3100ED35D0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F04FA6E2151D2C3000ED35D0 /* MessageUI.framework */; };
-		F04FA6E7151D2E5000ED35D0 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = F04FA6E6151D2E5000ED35D0 /* Appirater.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F04FA6E8151D2F0800ED35D0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E8B6E91500959500488EFF /* SystemConfiguration.framework */; };
 		F04FA6E9151D2F1100ED35D0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F044F77D150285270037B7A9 /* CFNetwork.framework */; };
 		F04FA6FA151D8E7200ED35D0 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F04FA6F7151D8E7200ED35D0 /* SVProgressHUD.bundle */; };
@@ -47,6 +46,10 @@
 		F07F9D1C151DAA7500F136B2 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F9D18151DAA7500F136B2 /* SVModalWebViewController.m */; };
 		F07F9D1D151DAA7500F136B2 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F07F9D19151DAA7500F136B2 /* SVWebViewController.bundle */; };
 		F07F9D1E151DAA7500F136B2 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F9D1B151DAA7500F136B2 /* SVWebViewController.m */; };
+		F07F9D26151DBC9C00F136B2 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F9D25151DBC9C00F136B2 /* Appirater.m */; };
+		F07F9D2F151DBF9F00F136B2 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F9D25151DBC9C00F136B2 /* Appirater.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F07F9D36151DC19900F136B2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F07F9D34151DC19900F136B2 /* Icon.png */; };
+		F07F9D37151DC19900F136B2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F07F9D35151DC19900F136B2 /* Icon@2x.png */; };
 		F0B9EBCA150CBB0D006CC3E7 /* HackfulLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBC9150CBB0D006CC3E7 /* HackfulLoginController.m */; };
 		F0B9EBCD150CBC48006CC3E7 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBCC150CBC48006CC3E7 /* LoginController.m */; };
 		F0B9EBE7150D3D7B006CC3E7 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9EBD3150D3D7B006CC3E7 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -175,8 +178,6 @@
 		F04FA6DF151D16AE00ED35D0 /* MoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreController.h; path = Controllers/MoreController.h; sourceTree = "<group>"; };
 		F04FA6E0151D16AE00ED35D0 /* MoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreController.m; path = Controllers/MoreController.m; sourceTree = "<group>"; };
 		F04FA6E2151D2C3000ED35D0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		F04FA6E5151D2E5000ED35D0 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
-		F04FA6E6151D2E5000ED35D0 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appirater.m; sourceTree = "<group>"; };
 		F04FA6F7151D8E7200ED35D0 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		F04FA6F8151D8E7200ED35D0 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		F04FA6F9151D8E7200ED35D0 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -187,6 +188,10 @@
 		F07F9D19151DAA7500F136B2 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
 		F07F9D1A151DAA7500F136B2 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
 		F07F9D1B151DAA7500F136B2 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
+		F07F9D24151DBC9C00F136B2 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = Appirater/Appirater.h; sourceTree = "<group>"; };
+		F07F9D25151DBC9C00F136B2 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = Appirater/Appirater.m; sourceTree = "<group>"; };
+		F07F9D34151DC19900F136B2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = hackful/Resources/Icon.png; sourceTree = "<group>"; };
+		F07F9D35151DC19900F136B2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "hackful/Resources/Icon@2x.png"; sourceTree = "<group>"; };
 		F0B9EBC8150CBB0D006CC3E7 /* HackfulLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HackfulLoginController.h; path = Controllers/HackfulLoginController.h; sourceTree = "<group>"; };
 		F0B9EBC9150CBB0D006CC3E7 /* HackfulLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HackfulLoginController.m; path = Controllers/HackfulLoginController.m; sourceTree = "<group>"; };
 		F0B9EBCB150CBC48006CC3E7 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = Controllers/LoginController.h; sourceTree = "<group>"; };
@@ -349,8 +354,8 @@
 		F04FA6E4151D2DF900ED35D0 /* Appirater */ = {
 			isa = PBXGroup;
 			children = (
-				F04FA6E5151D2E5000ED35D0 /* Appirater.h */,
-				F04FA6E6151D2E5000ED35D0 /* Appirater.m */,
+				F07F9D24151DBC9C00F136B2 /* Appirater.h */,
+				F07F9D25151DBC9C00F136B2 /* Appirater.m */,
 			);
 			name = Appirater;
 			sourceTree = "<group>";
@@ -594,6 +599,8 @@
 		F0E5DCE414E7009900F60D43 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F07F9D34151DC19900F136B2 /* Icon.png */,
+				F07F9D35151DC19900F136B2 /* Icon@2x.png */,
 				F04333941506B7B100C676F0 /* New */,
 				F0E2008415041A7D00F847A2 /* SideSwipe */,
 				F0E5DCE514E7010200F60D43 /* Images */,
@@ -777,6 +784,8 @@
 				F0C5BB27151286DD00F14F5E /* comment-arrow.png in Resources */,
 				F04FA6FA151D8E7200ED35D0 /* SVProgressHUD.bundle in Resources */,
 				F07F9D1D151DAA7500F136B2 /* SVWebViewController.bundle in Resources */,
+				F07F9D36151DC19900F136B2 /* Icon.png in Resources */,
+				F07F9D37151DC19900F136B2 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,6 +820,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F07F9D2F151DBF9F00F136B2 /* Appirater.m in Sources */,
 				F0E5DC5C14E6FA2800F60D43 /* main.m in Sources */,
 				F0E5DC6014E6FA2800F60D43 /* HackfulAppDelegate.m in Sources */,
 				F0E5DCE314E6FFED00F60D43 /* MainTabBarController.m in Sources */,
@@ -856,7 +866,6 @@
 				F0BC9B9B15166EA300E1348A /* CommentComposeController.m in Sources */,
 				F0D4AB3A1517C256003B9774 /* HKAPI.m in Sources */,
 				F04FA6E1151D16AE00ED35D0 /* MoreController.m in Sources */,
-				F04FA6E7151D2E5000ED35D0 /* Appirater.m in Sources */,
 				F04FA6FB151D8E7200ED35D0 /* SVProgressHUD.m in Sources */,
 				F07F9D1C151DAA7500F136B2 /* SVModalWebViewController.m in Sources */,
 				F07F9D1E151DAA7500F136B2 /* SVWebViewController.m in Sources */,
@@ -875,6 +884,7 @@
 				F044F7CC150391EF0037B7A9 /* HKCommentList.m in Sources */,
 				F044F7D41503C9EF0037B7A9 /* NSDate+TimeAgo.m in Sources */,
 				F044F7DA1503E6730037B7A9 /* HKList.m in Sources */,
+				F07F9D26151DBC9C00F136B2 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
