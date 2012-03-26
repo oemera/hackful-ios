@@ -20,8 +20,6 @@
 - (id)initWithPost:(HKPost *)post_ {
     if(self = [super init]) {
         post = post_;
-        NSLog(@"objectId: %d", post_.objectId);
-        // TODO: change objectId to int
         resourcePath = [NSString stringWithFormat:kHKCommentsForPostResourcePath, [post objectId]];
         isLoading = NO;
     }
@@ -52,10 +50,6 @@
 - (void)APICallFailed:(NSError*)error {
     isLoading = NO;
     if ([self.delegate respondsToSelector:@selector(listFinishedLoading:withError:)]) {
-        NSLog(@"respondsToSelector listFinishedLoading:withError:");
-        /*NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-         [errorDetail setValue:@"Failed to load comments" forKey:NSLocalizedDescriptionKey];
-         NSError *error = [NSError errorWithDomain:@"HKCommentList" code:-1 userInfo:errorDetail];*/
         [self.delegate listFinishedLoading:self withError:error];
     }
 }

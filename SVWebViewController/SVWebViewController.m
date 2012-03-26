@@ -166,8 +166,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     NSAssert(self.navigationController, @"SVWebViewController needs to be contained in a UINavigationController. If you are presenting SVWebViewController modally, use SVModalWebViewController instead.");
     
-	[super viewWillAppear:animated];
-	
+    [super viewWillAppear:animated];
+    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self.navigationController setToolbarHidden:NO animated:animated];
     }
@@ -232,6 +232,7 @@
         }
         
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, toolbarWidth, 44.0f)];
+        
         toolbar.items = items;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
     } 
@@ -263,6 +264,8 @@
                      nil];
         }
         
+        UIColor *color = [UIColor colorWithRed:52.0/255.0 green:80.0/255.0 blue:101.0/255.0 alpha:1.0f];
+        self.navigationController.toolbar.tintColor = color;
         self.toolbarItems = items;
     }
 }

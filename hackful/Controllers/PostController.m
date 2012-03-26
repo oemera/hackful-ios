@@ -91,7 +91,6 @@
 #pragma mark - ListDelegate
 
 - (void)listFinishedLoading:(HKPostList *)entryList {
-    NSLog(@"listFinishedLoading");
     entries = [[entryList entries] copy];
     lastUpdated = [NSDate date];
     [pullToRefreshView finishedLoading];
@@ -99,7 +98,6 @@
 }
 
 - (void)listFinishedLoading:(HKList *)list withError:(NSError*)error {
-    NSLog(@"listFinishedLoading withError");
     [pullToRefreshView finishedLoading];
     [pullToRefreshView setState:PullToRefreshViewStateNormal];
 }

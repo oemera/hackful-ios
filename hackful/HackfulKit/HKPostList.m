@@ -48,10 +48,6 @@
 - (void)APICallFailed:(NSError*)error {
     isLoading = NO;
     if ([self.delegate respondsToSelector:@selector(listFinishedLoading:withError:)]) {
-        NSLog(@"respondsToSelector listFinishedLoading:withError:");
-        /*NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-         [errorDetail setValue:@"Failed to load comments" forKey:NSLocalizedDescriptionKey];
-         NSError *error = [NSError errorWithDomain:@"HKCommentList" code:-1 userInfo:errorDetail];*/
         [self.delegate listFinishedLoading:self withError:error];
     }
 }

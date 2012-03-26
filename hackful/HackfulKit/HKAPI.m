@@ -72,9 +72,7 @@ static AFHTTPClient* _httpClient = nil;
                             }
                         }
                         failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
-                            // TODO: show HUD with error message
                             NSLog(@"Couldn't login user");
-                            
                             [SVProgressHUD showErrorWithStatus:@"Coulnd't login!" duration:1.2];
                             
                             if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
@@ -98,9 +96,7 @@ static AFHTTPClient* _httpClient = nil;
                             }
                         }
                         failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
-                            // TODO: show HUD with error message
                             NSLog(@"Couldn't logout user");
-                            
                             [SVProgressHUD showErrorWithStatus:@"Coulnd't logout!" duration:1.2];
                             
                             if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
@@ -132,7 +128,6 @@ static AFHTTPClient* _httpClient = nil;
                                   failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
                                       NSLog(@"Couldn't create post with params: %@", params);
                                       NSLog(@"error: %@", error);
-                                      
                                       [SVProgressHUD showErrorWithStatus:@"Coulnd't create post!" duration:1.2];
                                       
                                       if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
@@ -166,7 +161,6 @@ static AFHTTPClient* _httpClient = nil;
                                   failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
                                       NSLog(@"Couldn't create post with params: %@", params);
                                       NSLog(@"error: %@", error);
-                                      
                                       [SVProgressHUD showErrorWithStatus:@"Coulnd't create comment!" duration:1.2];
                                       
                                       if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
@@ -204,7 +198,6 @@ static AFHTTPClient* _httpClient = nil;
                                           failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
                                               NSLog(@"Couldn't upvote entry with params: %@", params);
                                               NSLog(@"error: %@", error);
-                                              
                                               [SVProgressHUD showErrorWithStatus:@"Coulnd't upvote!" duration:1.2];
                                               
                                               if ([delegate respondsToSelector:@selector(APICallUpvoteEntryFailed:)]) {
@@ -249,7 +242,6 @@ static AFHTTPClient* _httpClient = nil;
                         failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
                             NSLog(@"Couldn't load entries");
                             NSLog(@"error %@", error);
-                            
                             [SVProgressHUD showErrorWithStatus:@"Loading error!" duration:1.2];
                             
                             if ([delegate respondsToSelector:@selector(APICallFailed:)]) {

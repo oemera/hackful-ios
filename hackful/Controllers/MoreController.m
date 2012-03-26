@@ -115,7 +115,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 0) {
-        return [NSString stringWithFormat:@"Hackful for iOS version %@\nDeveloped by Ömer Avci\n\nIf you have feature requests or just want to say thank you, feel free to contact me.\n\n", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
+        return [NSString stringWithFormat:@"Hackful for iOS version %@\nCreated by Ömer Avci\n\nIf you have feature requests or just want to say thank you, feel free to contact me.\n\n", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
     }
     
     return nil;
