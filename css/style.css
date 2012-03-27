@@ -1,0 +1,397 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Start Global CSS
+/*-----------------------------------------------------------------------------------*/
+
+body{
+	background:url(../images/foreground-bg.jpg) center 350px repeat-x;
+	color: #555555;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+a, a:visited, a:active{
+	color: #9CCDE5;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #799daf;
+}
+
+#footer a, a:visited, a:active{
+	color: #337799;
+	text-decoration: none;
+}
+
+#footer a:hover{
+	color: #004466;
+}
+
+#container{
+	padding-bottom: 40px;
+}
+
+.wrapper{
+	width: 870px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.clear{
+	clear:both;
+}
+
+.hide{
+	display:none;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	Header
+/*-----------------------------------------------------------------------------------*/
+
+#header{
+	height:350px;
+	background:url(../images/fabricBG.jpg) repeat;
+	border-bottom: 1px solid #E2E5E4;
+	overflow: hidden;
+}
+
+#header-main{
+	background:url(../images/main_bg.jpg) center top no-repeat;
+	height:350px;
+}
+
+.replace{
+	display: block;
+	overflow: hidden;
+	text-indent: -999em;
+}	
+
+h1.logo{
+	position: absolute;
+	top: 75px;
+	left: 0;
+	width: 231px;
+	height: 257px;
+	background: url("../images/logo.png") no-repeat;
+	text-indent:-9999px;
+	margin-left: 300px;
+}
+
+.intro{
+	padding-top: 118px;
+	width: 220px;
+	margin-left: 555px;
+	color: #FFFFFF;
+	font-size:14px;
+	line-height:22px;
+}
+
+.intro p{
+	margin: 0 0 30px;
+}
+
+.app-store, .app-store a{
+	width: 220px;
+	height: 72px;
+}
+
+.app-store22{
+	background: #737F7E url("../images/app-store-bg.jpg") top repeat-x;
+}
+
+.app-store a{
+ 	background: url("../images/appstore_badge.png") no-repeat; 
+/*	background: url("../images/review.png") no-repeat;*/
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	iPhone / Slideshow
+/*-----------------------------------------------------------------------------------*/
+
+#iphone{
+	position: absolute;
+	top: -301px;
+	width: 266px;
+	height: 538px;
+	background: url(../images/iphone.png) no-repeat;
+}
+
+#slides, #slides li{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#slides{
+	position: absolute;
+	top: 83px;
+	left: 22px;
+}
+
+#slides li{
+	display: none;
+}
+
+#homebutton{
+    display: block;
+    height: 50px;
+    left: 110px;
+    position: absolute;
+    text-decoration: none;
+    text-indent: -9999px;
+    top: 447px;
+    width: 50px;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	Tabs + Tab Content
+/*-----------------------------------------------------------------------------------*/
+
+.panel{
+	width:520px;
+	overflow:hidden;
+	margin-left: 300px;
+}
+
+.panel.hide{
+	display:none;
+}
+
+#content{
+	padding-top: 35px;
+	margin-left: 25px;
+}
+
+#tabs{
+	margin:0 0 30px 300px;
+}
+
+#tabs li{
+	display:block;
+	float:left;
+	font-size:13px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	padding:5px 10px 6px;
+	cursor:pointer;
+	color:#363F4F;
+}
+
+
+#tabs li:hover{
+	color:#363F4F;
+}
+
+#tabs li.current{
+	color:#D1D6DF;
+	background:url(../images/bg_activetab.png) repeat-x scroll center center transparent;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	-webkit-box-shadow: 0px 1px 0px #4C4E53;
+	-moz-box-shadow: 0px 1px 0px #4C4E53;
+	box-shadow: 0px 1px 0px #D1D6DF;
+}
+
+.features, .features li{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.features li{
+	font-size: 13px;
+	width: 220px;
+	float: left;
+	margin-right: 40px;
+	padding-bottom: 40px;
+	line-height:20px;
+}
+
+.features h2{
+	color: #2D3D3A;
+	font-size: 18px;
+	padding: 0 0 0 33px;
+	margin: 0 0 7px 0;
+	height:26px;
+	line-height:26px;
+	overflow:hidden;
+}
+
+.features .empty {
+	padding: 0 0 0 0;
+}
+
+.features p{
+	color: #555;
+	margin: 0;
+}
+
+#testimonials li{
+	margin:10px 0 50px 0;
+}
+
+#testimonials .testimonial{
+	color:#D1D6DF;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:16px;
+	font-style:italic;
+	line-height:22px;
+	background:url(../images/testimonial_bg.png) top repeat-x;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	padding:9px 15px;
+	text-shadow: 1px 1px 0px #38373F;
+	filter: dropshadow(color=#38373F, offx=1, offy=1);
+	cursor:default;
+}
+
+#testimonials .testimonial:hover{
+	color:#dadee5;
+}
+
+#testimonials .testimonial_source{
+	text-align:right;
+	color: #379;
+	padding:5px 4px 0 0;
+	font-size:11px;
+}
+
+.icon-preview{
+	float:left;
+	margin:0px 10px 20px 10px;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	Footer
+/*-----------------------------------------------------------------------------------*/
+
+#footer{
+	background: url("../images/divider.png") top center no-repeat;
+	overflow: hidden;
+	padding:30px 0 0 0;
+	font-size:11px;
+}
+
+#footer-right{
+	float:right;
+}
+
+#footer .footer-left{
+	line-height:20px;
+}
+
+#footer-subscribe{
+	background: url("../images/subscribe_bg.png") no-repeat scroll 0 0 transparent;
+	width:311px;
+	height:35px;
+}
+
+#footer-subscribe #email{
+    background:none repeat scroll 0 0 transparent;
+    border:none;
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 12px;
+    height: 25px;
+    line-height: 2.4em;
+    padding: 5px 0 5px 10px;
+    width: 245px;
+	color:#fff;
+}
+
+#footer-subscribe #email-submit{
+    background:none repeat scroll 0 0 transparent;
+    border:none;
+    cursor:pointer;
+    display:block;
+    float:right;
+    font-size:0;
+    height:35px;
+    line-height:0;
+    text-indent:-9999px;
+    width:50px;
+}
+
+#social-icons{
+	margin:10px 0 0 0;
+	text-align:right;
+	padding:0 3px 0 0;
+}
+
+#social-icons a{
+	margin:0 0 0 11px;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	Feature Icon Classes
+/*-----------------------------------------------------------------------------------*/
+
+.features h2.alarm{background:url(../images/icons/alarm.png) left center no-repeat;}
+.features h2.arrowdown{background:url(../images/icons/arrowdown.png) left center no-repeat;}
+.features h2.arrowleft{background:url(../images/icons/arrowleft.png) left center no-repeat;}
+.features h2.arrowright{background:url(../images/icons/arrowright.png) left center no-repeat;}
+.features h2.arrowup{background:url(../images/icons/arrowup.png) left center no-repeat;}
+.features h2.bank{background:url(../images/icons/bank.png) left center no-repeat;}
+.features h2.briefcase{background:url(../images/icons/briefcase.png) left center no-repeat;}
+.features h2.calculator{background:url(../images/icons/calculator.png) left center no-repeat;}
+.features h2.camera{background:url(../images/icons/camera.png) left center no-repeat;}
+.features h2.clapboard{background:url(../images/icons/clapboard.png) left center no-repeat;}
+.features h2.clock{background:url(../images/icons/clock.png) left center no-repeat;}
+.features h2.connections{background:url(../images/icons/connections.png) left center no-repeat;}
+.features h2.credit_card{background:url(../images/icons/credit_card.png) left center no-repeat;}
+.features h2.database{background:url(../images/icons/database.png) left center no-repeat;}
+.features h2.delete{background:url(../images/icons/delete.png) left center no-repeat;}
+.features h2.delivery{background:url(../images/icons/delivery.png) left center no-repeat;}
+.features h2.disk{background:url(../images/icons/disk.png) left center no-repeat;}
+.features h2.eject{background:url(../images/icons/eject.png) left center no-repeat;}
+.features h2.fastforward{background:url(../images/icons/fastforward.png) left center no-repeat;}
+.features h2.filter{background:url(../images/icons/filter.png) left center no-repeat;}
+.features h2.fire{background:url(../images/icons/fire.png) left center no-repeat;}
+.features h2.first_aid{background:url(../images/icons/first_aid.png) left center no-repeat;}
+.features h2.folder{background:url(../images/icons/folder.png) left center no-repeat;}
+.features h2.forwardtoend{background:url(../images/icons/forwardtoend.png) left center no-repeat;}
+.features h2.games{background:url(../images/icons/games.png) left center no-repeat;}
+.features h2.graph{background:url(../images/icons/graph.png) left center no-repeat;}
+.features h2.heart{background:url(../images/icons/heart.png) left center no-repeat;}
+.features h2.house{background:url(../images/icons/house.png) left center no-repeat;}
+.features h2.lightbulb{background:url(../images/icons/lightbulb.png) left center no-repeat;}
+.features h2.magnet{background:url(../images/icons/magnet.png) left center no-repeat;}
+.features h2.magnifyingglass{background:url(../images/icons/magnifyingglass.png) left center no-repeat;}
+.features h2.mailclosed{background:url(../images/icons/mailclosed.png) left center no-repeat;}
+.features h2.mailopened{background:url(../images/icons/mailopened.png) left center no-repeat;}
+.features h2.man{background:url(../images/icons/man.png) left center no-repeat;}
+.features h2.minus{background:url(../images/icons/minus.png) left center no-repeat;}
+.features h2.monitor{background:url(../images/icons/monitor.png) left center no-repeat;}
+.features h2.move{background:url(../images/icons/move.png) left center no-repeat;}
+.features h2.newspaper{background:url(../images/icons/newspaper.png) left center no-repeat;}
+.features h2.padlock{background:url(../images/icons/padlock.png) left center no-repeat;}
+.features h2.page{background:url(../images/icons/page.png) left center no-repeat;}
+.features h2.pause{background:url(../images/icons/pause.png) left center no-repeat;}
+.features h2.pencilangled{background:url(../images/icons/pencilangled.png) left center no-repeat;}
+.features h2.pencilstraight{background:url(../images/icons/pencilstraight.png) left center no-repeat;}
+.features h2.photos{background:url(../images/icons/photos.png) left center no-repeat;}
+.features h2.piggy{background:url(../images/icons/piggy.png) left center no-repeat;}
+.features h2.play{background:url(../images/icons/play.png) left center no-repeat;}
+.features h2.plus{background:url(../images/icons/plus.png) left center no-repeat;}
+.features h2.preferences{background:url(../images/icons/preferences.png) left center no-repeat;}
+.features h2.record{background:url(../images/icons/record.png) left center no-repeat;}
+.features h2.refresh{background:url(../images/icons/refresh.png) left center no-repeat;}
+.features h2.reload{background:url(../images/icons/reload.png) left center no-repeat;}
+.features h2.rewind{background:url(../images/icons/rewind.png) left center no-repeat;}
+.features h2.rewindtostart{background:url(../images/icons/rewindtostart.png) left center no-repeat;}
+.features h2.rss{background:url(../images/icons/rss.png) left center no-repeat;}
+.features h2.safe{background:url(../images/icons/safe.png) left center no-repeat;}
+.features h2.scales{background:url(../images/icons/scales.png) left center no-repeat;}
+.features h2.shoppingcart{background:url(../images/icons/shoppingcart.png) left center no-repeat;}
+.features h2.speaker{background:url(../images/icons/speaker.png) left center no-repeat;}
+.features h2.speechbubble{background:url(../images/icons/speechbubble.png) left center no-repeat;}
+.features h2.speechmedia{background:url(../images/icons/speechmedia.png) left center no-repeat;}
+.features h2.star{background:url(../images/icons/star.png) left center no-repeat;}
+.features h2.trash{background:url(../images/icons/trash.png) left center no-repeat;}
+.features h2.trend{background:url(../images/icons/trend.png) left center no-repeat;}
+.features h2.world{background:url(../images/icons/world.png) left center no-repeat;}
