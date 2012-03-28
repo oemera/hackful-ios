@@ -162,12 +162,12 @@ h1.logo{
 }
 
 .panel a, .panel a:visited, .panel a:active{
-	color: #3f7f9e;
+	color: #246f94;
 	text-decoration: none;
 }
 
 .panel a:hover{
-	color: #799daf;
+	color: #668ea2;
 }
 
 #content{
