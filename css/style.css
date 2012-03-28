@@ -161,6 +161,15 @@ h1.logo{
 	display:none;
 }
 
+.panel a, .panel a:visited, .panel a:active{
+	color: #3f7f9e;
+	text-decoration: none;
+}
+
+.panel a:hover{
+	color: #799daf;
+}
+
 #content{
 	padding-top: 35px;
 	margin-left: 25px;
@@ -210,6 +219,16 @@ h1.logo{
 	margin-right: 40px;
 	padding-bottom: 40px;
 	line-height:20px;
+}
+
+.features li ul {
+	padding-top: 10px;
+}
+
+.features li ul li {
+	padding-bottom: 0px;
+	line-height:20px;
+	list-style-type:disc;
 }
 
 .features h2{
