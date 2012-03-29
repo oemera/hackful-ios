@@ -1,9 +1,9 @@
 //
 //  SideSwipeTableViewCell.h
-//  SideSwipeTableView
+//  hackful
 //
-//  Created by Peter Boctor on 4/13/11.
-//  Copyright 2011 Peter Boctor. All rights reserved.
+//  Created by Ömer Avci on 14.03.12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 #import "ABTableViewCell.h"
 

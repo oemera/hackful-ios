@@ -1,5 +1,5 @@
 //
-//  EntryListController.h
+//  PostController.h
 //  hackful
 //
 //  Created by Ömer Avci on 11.02.12.

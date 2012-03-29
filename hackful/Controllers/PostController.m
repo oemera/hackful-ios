@@ -1,5 +1,5 @@
 //
-//  EntryListController.m
+//  PostController.m
 //  hackful
 //
 //  Created by Ömer Avci on 11.02.12.
