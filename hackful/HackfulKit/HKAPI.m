@@ -91,13 +91,17 @@ static AFHTTPClient* _httpClient = nil;
                        delegate:delegate 
                         success:^(NSURLRequest *req, NSHTTPURLResponse *response, id jsonObject) {
                             HKSession.currentSession = nil;
+                            
                             if ([delegate respondsToSelector:@selector(APICallComplete)]) {
                                 [delegate APICallComplete];
                             }
                         }
                         failure:^(NSURLRequest *req, NSHTTPURLResponse *response, NSError *error, id jsonObject) {
                             NSLog(@"Couldn't logout user");
-                            [SVProgressHUD showErrorWithStatus:@"Coulnd't logout!" duration:1.2];
+                            
+                            // If we can't logout but we want to, we should be at least drop all last 
+                            // session data. Otherwise we could _NEVER_ logout with somehow broken data.
+                            HKSession.currentSession = nil;
                             
                             if ([delegate respondsToSelector:@selector(APICallFailed:)]) {
                                 [delegate APICallFailed:error];

@@ -20,6 +20,10 @@
 #import "SVProgressHUD.h"
 #import "HKSession.h"
 
+@interface MoreController () {
+    NSString *loginStatusLabel;
+}
+@end
 
 @implementation MoreController
 
@@ -37,16 +41,25 @@
     UIColor *color = [UIColor colorWithRed:230.0/255.0 green:233.0/255.0 blue:235.0/255.0 alpha:1.0f];
     [tableView setBackgroundColor:color];
     [tableView setBackgroundView:backgroundView];
+    
+    NSLog(@"loadView and loginLabel");
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:@"More"];
+    
+    NSLog(@"viewDidLoad and loginLabel");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
+    loginStatusLabel = [HKSession isAnonymous] ? @"Login" : @"Logout";
+    [tableView reloadData];
+    
+    NSLog(@"viewWillAppear and changed loginLabel");
 }
 
 #pragma mark - UITableViewDataSource
@@ -90,11 +103,7 @@
         }
     } else if ([indexPath section] == 3) {
         if ([indexPath row] == 0) {
-            if (![HKSession isAnonymous]) {
-                [[cell textLabel] setText:@"Logout"];
-            } else {
-                [[cell textLabel] setText:@"Login"];
-            }
+            [[cell textLabel] setText:loginStatusLabel];
         } 
     }
     
@@ -173,6 +182,9 @@
 - (void)loginControllerDidLogin:(LoginController *)controller {
     [self dismissModalViewControllerAnimated:YES];
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
+    loginStatusLabel = [HKSession isAnonymous] ? @"Login" : @"Logout";
+    [tableView reloadData];
 }
 
 - (void)loginControllerDidCancel:(LoginController *)controller {
@@ -188,8 +200,14 @@
 
 #pragma mark - HKAPIDelegate
 
+- (void)APICallComplete {
+    loginStatusLabel = [HKSession isAnonymous] ? @"Login" : @"Logout";
+    [tableView reloadData];
+}
+
 - (void)APICallFailed:(NSError*)error {
-    [SVProgressHUD showErrorWithStatus:@"Couldn't logout!" duration:1.2];
+    loginStatusLabel = [HKSession isAnonymous] ? @"Login" : @"Logout";
+    [tableView reloadData];
 }
 
 @end
