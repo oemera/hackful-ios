@@ -719,6 +719,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Ömer Avci";
 			};
 			buildConfigurationList = F0E5DC4314E6FA2800F60D43 /* Build configuration list for PBXProject "hackful" */;
 			compatibilityVersion = "Xcode 3.2";
