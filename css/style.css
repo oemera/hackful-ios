@@ -94,7 +94,8 @@ h1.logo{
 	margin: 0 0 30px;
 }
 
-.app-store, .app-store a{
+.app-store, .app-store a,
+.coming-app-store, .coming-app-store a{
 	width: 220px;
 	height: 72px;
 }
@@ -105,6 +106,11 @@ h1.logo{
 
 .app-store a{
  	background: url("../images/appstore_badge.png") no-repeat; 
+/*	background: url("../images/review.png") no-repeat;*/
+}
+
+.coming-app-store, .coming-app-store a{
+ 	background: url("../images/coming_appstore_badge.png") no-repeat; 
 /*	background: url("../images/review.png") no-repeat;*/
 }
 
