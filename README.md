@@ -1,13 +1,13 @@
 Introduction
 ------------
-Hackful makes it insanely fun to read and contribute to [Hackful Europe] [hackful.com].
+Hackful for iOS makes it insanely fun to read and contribute to [Hackful Europe] [hackful.com].
 The code is released under the MIT/X11, so feel free to modify and share your changes with the world. 
 
 There is also a [landing page for the app] [landingpage]
 
 App Store
 ---------
-Hackful iOS will be soon avalaible in the App Store for free. At the moment we are in the submission process waiting to get approved.
+Hackful app will be soon avalaible in the App Store for free. At the moment the app is in the submission process waiting to get approved.
 
 Credits
 -------
@@ -27,7 +27,7 @@ Copyright 2012. [Ömer Avci] [oemera].
 This library is distributed under the terms of the MIT/X11.
 
 While not required, I greatly encourage and appreciate any improvements that you make
-to this library be contributed back for the benefit of all who use Hackful iOS App.
+to this library be contributed back for the benefit of all who use Hackful iOS app.
 
 [oemera]: http://dailyoemer.com
 [hackful.com]: http://hackful.com
