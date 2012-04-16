@@ -27,12 +27,7 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#ifdef DEBUG
-//#define kHKBaseAPIURL                   @"http://192.168.1.110:3000"
-#define kHKBaseAPIURL                   @"http://0.0.0.0:3000"
-#else
 #define kHKBaseAPIURL                   @"http://hackful.com"
-#endif
 
 #define kHKSignupPath                   @"/api/v1/signup"
 
