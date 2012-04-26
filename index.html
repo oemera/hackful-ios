@@ -19,7 +19,7 @@
         <script type="text/javascript" src="js/custom.js"></script>	
         
         <script type="text/javascript">
-            alert(navigator.userAgent);
+            alert(navigator.userAgent.toLowerCase().indexOf("iphone"));
             if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
                 var status = $.cookie("hackfulapp");
                 alert(status);
