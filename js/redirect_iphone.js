@@ -1,9 +1,7 @@
 function redirectiPhoneToAppStore() {
-	var check = false;
-	if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1 
-		 && document.referrer.indexOf("kicker.de")==-1 
-		 && document.referrer.indexOf("localhost")==-1) {
-		
-		window.location.href = "itms://apple.com....";
+	if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
+		if (confirm("Hackful App\nDownload in the App Store?")) {
+			window.location.href = "itms://itunes.apple.com/us/app/hackful/id513593209";
+		}
 	}
 }
