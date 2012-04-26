@@ -19,9 +19,11 @@
         <script type="text/javascript" src="js/custom.js"></script>	
         
         <script type="text/javascript">
+            alert(navigator.userAgent);
             if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
                 var status = $.cookie("hackfulapp");
-                if (status !== "downloaded") {
+                alert(status);
+                if (status != "downloaded") {
                     if (confirm("Hackful App\nDownload it in the App Store!")) {
                         $.cookie("hackfulapp", "downloaded");
                         window.location.href = "itms://itunes.apple.com/us/app/hackful/id513593209";
