@@ -19,13 +19,19 @@
         <script type="text/javascript" src="js/custom.js"></script>	
         
         <script type="text/javascript">
-            alert(navigator.userAgent.toLowerCase().indexOf("iphone"));
             if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
-                var status = $.cookie("hackfulapp");
-                alert(status);
+                var nameEQ = "hackfulwebapp=";
+                var ca = document.cookie.split(';');
+                var status;
+                for(var i=0;i < ca.length;i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) status = c.substring(nameEQ.length,c.length);
+                }
+
                 if (status != "downloaded") {
                     if (confirm("Hackful App\nDownload it in the App Store!")) {
-                        $.cookie("hackfulapp", "downloaded");
+                        document.cookie = nameEQ + 'downloaded; path=/';
                         window.location.href = "itms://itunes.apple.com/us/app/hackful/id513593209";
                     }
                 }
