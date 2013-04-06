@@ -5,6 +5,10 @@ The code is released under the MIT/X11, so feel free to modify and share your ch
 
 There is also a [landing page for the app] [landingpage]
 
+Build Status
+---------
+[![Build Status](https://travis-ci.org/Oemera/hackful-ios.png)](https://travis-ci.org/Oemera/hackful-ios)
+
 App Store
 ---------
 Hackful app will be soon avalaible in the App Store for free. At the moment the app is in the submission process waiting to get approved.
