@@ -9,6 +9,14 @@ Build Status
 ---------
 [![Build Status](https://travis-ci.org/Oemera/hackful-ios.png)](https://travis-ci.org/Oemera/hackful-ios)
 
+ToDos
+---------
+* change comments icon
+* change dependecies to git submodules
+* change tabbar to slide-menu
+* create design for swipe-cell
+* create design for comments section
+
 App Store
 ---------
 Hackful app will be soon avalaible in the App Store for free. At the moment the app is in the submission process waiting to get approved.
