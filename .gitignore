@@ -1,2 +1,19 @@
-hackful.xcodeproj/project.xcworkspace/xcuserdata/*
-hackful.xcodeproj/xcuserdata/*
+# Exclude the build directory
+DerivedData
+build/*
+ 
+# Exclude temp nibs and swap files
+*~.nib
+*.swp
+ 
+# Exclude OS X folder attributes
+.DS_Store
+ 
+# Exclude user-specific XCode 3 and 4 files
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+xcuserdata
