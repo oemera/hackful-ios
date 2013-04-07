@@ -72,7 +72,11 @@
 - (void)loadView {
     [super loadView];
     
-    composeItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(composePressed)];
+    composeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"compose-icon"]
+                                                   style:UIBarButtonItemStylePlain
+                                                  target:self action:@selector(composePressed)];
+    [composeItem setBackgroundImage:[UIImage imageNamed:@"nav-button-transparent"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [composeItem setBackgroundImage:[UIImage imageNamed:@"nav-button-transparent"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
     
     [pullToRefreshView setState:PullToRefreshViewStateLoading];
     tableView = [[UITableView alloc] initWithFrame:[[self view] bounds] style:UITableViewStylePlain];
@@ -112,6 +116,22 @@
     [super viewWillAppear:animated];
     
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
+    if([self.navigationController.viewControllers objectAtIndex:0] != self)
+    {
+        UIImage *listIcon = [UIImage imageNamed:@"list-icon"];
+        UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, listIcon.size.width + 23, 26)];
+        [backButton setBackgroundImage:[[UIImage imageNamed:@"nav-back"] stretchableImageWithLeftCapWidth:13 topCapHeight:0] forState:UIControlStateNormal];
+        [backButton setBackgroundImage:[[UIImage imageNamed:@"nav-back-highlighted"] stretchableImageWithLeftCapWidth:13 topCapHeight:0] forState:UIControlStateHighlighted];
+        [backButton setImage:listIcon forState:UIControlStateNormal];
+        [backButton setShowsTouchWhenHighlighted:YES];
+        [backButton addTarget:self action:@selector(popViewControllerWithAnimation) forControlEvents:UIControlEventTouchUpInside];
+        [backButton setImageEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 8)];
+        
+        UIBarButtonItem *barBackItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+        self.navigationItem.hidesBackButton = YES;
+        self.navigationItem.leftBarButtonItem = barBackItem;
+    }
 }
 
 #pragma mark - Actions
@@ -146,6 +166,10 @@
     } else {
         [self showLoginController];
     }
+}
+
+- (void)popViewControllerWithAnimation {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - TableHeaderViewDelegate

@@ -42,6 +42,7 @@
 #import "HKPost.h"
 #import "HKComment.h"
 #import "SVProgressHUD.h"
+#import "SubmissionComposeController.h"
 
 #define BUTTON_LEFT_MARGIN 35.5
 #define BUTTON_SPACING 32.0
@@ -70,12 +71,18 @@
 - (void)loadView {
     [super loadView];
     
+    composeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"compose-icon"]
+                                                   style:UIBarButtonItemStylePlain
+                                                  target:self action:@selector(composePressed)];
+    [composeItem setBackgroundImage:[UIImage imageNamed:@"nav-button-transparent"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [composeItem setBackgroundImage:[UIImage imageNamed:@"nav-button-transparent-2"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    
     tableView = [[UITableView alloc] initWithFrame:[[self view] bounds] style:UITableViewStylePlain];
     [tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     [[self view] addSubview:tableView];
-        
+    
     pullToRefreshView = [[PullToRefreshView alloc] initWithScrollView:tableView];
     [pullToRefreshView setState:PullToRefreshViewStateLoading];
     [pullToRefreshView setDelegate:self];
@@ -87,6 +94,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[self navigationItem] setRightBarButtonItem:composeItem];
     [self.postList beginLoading];
     
     // Setup the title and image for each button within the side swipe view
@@ -94,7 +103,6 @@
                   [NSDictionary dictionaryWithObjectsAndKeys:@"Reply", @"title", @"reply.png", @"image", nil],
                   [NSDictionary dictionaryWithObjectsAndKeys:@"Retweet", @"title", @"retweet-outline-button-item.png", @"image", nil],
                   [NSDictionary dictionaryWithObjectsAndKeys:@"Upvote", @"title", @"up_arrow.png", @"image", nil],
-                  //[NSDictionary dictionaryWithObjectsAndKeys:@"ReadLater", @"title", @"58-bookmark.png", @"image", nil],
                   [NSDictionary dictionaryWithObjectsAndKeys:@"SendTo", @"title", @"action.png", @"image", nil], nil];
     
     buttons = [[NSMutableArray alloc] initWithCapacity:buttonData.count];
@@ -105,7 +113,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
@@ -126,7 +133,6 @@
 #pragma mark - PullToRefreshView
 
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view {
-    NSLog(@"is already loading? %@", [self.postList isLoading]);
     if (![self.postList isLoading]) [self.postList beginLoading];
 }
 
@@ -207,6 +213,21 @@
 }
 
 - (void)APICallFailed:(NSError*)error {
+}
+
+#pragma mark - Actions
+
+- (void)composePressed {
+    NSLog(@"composePressed");
+    if (![HKSession isAnonymous]) {
+        NavigationController *navigation = [[NavigationController alloc] init];
+        SubmissionComposeController *compose = [[SubmissionComposeController alloc] init];
+        
+        [navigation setViewControllers:[NSArray arrayWithObject:compose]];
+        [self presentModalViewController:navigation animated:YES];
+    } else {
+        [self showLoginController];
+    }
 }
 
 #pragma mark - ActionSheetDelegate

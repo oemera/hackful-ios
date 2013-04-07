@@ -32,8 +32,9 @@
 #import "UIImage+Color.h"
 #import "HKPost.h"
 #import "NSDate+TimeAgo.h"
+#import "UIFont+HackfuliOSAdditions.h"
 
-static UIImage *commentImage = nil;
+static UIImage *commentsImage = nil;
 
 @interface SideSwipeTableViewCell () {
     CGRect commentButtonActiveArea;
@@ -62,8 +63,8 @@ static UIImage *commentImage = nil;
         [layer setContentsGravity:kCAGravityTopLeft];
         [layer setNeedsDisplayOnBoundsChange:YES];
         
-        if (commentImage == nil) {
-            commentImage = [UIImage imageFilledWith:[UIColor colorWithWhite:0.5 alpha:1.0] using:[UIImage imageNamed:@"comments.png"]];
+        if (commentsImage == nil) {
+            commentsImage = [UIImage imageNamed:@"comments-icon"];
         }
     }
     
@@ -118,7 +119,6 @@ static UIImage *commentImage = nil;
                                                                         and:date];
     
     // CommentArea
-    UIImage *commentsImage = [UIImage imageFilledWith:[UIColor colorWithWhite:0.5 alpha:1.0] using:[UIImage imageNamed:@"comments.png"]];
     CGFloat commentAreaWidth = bounds.width - (bounds.width - commentsImage.size.width - commentOffsets.width) + 15;
     CGFloat commentAreaHeight = bounds.height;
     CGFloat commentAreaX = bounds.width - commentAreaWidth - commentOffsets.width + 15;
@@ -227,34 +227,27 @@ static UIImage *commentImage = nil;
         point = [NSString stringWithFormat:@"%d points", votes];
     }
     
-    /*NSString *comment = nil;
-    if (commentCount == 0) {
-        comment = @"no comments";
-    } else {
-        if (commentCount == 1) {
-            comment = @"1 comment";
-        } else {
-            comment = [NSString stringWithFormat:@"%d comments", commentCount];
-        }
-    }*/
-    
     return [NSString stringWithFormat:@"%@ • %@", point, date];
 }
 
 + (UIFont *)titleFont {
-    return [UIFont boldSystemFontOfSize:15.0f];
+    //return [UIFont boldSystemFontOfSize:15.0f];
+    return [UIFont hackfulInterfaceFontOfSize:15.0f];
 }
 
 + (UIFont *)userFont {
-    return [UIFont systemFontOfSize:13.0f];
+    //return [UIFont systemFontOfSize:13.0f];
+    return [UIFont hackfulInterfaceFontOfSize:13.0f];
 }
 
 + (UIFont *)dateFont {
-    return [UIFont systemFontOfSize:13.0f];
+    //return [UIFont systemFontOfSize:13.0f];
+    return [UIFont hackfulInterfaceFontOfSize:13.0f];
 }
 
 + (UIFont *)subtleFont {
-    return [UIFont systemFontOfSize:13.0f];
+    //return [UIFont systemFontOfSize:13.0f];
+    return [UIFont hackfulInterfaceFontOfSize:13.0f];
 }
 
 @end

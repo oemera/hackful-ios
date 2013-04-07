@@ -31,9 +31,7 @@
 
 @class NavigationController;
 
-@interface HackfulAppDelegate : UIResponder <UIApplicationDelegate> {
-    NavigationController *navigationController;
-}
+@interface HackfulAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
