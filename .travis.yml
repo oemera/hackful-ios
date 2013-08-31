@@ -1,1 +1,3 @@
 language: objective-c
+workspace: hackful.xcodeproj
+scheme: hackful
