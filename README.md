@@ -1,7 +1,7 @@
 Introduction
 ------------
 Hackful for iOS makes it insanely fun to read and contribute to [Hackful Europe] [hackful.com].
-The code is released under the MIT/X11, so feel free to modify and share your changes with the world. 
+The code is released under the MIT/X11, so feel free to modify and share your changes with the world..
 
 There is also a [landing page for the app] [landingpage]
 
